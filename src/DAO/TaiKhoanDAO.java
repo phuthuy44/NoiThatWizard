@@ -5,10 +5,15 @@
  */
 package DAO;
 
+import java.sql.Connection;
+
 /**
  *
  * @author Administrator
  */
 public class TaiKhoanDAO {
+    private MySQLConnect mySQL = new MySQLConnect();
+    private Connection connection = mySQL.getConnection();
+    
     
 }
