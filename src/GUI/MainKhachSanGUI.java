@@ -5,8 +5,12 @@
  */
 package GUI;
 
+import GUI.model.ChangeScreenQuanLy;
+import GUI.model.DanhMuc;
 import javax.swing.JFrame;
 import java.awt.Graphics;
+import java.util.ArrayList;
+import javax.swing.ImageIcon;
 /**
  *
  * @author Administrator
@@ -17,11 +21,24 @@ public class MainKhachSanGUI extends javax.swing.JFrame {
      * Creates new form MainKhachSanGUI
      */
     public MainKhachSanGUI() {
-        setUndecorated(true);
-        
+        setUndecorated(true);      
         initComponents();
-        
         setLocationRelativeTo(null);
+        ImageIcon logo = new ImageIcon("./src/image/lblIconHotel32x32");
+        setIconImage(logo.getImage());
+        
+        ChangeScreenQuanLy controller = new ChangeScreenQuanLy(pnView);
+//        controller.setView(pnNhanVien,lblNhanVien);
+//        
+        ArrayList<DanhMuc> list = new ArrayList<>();
+        list.add(new DanhMuc("NhanVien", pnNhanVien, lblNhanVien));
+        list.add(new DanhMuc("TrangChu", pnTrangChu, lblTrangChu));
+        list.add(new DanhMuc("CaLam", pnCaLam, lblCaLam));
+        list.add(new DanhMuc("TaiKhoan", pnTaiKhoan, lblTaiKhoan));
+        list.add(new DanhMuc("TrangChu", pnTrangChu, lblTrangChu));
+        list.add(new DanhMuc("ChucVu", pnChucVu, lblChucVu));
+        
+        controller.setEvent(list);
         
     }
 
@@ -38,14 +55,23 @@ public class MainKhachSanGUI extends javax.swing.JFrame {
         pnHeader = new javax.swing.JPanel();
         btnClose = new javax.swing.JLabel();
         btnMinimize = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
+        lblThongTin = new javax.swing.JLabel();
         cbxPhanQuyen = new javax.swing.JComboBox<>();
         pnView = new javax.swing.JPanel();
         pnMenu = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        lblIconHotel = new javax.swing.JLabel();
+        pnTaiKhoan = new javax.swing.JPanel();
+        lblTaiKhoan = new javax.swing.JLabel();
+        pnCaLam = new javax.swing.JPanel();
+        lblCaLam = new javax.swing.JLabel();
+        pnNhanVien = new javax.swing.JPanel();
+        lblNhanVien = new javax.swing.JLabel();
+        pnChucVu = new javax.swing.JPanel();
+        lblChucVu = new javax.swing.JLabel();
+        pnTrangChu = new javax.swing.JPanel();
+        lblTrangChu = new javax.swing.JLabel();
+        pnDangXuat = new javax.swing.JPanel();
+        lblDangXuat = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(1300, 700));
@@ -75,10 +101,10 @@ public class MainKhachSanGUI extends javax.swing.JFrame {
             }
         });
 
-        jLabel9.setFont(new java.awt.Font("Baloo 2 ExtraBold", 1, 18)); // NOI18N
-        jLabel9.setText("BẠN ĐANG ĐĂNG NHẬP VỚI TƯ CÁCH");
+        lblThongTin.setFont(new java.awt.Font("Baloo 2 ExtraBold", 1, 18)); // NOI18N
+        lblThongTin.setText("BẠN ĐANG ĐĂNG NHẬP VỚI TƯ CÁCH");
 
-        cbxPhanQuyen.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Quản lý kho" }));
+        cbxPhanQuyen.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Quản trị viên" }));
         cbxPhanQuyen.setEnabled(false);
 
         javax.swing.GroupLayout pnHeaderLayout = new javax.swing.GroupLayout(pnHeader);
@@ -87,7 +113,7 @@ public class MainKhachSanGUI extends javax.swing.JFrame {
             pnHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnHeaderLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel9)
+                .addComponent(lblThongTin)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(cbxPhanQuyen, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -98,85 +124,175 @@ public class MainKhachSanGUI extends javax.swing.JFrame {
         pnHeaderLayout.setVerticalGroup(
             pnHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnHeaderLayout.createSequentialGroup()
-                .addGroup(pnHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(pnHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(cbxPhanQuyen, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(pnHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblThongTin, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbxPhanQuyen, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(1, 1, 1))
+            .addGroup(pnHeaderLayout.createSequentialGroup()
+                .addGroup(pnHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnClose, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnMinimize, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(1, 1, 1))
+                .addContainerGap())
         );
 
         pnView.setBackground(new java.awt.Color(250, 247, 240));
+        pnView.setPreferredSize(new java.awt.Dimension(1089, 700));
 
         javax.swing.GroupLayout pnViewLayout = new javax.swing.GroupLayout(pnView);
         pnView.setLayout(pnViewLayout);
         pnViewLayout.setHorizontalGroup(
             pnViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1089, Short.MAX_VALUE)
+            .addGap(0, 1099, Short.MAX_VALUE)
         );
         pnViewLayout.setVerticalGroup(
             pnViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 756, Short.MAX_VALUE)
+            .addGap(0, 600, Short.MAX_VALUE)
         );
 
         pnMenu.setBackground(new java.awt.Color(188, 206, 248));
+        pnMenu.setPreferredSize(new java.awt.Dimension(211, 650));
+        pnMenu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/hotel.png"))); // NOI18N
+        lblIconHotel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblIconHotel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/hotel.png"))); // NOI18N
+        pnMenu.add(lblIconHotel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 201, 186));
 
-        jPanel1.setBackground(new java.awt.Color(188, 206, 248));
-        jPanel1.setForeground(new java.awt.Color(255, 255, 255));
+        pnTaiKhoan.setBackground(new java.awt.Color(188, 206, 248));
+        pnTaiKhoan.setForeground(new java.awt.Color(255, 255, 255));
+        pnTaiKhoan.setPreferredSize(new java.awt.Dimension(300, 43));
 
-        jLabel2.setFont(new java.awt.Font("Baloo 2 ExtraBold", 1, 20)); // NOI18N
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/power.png"))); // NOI18N
-        jLabel2.setText("   Đăng xuất");
+        lblTaiKhoan.setFont(new java.awt.Font("Baloo 2 ExtraBold", 1, 20)); // NOI18N
+        lblTaiKhoan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/lblAccount.png"))); // NOI18N
+        lblTaiKhoan.setText("  Tài khoản");
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 19, Short.MAX_VALUE)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE))
+        javax.swing.GroupLayout pnTaiKhoanLayout = new javax.swing.GroupLayout(pnTaiKhoan);
+        pnTaiKhoan.setLayout(pnTaiKhoanLayout);
+        pnTaiKhoanLayout.setHorizontalGroup(
+            pnTaiKhoanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnTaiKhoanLayout.createSequentialGroup()
+                .addGap(0, 9, Short.MAX_VALUE)
+                .addComponent(lblTaiKhoan, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel2)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        pnTaiKhoanLayout.setVerticalGroup(
+            pnTaiKhoanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lblTaiKhoan, javax.swing.GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE)
         );
 
-        jLabel3.setFont(new java.awt.Font("Baloo 2 ExtraBold", 1, 20)); // NOI18N
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/power.png"))); // NOI18N
-        jLabel3.setText("   Đăng xuất");
+        pnMenu.add(pnTaiKhoan, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 476, 201, -1));
 
-        javax.swing.GroupLayout pnMenuLayout = new javax.swing.GroupLayout(pnMenu);
-        pnMenu.setLayout(pnMenuLayout);
-        pnMenuLayout.setHorizontalGroup(
-            pnMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(pnMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(pnMenuLayout.createSequentialGroup()
-                    .addGap(9, 9, 9)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+        pnCaLam.setBackground(new java.awt.Color(188, 206, 248));
+        pnCaLam.setForeground(new java.awt.Color(255, 255, 255));
+        pnCaLam.setPreferredSize(new java.awt.Dimension(300, 43));
+
+        lblCaLam.setFont(new java.awt.Font("Baloo 2 ExtraBold", 1, 20)); // NOI18N
+        lblCaLam.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/lblCaLam.png"))); // NOI18N
+        lblCaLam.setText("  Ca làm");
+
+        javax.swing.GroupLayout pnCaLamLayout = new javax.swing.GroupLayout(pnCaLam);
+        pnCaLam.setLayout(pnCaLamLayout);
+        pnCaLamLayout.setHorizontalGroup(
+            pnCaLamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnCaLamLayout.createSequentialGroup()
+                .addGap(0, 9, Short.MAX_VALUE)
+                .addComponent(lblCaLam, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
-        pnMenuLayout.setVerticalGroup(
-            pnMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnMenuLayout.createSequentialGroup()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 348, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(240, 240, 240))
-            .addGroup(pnMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(pnMenuLayout.createSequentialGroup()
-                    .addGap(398, 398, 398)
-                    .addComponent(jLabel3)
-                    .addContainerGap(398, Short.MAX_VALUE)))
+        pnCaLamLayout.setVerticalGroup(
+            pnCaLamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lblCaLam, javax.swing.GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE)
         );
+
+        pnMenu.add(pnCaLam, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 415, 201, -1));
+
+        pnNhanVien.setBackground(new java.awt.Color(188, 206, 248));
+        pnNhanVien.setForeground(new java.awt.Color(255, 255, 255));
+        pnNhanVien.setPreferredSize(new java.awt.Dimension(300, 43));
+
+        lblNhanVien.setFont(new java.awt.Font("Baloo 2 ExtraBold", 1, 20)); // NOI18N
+        lblNhanVien.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/lblNhanVien.png"))); // NOI18N
+        lblNhanVien.setText("  Nhân viên");
+
+        javax.swing.GroupLayout pnNhanVienLayout = new javax.swing.GroupLayout(pnNhanVien);
+        pnNhanVien.setLayout(pnNhanVienLayout);
+        pnNhanVienLayout.setHorizontalGroup(
+            pnNhanVienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnNhanVienLayout.createSequentialGroup()
+                .addGap(0, 9, Short.MAX_VALUE)
+                .addComponent(lblNhanVien, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        pnNhanVienLayout.setVerticalGroup(
+            pnNhanVienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lblNhanVien, javax.swing.GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE)
+        );
+
+        pnMenu.add(pnNhanVien, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 293, 201, -1));
+
+        pnChucVu.setBackground(new java.awt.Color(188, 206, 248));
+        pnChucVu.setForeground(new java.awt.Color(255, 255, 255));
+        pnChucVu.setPreferredSize(new java.awt.Dimension(300, 43));
+
+        lblChucVu.setFont(new java.awt.Font("Baloo 2 ExtraBold", 1, 20)); // NOI18N
+        lblChucVu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/lblChucVu.png"))); // NOI18N
+        lblChucVu.setText("  Chức vụ");
+
+        javax.swing.GroupLayout pnChucVuLayout = new javax.swing.GroupLayout(pnChucVu);
+        pnChucVu.setLayout(pnChucVuLayout);
+        pnChucVuLayout.setHorizontalGroup(
+            pnChucVuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnChucVuLayout.createSequentialGroup()
+                .addGap(0, 9, Short.MAX_VALUE)
+                .addComponent(lblChucVu, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        pnChucVuLayout.setVerticalGroup(
+            pnChucVuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lblChucVu, javax.swing.GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE)
+        );
+
+        pnMenu.add(pnChucVu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 354, 201, -1));
+
+        pnTrangChu.setBackground(new java.awt.Color(188, 206, 248));
+        pnTrangChu.setForeground(new java.awt.Color(255, 255, 255));
+        pnTrangChu.setPreferredSize(new java.awt.Dimension(300, 43));
+
+        lblTrangChu.setFont(new java.awt.Font("Baloo 2 ExtraBold", 1, 20)); // NOI18N
+        lblTrangChu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/lblHome.png"))); // NOI18N
+        lblTrangChu.setText("  Trang chủ");
+
+        javax.swing.GroupLayout pnTrangChuLayout = new javax.swing.GroupLayout(pnTrangChu);
+        pnTrangChu.setLayout(pnTrangChuLayout);
+        pnTrangChuLayout.setHorizontalGroup(
+            pnTrangChuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnTrangChuLayout.createSequentialGroup()
+                .addGap(0, 9, Short.MAX_VALUE)
+                .addComponent(lblTrangChu, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        pnTrangChuLayout.setVerticalGroup(
+            pnTrangChuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lblTrangChu, javax.swing.GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE)
+        );
+
+        pnMenu.add(pnTrangChu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 232, 201, -1));
+
+        pnDangXuat.setBackground(new java.awt.Color(188, 206, 248));
+        pnDangXuat.setForeground(new java.awt.Color(255, 255, 255));
+
+        lblDangXuat.setFont(new java.awt.Font("Baloo 2 ExtraBold", 1, 20)); // NOI18N
+        lblDangXuat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/power.png"))); // NOI18N
+        lblDangXuat.setText("  Đăng xuất");
+
+        javax.swing.GroupLayout pnDangXuatLayout = new javax.swing.GroupLayout(pnDangXuat);
+        pnDangXuat.setLayout(pnDangXuatLayout);
+        pnDangXuatLayout.setHorizontalGroup(
+            pnDangXuatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnDangXuatLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(lblDangXuat, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        pnDangXuatLayout.setVerticalGroup(
+            pnDangXuatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lblDangXuat, javax.swing.GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE)
+        );
+
+        pnMenu.add(pnDangXuat, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 610, 201, -1));
 
         javax.swing.GroupLayout pnRootLayout = new javax.swing.GroupLayout(pnRoot);
         pnRoot.setLayout(pnRootLayout);
@@ -184,19 +300,19 @@ public class MainKhachSanGUI extends javax.swing.JFrame {
             pnRootLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(pnHeader, javax.swing.GroupLayout.DEFAULT_SIZE, 1300, Short.MAX_VALUE)
             .addGroup(pnRootLayout.createSequentialGroup()
-                .addComponent(pnMenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(pnMenu, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE)
                 .addGap(0, 0, 0)
-                .addComponent(pnView, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(pnView, javax.swing.GroupLayout.PREFERRED_SIZE, 1099, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         pnRootLayout.setVerticalGroup(
             pnRootLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnRootLayout.createSequentialGroup()
                 .addComponent(pnHeader, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(pnRootLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pnMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pnMenu, javax.swing.GroupLayout.DEFAULT_SIZE, 656, Short.MAX_VALUE)
                     .addGroup(pnRootLayout.createSequentialGroup()
-                        .addGap(0, 0, 0)
-                        .addComponent(pnView, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(pnView, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -207,9 +323,7 @@ public class MainKhachSanGUI extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(pnRoot, javax.swing.GroupLayout.PREFERRED_SIZE, 800, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(pnRoot, javax.swing.GroupLayout.PREFERRED_SIZE, 750, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -262,14 +376,25 @@ public class MainKhachSanGUI extends javax.swing.JFrame {
     private javax.swing.JLabel btnClose;
     private javax.swing.JLabel btnMinimize;
     private javax.swing.JComboBox<String> cbxPhanQuyen;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lblCaLam;
+    private javax.swing.JLabel lblChucVu;
+    private javax.swing.JLabel lblDangXuat;
+    private javax.swing.JLabel lblIconHotel;
+    private javax.swing.JLabel lblNhanVien;
+    private javax.swing.JLabel lblTaiKhoan;
+    private javax.swing.JLabel lblTaiKhoan1;
+    private javax.swing.JLabel lblThongTin;
+    private javax.swing.JLabel lblTrangChu;
+    private javax.swing.JPanel pnCaLam;
+    private javax.swing.JPanel pnChucVu;
+    private javax.swing.JPanel pnDangXuat;
     private javax.swing.JPanel pnHeader;
     private javax.swing.JPanel pnMenu;
+    private javax.swing.JPanel pnNhanVien;
     private javax.swing.JPanel pnRoot;
+    private javax.swing.JPanel pnTaiKhoan;
+    private javax.swing.JPanel pnTaiKhoan1;
+    private javax.swing.JPanel pnTrangChu;
     private javax.swing.JPanel pnView;
     // End of variables declaration//GEN-END:variables
 }
