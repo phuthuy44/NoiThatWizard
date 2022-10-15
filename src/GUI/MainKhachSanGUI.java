@@ -11,6 +11,8 @@ import javax.swing.JFrame;
 import java.awt.Graphics;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
 /**
  *
  * @author Administrator
@@ -309,7 +311,7 @@ public class MainKhachSanGUI extends javax.swing.JFrame {
             .addGroup(pnRootLayout.createSequentialGroup()
                 .addComponent(pnHeader, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(pnRootLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pnMenu, javax.swing.GroupLayout.DEFAULT_SIZE, 656, Short.MAX_VALUE)
+                    .addComponent(pnMenu, javax.swing.GroupLayout.DEFAULT_SIZE, 710, Short.MAX_VALUE)
                     .addGroup(pnRootLayout.createSequentialGroup()
                         .addComponent(pnView, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))))
@@ -330,7 +332,12 @@ public class MainKhachSanGUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCloseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCloseMouseClicked
-        System.exit(0);
+       // System.exit(0);
+        setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+        int result=JOptionPane.showConfirmDialog(null,"Do yout want to exit?","Congfig",JOptionPane.YES_NO_OPTION);
+        if(result==0){
+            System.exit(0);
+        }
     }//GEN-LAST:event_btnCloseMouseClicked
 
     private void btnMinimizeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMinimizeMouseClicked
@@ -382,7 +389,6 @@ public class MainKhachSanGUI extends javax.swing.JFrame {
     private javax.swing.JLabel lblIconHotel;
     private javax.swing.JLabel lblNhanVien;
     private javax.swing.JLabel lblTaiKhoan;
-    private javax.swing.JLabel lblTaiKhoan1;
     private javax.swing.JLabel lblThongTin;
     private javax.swing.JLabel lblTrangChu;
     private javax.swing.JPanel pnCaLam;
@@ -393,7 +399,6 @@ public class MainKhachSanGUI extends javax.swing.JFrame {
     private javax.swing.JPanel pnNhanVien;
     private javax.swing.JPanel pnRoot;
     private javax.swing.JPanel pnTaiKhoan;
-    private javax.swing.JPanel pnTaiKhoan1;
     private javax.swing.JPanel pnTrangChu;
     private javax.swing.JPanel pnView;
     // End of variables declaration//GEN-END:variables
