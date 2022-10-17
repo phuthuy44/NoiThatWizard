@@ -6,7 +6,7 @@
 package GUI.model;
 
 import GUI.NhanVienGUI;
-import GUI.MainKhachSanGUI;
+import GUI.MainForQuanLyGUI;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.event.MouseEvent;
@@ -35,7 +35,7 @@ public class ChangeScreenQuanLy {
 //        lblItem.setBackground(new Color(130,120,210));
         pnRoot.removeAll();
         pnRoot.setLayout(new BorderLayout());
-        pnRoot.add(new MainKhachSanGUI());
+        pnRoot.add(new MainForQuanLyGUI());
         pnRoot.validate();
         pnRoot.repaint();
     }
@@ -93,8 +93,8 @@ public class ChangeScreenQuanLy {
         @Override
         public void mousePressed(MouseEvent e) {
             kindSelected = kind;
-            pnItem.setBackground(new Color(233, 246, 255));
-            lblItem.setBackground(new Color(233, 246, 255));
+            pnItem.setBackground(new Color(188,206,248));
+            lblItem.setBackground(new Color(188,206,248));
         }
 
         @Override
@@ -123,8 +123,8 @@ public class ChangeScreenQuanLy {
                 item.getPn().setBackground(new Color(233, 246, 255));
                 item.getLbl().setBackground(new Color(233, 246, 255));
             } else {
-                item.getPn().setBackground(new Color(130, 120, 210));
-                item.getLbl().setBackground(new Color(130, 120, 210));
+                item.getPn().setBackground(new Color(188,206,248));
+                item.getLbl().setBackground(new Color(188,206,248));
             }
         }
     }
