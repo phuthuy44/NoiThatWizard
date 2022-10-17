@@ -7,10 +7,16 @@ package GUI;
 
 import GUI.model.ChangeScreenQuanLy;
 import GUI.model.DanhMuc;
+import java.text.SimpleDateFormat;
 import javax.swing.JFrame;
-import java.awt.Graphics;
+//import java.awt.Graphics;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
 /**
  *
  * @author Administrator
@@ -27,7 +33,7 @@ public class MainForQuanLyGUI extends javax.swing.JFrame {
         
         ImageIcon logo = new ImageIcon("./src/image/lblIconHotel32x32");
         setIconImage(logo.getImage());
-        
+        setTime();
         ChangeScreenQuanLy controller = new ChangeScreenQuanLy(pnView);
 //        controller.setView(pnNhanVien,lblNhanVien);
 //        
@@ -41,8 +47,31 @@ public class MainForQuanLyGUI extends javax.swing.JFrame {
         
         controller.setEvent(list);
         
+        
     }
-
+     public void setTime(){
+        new Thread(new Runnable(){
+            @Override
+            public void run() {
+                while(true){
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(MainForQuanLyGUI.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    Date date=new Date();
+                    SimpleDateFormat timeformat=new SimpleDateFormat("h:mm:ss aa");
+                    SimpleDateFormat dateformat= new SimpleDateFormat("EEEE,dd-MM-yyyy");
+                    String time=timeformat.format(date);
+                    
+                    jlblTime.setText(time.split(" ")[0]+" "+time.split(" ")[1]);
+                    jlblDate.setText(dateformat.format(date));
+                    
+                }
+            }
+            
+        }).start();
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -57,8 +86,10 @@ public class MainForQuanLyGUI extends javax.swing.JFrame {
         btnClose = new javax.swing.JLabel();
         btnMinimize = new javax.swing.JLabel();
         lblThongTin = new javax.swing.JLabel();
-        cbxPhanQuyen = new javax.swing.JComboBox<>();
         lblHome = new javax.swing.JLabel();
+        cbxPhanQuyen = new javax.swing.JComboBox<>();
+        jlblTime = new javax.swing.JLabel();
+        jlblDate = new javax.swing.JLabel();
         pnView = new javax.swing.JPanel();
         pnMenu = new javax.swing.JPanel();
         lblIconHotel = new javax.swing.JLabel();
@@ -80,12 +111,10 @@ public class MainForQuanLyGUI extends javax.swing.JFrame {
 
         pnRoot.setBackground(new java.awt.Color(255, 255, 255));
         pnRoot.setPreferredSize(new java.awt.Dimension(1300, 730));
-        pnRoot.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         pnHeader.setBackground(new java.awt.Color(152, 168, 248));
         pnHeader.setToolTipText("");
         pnHeader.setPreferredSize(new java.awt.Dimension(102, 40));
-        pnHeader.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnClose.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/close.png"))); // NOI18N
@@ -95,7 +124,6 @@ public class MainForQuanLyGUI extends javax.swing.JFrame {
                 btnCloseMouseClicked(evt);
             }
         });
-        pnHeader.add(btnClose, new org.netbeans.lib.awtextra.AbsoluteConstraints(1251, 0, 49, 40));
 
         btnMinimize.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btnMinimize.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/minus.png"))); // NOI18N
@@ -105,26 +133,65 @@ public class MainForQuanLyGUI extends javax.swing.JFrame {
                 btnMinimizeMouseClicked(evt);
             }
         });
-        pnHeader.add(btnMinimize, new org.netbeans.lib.awtextra.AbsoluteConstraints(1196, 0, 49, 40));
 
         lblThongTin.setFont(new java.awt.Font("Baloo 2 ExtraBold", 1, 18)); // NOI18N
         lblThongTin.setText("BẠN ĐANG ĐĂNG NHẬP VỚI TƯ CÁCH");
-        pnHeader.add(lblThongTin, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 0, -1, 41));
-
-        cbxPhanQuyen.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Quản lý" }));
-        cbxPhanQuyen.setEnabled(false);
-        pnHeader.add(cbxPhanQuyen, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 0, 90, 41));
 
         lblHome.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblHome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/lblHome.png"))); // NOI18N
-        pnHeader.add(lblHome, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 40, 40));
 
-        pnRoot.add(pnHeader, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1300, -1));
+        cbxPhanQuyen.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Quản lý" }));
+        cbxPhanQuyen.setEnabled(false);
+
+        jlblTime.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+
+        jlblDate.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+
+        javax.swing.GroupLayout pnHeaderLayout = new javax.swing.GroupLayout(pnHeader);
+        pnHeader.setLayout(pnHeaderLayout);
+        pnHeaderLayout.setHorizontalGroup(
+            pnHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnHeaderLayout.createSequentialGroup()
+                .addComponent(lblHome, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(lblThongTin)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cbxPhanQuyen, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(292, 292, 292)
+                .addComponent(jlblTime, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jlblDate, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(39, 39, 39)
+                .addComponent(btnMinimize, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(6, 6, 6)
+                .addComponent(btnClose, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        pnHeaderLayout.setVerticalGroup(
+            pnHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lblHome, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(pnHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(lblThongTin, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cbxPhanQuyen, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(btnClose, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(pnHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                .addComponent(jlblDate, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jlblTime, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnMinimize, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE))
+        );
 
         pnView.setBackground(new java.awt.Color(250, 247, 240));
         pnView.setPreferredSize(new java.awt.Dimension(1089, 700));
-        pnView.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        pnRoot.add(pnView, new org.netbeans.lib.awtextra.AbsoluteConstraints(201, 40, 1099, 660));
+
+        javax.swing.GroupLayout pnViewLayout = new javax.swing.GroupLayout(pnView);
+        pnView.setLayout(pnViewLayout);
+        pnViewLayout.setHorizontalGroup(
+            pnViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1099, Short.MAX_VALUE)
+        );
+        pnViewLayout.setVerticalGroup(
+            pnViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 660, Short.MAX_VALUE)
+        );
 
         pnMenu.setBackground(new java.awt.Color(188, 206, 248));
         pnMenu.setPreferredSize(new java.awt.Dimension(211, 650));
@@ -281,7 +348,24 @@ public class MainForQuanLyGUI extends javax.swing.JFrame {
                 .addComponent(pnDangXuat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        pnRoot.add(pnMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 201, 660));
+        javax.swing.GroupLayout pnRootLayout = new javax.swing.GroupLayout(pnRoot);
+        pnRoot.setLayout(pnRootLayout);
+        pnRootLayout.setHorizontalGroup(
+            pnRootLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(pnHeader, javax.swing.GroupLayout.PREFERRED_SIZE, 1300, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(pnRootLayout.createSequentialGroup()
+                .addComponent(pnMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(pnView, javax.swing.GroupLayout.PREFERRED_SIZE, 1099, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        pnRootLayout.setVerticalGroup(
+            pnRootLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnRootLayout.createSequentialGroup()
+                .addComponent(pnHeader, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(pnRootLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(pnMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 660, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pnView, javax.swing.GroupLayout.PREFERRED_SIZE, 660, javax.swing.GroupLayout.PREFERRED_SIZE)))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -298,7 +382,12 @@ public class MainForQuanLyGUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCloseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCloseMouseClicked
-        System.exit(0);
+       // System.exit(0);
+       setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+        int result=JOptionPane.showConfirmDialog(null,"Do yout want to exit?","Congfig",JOptionPane.YES_NO_OPTION);
+        if(result==0){
+            System.exit(0);
+        }
     }//GEN-LAST:event_btnCloseMouseClicked
 
     private void btnMinimizeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMinimizeMouseClicked
@@ -347,6 +436,8 @@ public class MainForQuanLyGUI extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cbxPhanQuyen;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jlblDate;
+    private javax.swing.JLabel jlblTime;
     private javax.swing.JLabel lblCaLam;
     private javax.swing.JLabel lblChucVu;
     private javax.swing.JLabel lblDangXuat;
