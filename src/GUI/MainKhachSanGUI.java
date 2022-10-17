@@ -391,7 +391,7 @@ public class MainKhachSanGUI extends javax.swing.JFrame {
     private void btnCloseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCloseMouseClicked
        // System.exit(0);
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-        int result=JOptionPane.showConfirmDialog(null,"Do yout want to thoát?","Congfig",JOptionPane.YES_NO_OPTION);
+        int result=JOptionPane.showConfirmDialog(null,"Do yout want to exit?","Congfig",JOptionPane.YES_NO_OPTION);
         if(result==0){
             System.exit(0);
         }
