@@ -5,8 +5,13 @@
  */
 package GUI.model;
 
+import GUI.CaLamGUI;
+import GUI.ChucVuGUI;
+import GUI.KhuyenMaiGUI;
 import GUI.NhanVienGUI;
 import GUI.MainForQuanLyGUI;
+import GUI.SanPhamGUI;
+import GUI.TaiKhoanGUI;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.event.MouseEvent;
@@ -70,15 +75,20 @@ public class ChangeScreenQuanLy {
                     node = new NhanVienGUI();
                     break;
                 case "CaLam":
-                    node = new NhanVienGUI();
+                    node = new CaLamGUI();
                     break;
                 case "ChucVu":
-                    node = new NhanVienGUI();
+                    node = new ChucVuGUI();
                     break;
                 case "TaiKhoan":
-                    node = new NhanVienGUI();
+                    node = new TaiKhoanGUI();
                     break;
-
+                case "SanPham":
+                    node = new SanPhamGUI();
+                    break;
+                case "KhuyenMai":
+                    node = new KhuyenMaiGUI();
+                    break;
                 default:
                     break;
             }

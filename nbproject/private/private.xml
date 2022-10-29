@@ -1,11 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
-    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="1">
+        <file>
+            <url>src/GUI/MainForNhanVienGUI.java</url>
+            <bookmark id="1">
+                <name/>
+                <line>0</line>
+                <key/>
+            </bookmark>
+        </file>
+    </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Administrator/Documents/NetBeansProjects/KhachSanWizard/src/GUI/MainForKeToanGUI.java</file>
-            <file>file:/C:/Users/Administrator/Documents/NetBeansProjects/KhachSanWizard/src/GUI/MainForNhanVienGUI.java</file>
-            <file>file:/C:/Users/Administrator/Documents/NetBeansProjects/KhachSanWizard/src/GUI/MainForQuanLyGUI.java</file>
+            <file>file:/C:/Users/wizardsc/Documents/NetBeansProjects/KhachSanWizard/src/DTO/SanPhamDTO.java</file>
+            <file>file:/C:/Users/wizardsc/Documents/NetBeansProjects/KhachSanWizard/src/GUI/NhanVienGUI.java</file>
+            <file>file:/C:/Users/wizardsc/Documents/NetBeansProjects/KhachSanWizard/src/BUS/SanPhamBUS.java</file>
+            <file>file:/C:/Users/wizardsc/Documents/NetBeansProjects/KhachSanWizard/src/GUI/Main.java</file>
+            <file>file:/C:/Users/wizardsc/Documents/NetBeansProjects/KhachSanWizard/src/DAO/SanPhamDAO.java</file>
+            <file>file:/C:/Users/wizardsc/Documents/NetBeansProjects/KhachSanWizard/src/GUI/SanPhamGUI.java</file>
         </group>
     </open-files>
 </project-private>
