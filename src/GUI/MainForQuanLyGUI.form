@@ -28,7 +28,7 @@
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="pnRoot" alignment="0" pref="700" max="32767" attributes="0"/>
+          <Component id="pnRoot" alignment="0" pref="730" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -51,10 +51,7 @@
                   <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                   <Component id="pnView" pref="1103" max="32767" attributes="0"/>
               </Group>
-              <Group type="102" alignment="0" attributes="0">
-                  <Component id="pnHeader" pref="1300" max="32767" attributes="0"/>
-                  <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-              </Group>
+              <Component id="pnHeader" alignment="0" pref="1300" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
@@ -63,10 +60,9 @@
                   <Component id="pnHeader" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="pnMenu" pref="660" max="32767" attributes="0"/>
-                      <Component id="pnView" pref="660" max="32767" attributes="0"/>
+                      <Component id="pnView" pref="690" max="32767" attributes="0"/>
+                      <Component id="pnMenu" pref="690" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -221,7 +217,7 @@
               </Border>
             </Property>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[1089, 750]"/>
+              <Dimension value="[1089, 730]"/>
             </Property>
           </Properties>
 
@@ -281,30 +277,23 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="pnSanPham" alignment="0" min="-2" pref="201" max="-2" attributes="0"/>
-                          <Component id="pnKhuyenMai" alignment="0" min="-2" pref="201" max="-2" attributes="0"/>
-                          <Component id="pnDangXuat" alignment="0" min="-2" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="pnDangXuat" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Component id="lblIconHotel" max="32767" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="pnNhanVien" alignment="1" min="-2" pref="201" max="-2" attributes="0"/>
-                              <Component id="pnCaLam" alignment="1" min="-2" pref="201" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
                   </Group>
                   <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="pnChucVu" pref="191" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="pnSanPham" pref="0" max="32767" attributes="0"/>
+                          <Component id="pnChucVu" alignment="0" pref="191" max="32767" attributes="0"/>
                           <Component id="pnTaiKhoan" alignment="1" pref="191" max="32767" attributes="0"/>
+                          <Group type="102" alignment="1" attributes="0">
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="lblIconHotel" alignment="1" min="-2" pref="191" max="-2" attributes="0"/>
+                                  <Component id="pnNhanVien" alignment="1" min="-2" pref="191" max="-2" attributes="0"/>
+                                  <Component id="pnCaLam" alignment="1" min="-2" pref="191" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Component id="pnKhuyenMai" alignment="0" pref="0" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -313,21 +302,21 @@
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <EmptySpace pref="34" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="lblIconHotel" min="-2" pref="150" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="pnNhanVien" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="pnTaiKhoan" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                      <Component id="pnCaLam" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="pnKhuyenMai" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="pnSanPham" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="70" max="-2" attributes="0"/>
-                      <Component id="pnChucVu" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="pnCaLam" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="pnKhuyenMai" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="pnSanPham" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="pnChucVu" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="168" max="32767" attributes="0"/>
                       <Component id="pnDangXuat" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -402,9 +391,8 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="lblCaLam" min="-2" pref="183" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
+                          <Component id="lblCaLam" min="-2" pref="183" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -447,7 +435,7 @@
                       <Group type="102" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="lblNhanVien" alignment="1" pref="191" max="32767" attributes="0"/>
+                              <Component id="lblNhanVien" alignment="1" pref="181" max="32767" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -580,9 +568,6 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Baloo 2 ExtraBold" size="20" style="1"/>
                     </Property>
-                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/image/power.png"/>
-                    </Property>
                     <Property name="text" type="java.lang.String" value="  &#x110;&#x103;ng xu&#x1ea5;t"/>
                   </Properties>
                 </Component>
@@ -602,9 +587,8 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="lblSanPham" min="-2" pref="184" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
+                          <Component id="lblSanPham" min="-2" pref="184" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -624,7 +608,7 @@
                       <Font name="Baloo 2 ExtraBold" size="20" style="1"/>
                     </Property>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/image/upload.png"/>
+                      <Image iconType="3" name="/image/lblSanPham.png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="  S&#x1ea3;n ph&#x1ea9;m"/>
                   </Properties>
@@ -645,9 +629,8 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="lblKhuyenMai" min="-2" pref="184" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
+                          <Component id="lblKhuyenMai" min="-2" pref="184" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>

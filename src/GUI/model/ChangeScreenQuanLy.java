@@ -10,7 +10,7 @@ import GUI.ChucVuGUI;
 import GUI.KhuyenMaiGUI;
 import GUI.NhanVienGUI;
 import GUI.MainForQuanLyGUI;
-import GUI.SanPhamGUI;
+import GUI.SanPhamForQLGUI;
 import GUI.TaiKhoanGUI;
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -84,7 +84,7 @@ public class ChangeScreenQuanLy {
                     node = new TaiKhoanGUI();
                     break;
                 case "SanPham":
-                    node = new SanPhamGUI();
+                    node = new SanPhamForQLGUI();
                     break;
                 case "KhuyenMai":
                     node = new KhuyenMaiGUI();

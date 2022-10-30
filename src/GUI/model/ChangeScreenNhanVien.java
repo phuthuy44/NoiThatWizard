@@ -10,7 +10,8 @@ import GUI.ChucVuGUI;
 import GUI.HoaDonGUI;
 import GUI.MainForNhanVienGUI;
 import GUI.NhanVienGUI;
-import GUI.SanPhamGUI;
+import GUI.SanPhamForNVGUI;
+
 import GUI.TaiKhoanGUI;
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -71,7 +72,7 @@ public class ChangeScreenNhanVien {
                     node = new HoaDonGUI();
                     break;
                 case "SanPham":
-                    node = new SanPhamGUI();
+                    node = new SanPhamForNVGUI();
                     break;
 
                 default:
