@@ -23,4 +23,21 @@ public class SanPhamBUS {
     public ArrayList<SanPhamDTO> getListSanPham(){
         return listSanPham;
     }
+    
+    public void update(SanPhamDTO sp){
+        for(int i=0;i<listSanPham.size();i++){
+            if (listSanPham.get(i).getMaSP().equals(sp.getMaSP())){
+                listSanPham.set(i, sp);
+                SanPhamDAO spDAO = new SanPhamDAO();
+                spDAO.updateSanPham(sp);
+                return;
+            }
+        }
+    }
+    
+    public void capNhatSoLuongHD(String MaSP, int SoLuongMua, int SoLuongTrongKho) {
+
+        spDAO.capNhatSoLuongHD(MaSP, SoLuongMua, SoLuongTrongKho);
+
+    }
 }

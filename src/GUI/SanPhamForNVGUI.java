@@ -11,8 +11,11 @@ import DTO.SanPhamDTO;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Image;
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -20,33 +23,39 @@ import javax.swing.table.DefaultTableModel;
  * @author wizardsc
  */
 public class SanPhamForNVGUI extends javax.swing.JPanel {
+
     SanPhamBUS spBUS = new SanPhamBUS();
     DefaultTableModel dtmSanPham = new DefaultTableModel();
     private ArrayList<LoaiDTO> dsloai = new ArrayList<>();
+    String imgName = "null";
+    private BufferedImage i = null;
+
     public SanPhamForNVGUI() {
         initComponents();
         init();
         dtmSanPham = (DefaultTableModel) tblDSSP.getModel();
         loadData();
     }
+
     public void init() {
         //set giao diện cho Table 
         tblDSSP.setFocusable(false);
         tblDSSP.setIntercellSpacing(new Dimension(0, 0));
         tblDSSP.setRowHeight(25);
-        tblDSSP.setFillsViewportHeight(true);      
-        tblDSSP.getTableHeader().setOpaque(false);    
-        tblDSSP.getTableHeader().setBackground(new Color(152,168,248));
+        tblDSSP.setFillsViewportHeight(true);
+        tblDSSP.getTableHeader().setOpaque(false);
+        tblDSSP.getTableHeader().setBackground(new Color(152, 168, 248));
         tblDSSP.getTableHeader().setForeground(Color.WHITE);
-        tblDSSP.setSelectionBackground(new Color(188,206,248));
+        tblDSSP.setSelectionBackground(new Color(188, 206, 248));
         tblDSSP.setSelectionForeground(Color.BLACK);
-        tblDSSP.setFont(new Font("Arial", Font.PLAIN, 13));      
-        tblDSSP.getTableHeader().setReorderingAllowed(false);       
-        tblDSSP.setBorder(BorderFactory.createLineBorder(new Color(152,168,248), 1));       
+        tblDSSP.setFont(new Font("Arial", Font.PLAIN, 13));
+        tblDSSP.getTableHeader().setReorderingAllowed(false);
+        tblDSSP.setBorder(BorderFactory.createLineBorder(new Color(152, 168, 248), 1));
     }
-    public void showAll(ArrayList<SanPhamDTO> dssp){
+
+    public void showAll(ArrayList<SanPhamDTO> dssp) {
         dtmSanPham.setRowCount(0);
-        for(int i=0;i<dssp.size();i++){
+        for (int i = 0; i < dssp.size(); i++) {
             dtmSanPham.addRow(new String[]{
                 dssp.get(i).getMaSP(),
                 dssp.get(i).getTenSP(),
@@ -58,13 +67,13 @@ public class SanPhamForNVGUI extends javax.swing.JPanel {
             });
         }
     }
-    public void loadData(){
+
+    public void loadData() {
         spBUS.docDanhSach();
         ArrayList<SanPhamDTO> dssp = spBUS.getListSanPham();
         showAll(dssp);
     }
-    
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -184,26 +193,27 @@ public class SanPhamForNVGUI extends javax.swing.JPanel {
                             .addComponent(txtDonGia, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(txtMaLoai, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGap(18, 18, 18)
                                 .addComponent(btnLoai, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(txtTenSP, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cbxDonViTinh, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnChinhSua1, javax.swing.GroupLayout.DEFAULT_SIZE, 141, Short.MAX_VALUE)
-                    .addComponent(txtIMG, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtIMG, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(btnChinhSua1, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(19, 19, 19))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtIMG, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtMaSP, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblMaSP))
@@ -225,20 +235,19 @@ public class SanPhamForNVGUI extends javax.swing.JPanel {
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
-                            .addComponent(cbxDonViTinh, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(cbxDonViTinh, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(txtIMG, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(txtMaLoai, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(btnLoai))
-                            .addComponent(lblDiaChi))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
-                        .addComponent(btnChinhSua1)
-                        .addContainerGap())))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnChinhSua1))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblDiaChi)
+                            .addComponent(txtMaLoai, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnLoai))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -258,8 +267,9 @@ public class SanPhamForNVGUI extends javax.swing.JPanel {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 373, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 372, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -270,21 +280,25 @@ public class SanPhamForNVGUI extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 679, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 690, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void tblDSSPMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDSSPMouseClicked
         int k = tblDSSP.getSelectedRow();
-        txtMaSP.setText(tblDSSP.getModel().getValueAt(k,0).toString());
-        txtTenSP.setText(tblDSSP.getModel().getValueAt(k,1).toString());
-        txtSoLuong.setText(tblDSSP.getModel().getValueAt(k,2).toString());
-        txtDonGia.setText(tblDSSP.getModel().getValueAt(k,3).toString());
-        cbxDonViTinh.setSelectedItem(tblDSSP.getModel().getValueAt(k,4).toString());
-        txtMaLoai.setText(tblDSSP.getModel().getValueAt(k,5).toString());
-        
+        txtMaSP.setText(tblDSSP.getModel().getValueAt(k, 0).toString());
+        txtTenSP.setText(tblDSSP.getModel().getValueAt(k, 1).toString());
+        txtSoLuong.setText(tblDSSP.getModel().getValueAt(k, 2).toString());
+        txtDonGia.setText(tblDSSP.getModel().getValueAt(k, 3).toString());
+        cbxDonViTinh.setSelectedItem(tblDSSP.getModel().getValueAt(k, 4).toString());
+        txtMaLoai.setText(tblDSSP.getModel().getValueAt(k, 5).toString());
+
+        imgName = tblDSSP.getModel().getValueAt(k, 6).toString();
+        Image newImage;
+        newImage = new ImageIcon("./src/image/SanPham/" + imgName).getImage().getScaledInstance(170, 203, Image.SCALE_DEFAULT);
+        txtIMG.setIcon(new ImageIcon(newImage));
+
+        txtMaSP.setEnabled(false);
         txtMaSP.setEnabled(false);
         txtTenSP.setEnabled(false);
         txtSoLuong.setEnabled(false);

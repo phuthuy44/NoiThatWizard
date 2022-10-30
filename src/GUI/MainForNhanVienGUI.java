@@ -271,7 +271,7 @@ public class MainForNhanVienGUI extends javax.swing.JFrame {
 
         cbxPhanQuyen.setBackground(new java.awt.Color(250, 247, 240));
         cbxPhanQuyen.setEditable(true);
-        cbxPhanQuyen.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Quản lý" }));
+        cbxPhanQuyen.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nhân viên" }));
         cbxPhanQuyen.setEnabled(false);
 
         lblTime.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N

@@ -7,6 +7,7 @@ package DAO;
 
 import DTO.SanPhamDTO;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -48,6 +49,41 @@ public class SanPhamDAO {
             mySQL.Disconnect();
         }
         return null;
+    }
+    
+    public void updateSanPham (SanPhamDTO sp){
+        try {
+            String sql = "UPDATE sanpham SET TenSP = ?, SoLuong = ?, DonGia = ?, DonViTinh = ?, MaLoai = ?, IMG = ? WHERE MaSP = ?";
+            PreparedStatement pstatement = connection.prepareStatement(sql);
+            pstatement.setString(1, sp.getTenSP());
+            pstatement.setInt(2, sp.getSoLuong());
+            pstatement.setInt(3, sp.getDonGia());
+            pstatement.setString(4, sp.getDonViTinh());
+            pstatement.setString(5, sp.getMaLoai());
+            pstatement.setString(6, sp.getIMG());
+            pstatement.setString(7, sp.getMaSP());
+            pstatement.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(SanPhamDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            mySQL.Disconnect();
+        }
+        
+    }
+    
+    //Hàm này dùng cho trường hợp sau khi thêm sản phẩm vào giỏ hàng thì sản phẩm tự giảm đúng số lượng đã thêm
+    public void capNhatSoLuongHD(String MaSP, int SoLuongMua, int SoLuongTrongKho) {
+        try {
+            String sql = "UPDATE sanpham SET SoLuong=? WHERE MaSP= ?" ;
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setInt(1, (SoLuongMua+SoLuongTrongKho));
+            statement.setString(2,MaSP);
+            statement.executeUpdate();
+        } catch (SQLException e) {
+        } finally {
+            mySQL.Disconnect();
+        }
+
     }
 
 }
