@@ -5,8 +5,11 @@
  */
 package GUI.model;
 
+import GUI.CTPhieuNhapGUI;
 import GUI.HoaDonGUI;
+import GUI.KhoGUI;
 import GUI.MainForNhanVienGUI;
+import GUI.PhieuNhapGUI;
 import GUI.SanPhamForNVGUI;
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -65,13 +68,13 @@ public class ChangeScreenNVKho {
         public void mouseClicked(MouseEvent e) {
             switch (kind) {
                 case "NhapHang":
-                    node = new HoaDonGUI();
+                    node = new PhieuNhapGUI();
                     break;
                 case "PhieuNhap":
-                    node = new SanPhamForNVGUI();
+                    node = new CTPhieuNhapGUI();
                     break;
                 case "Kho":
-                    node = new SanPhamForNVGUI();
+                    node = new KhoGUI();
                     break;
                 default:
                     break;
