@@ -5,14 +5,9 @@
  */
 package GUI.model;
 
-import GUI.CaLamGUI;
-import GUI.ChucVuGUI;
-import GUI.HoaDonGUI;
-import GUI.MainForNhanVienGUI;
-import GUI.NhanVienGUI;
-import GUI.SanPhamForNVGUI;
-
-import GUI.TaiKhoanGUI;
+import GUI.LuongGUI;
+import GUI.MainForKeToanGUI;
+import GUI.ThongKeGUI;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.event.MouseEvent;
@@ -25,22 +20,19 @@ import javax.swing.JPanel;
  *
  * @author wizardsc
  */
-public class ChangeScreenNhanVien {
+public class ChangeScreenKeToan {
     private JPanel pnRoot;
     private String kindSelected = "";
     private ArrayList<DanhMuc> list = null;
-
-    public ChangeScreenNhanVien(JPanel pnRoot) {
+     public ChangeScreenKeToan(JPanel pnRoot) {
         this.pnRoot = pnRoot;
     }
 
     public void setView(JPanel pnItem, JLabel lblItem) {
 
-//        pnItem.setBackground(new Color(130,120,210));
-//        lblItem.setBackground(new Color(130,120,210));
         pnRoot.removeAll();
         pnRoot.setLayout(new BorderLayout());
-        pnRoot.add(new MainForNhanVienGUI());
+        pnRoot.add(new MainForKeToanGUI());
         pnRoot.validate();
         pnRoot.repaint();
     }
@@ -68,11 +60,11 @@ public class ChangeScreenNhanVien {
         @Override
         public void mouseClicked(MouseEvent e) {
             switch (kind) {
-                case "HoaDon":
-                    node = new HoaDonGUI();
+                case "ThongKe":
+                    node = new ThongKeGUI();
                     break;
-                case "SanPham":
-                    node = new SanPhamForNVGUI();
+                case "Luong":
+                    node = new LuongGUI();
                     break;
 
                 default:

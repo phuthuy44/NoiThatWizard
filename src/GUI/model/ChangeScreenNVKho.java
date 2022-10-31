@@ -5,14 +5,12 @@
  */
 package GUI.model;
 
-import GUI.CaLamGUI;
-import GUI.ChucVuGUI;
+import GUI.CTPhieuNhapGUI;
 import GUI.HoaDonGUI;
+import GUI.KhoGUI;
 import GUI.MainForNhanVienGUI;
-import GUI.NhanVienGUI;
+import GUI.PhieuNhapGUI;
 import GUI.SanPhamForNVGUI;
-
-import GUI.TaiKhoanGUI;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.event.MouseEvent;
@@ -25,12 +23,13 @@ import javax.swing.JPanel;
  *
  * @author wizardsc
  */
-public class ChangeScreenNhanVien {
+public class ChangeScreenNVKho {
+
     private JPanel pnRoot;
     private String kindSelected = "";
     private ArrayList<DanhMuc> list = null;
 
-    public ChangeScreenNhanVien(JPanel pnRoot) {
+    public ChangeScreenNVKho(JPanel pnRoot) {
         this.pnRoot = pnRoot;
     }
 
@@ -68,13 +67,15 @@ public class ChangeScreenNhanVien {
         @Override
         public void mouseClicked(MouseEvent e) {
             switch (kind) {
-                case "HoaDon":
-                    node = new HoaDonGUI();
+                case "NhapHang":
+                    node = new PhieuNhapGUI();
                     break;
-                case "SanPham":
-                    node = new SanPhamForNVGUI();
+                case "PhieuNhap":
+                    node = new CTPhieuNhapGUI();
                     break;
-
+                case "Kho":
+                    node = new KhoGUI();
+                    break;
                 default:
                     break;
             }
@@ -89,8 +90,8 @@ public class ChangeScreenNhanVien {
         @Override
         public void mousePressed(MouseEvent e) {
             kindSelected = kind;
-            pnItem.setBackground(new Color(188,206,248));
-            lblItem.setBackground(new Color(188,206,248));
+            pnItem.setBackground(new Color(188, 206, 248));
+            lblItem.setBackground(new Color(188, 206, 248));
         }
 
         @Override
@@ -119,8 +120,8 @@ public class ChangeScreenNhanVien {
                 item.getPn().setBackground(new Color(233, 246, 255));
                 item.getLbl().setBackground(new Color(233, 246, 255));
             } else {
-                item.getPn().setBackground(new Color(188,206,248));
-                item.getLbl().setBackground(new Color(188,206,248));
+                item.getPn().setBackground(new Color(188, 206, 248));
+                item.getLbl().setBackground(new Color(188, 206, 248));
             }
         }
     }

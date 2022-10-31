@@ -12,8 +12,17 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/E:/Phuong%20Vy/NoiThatWizard-JavaSwing/src/DAO/MySQLConnect.java</file>
             <file>file:/E:/Phuong%20Vy/NoiThatWizard-JavaSwing/src/GUI/Main.java</file>
+=======
+            <file>file:/C:/Users/wizardsc/Documents/NetBeansProjects/NoiThatWizard/src/GUI/CTPhieuNhapGUI.java</file>
+            <file>file:/C:/Users/wizardsc/Documents/NetBeansProjects/NoiThatWizard/src/GUI/Main.java</file>
+            <file>file:/C:/Users/wizardsc/Documents/NetBeansProjects/NoiThatWizard/src/GUI/MainForNVKhoGUI.java</file>
+            <file>file:/C:/Users/wizardsc/Documents/NetBeansProjects/NoiThatWizard/src/GUI/PhieuNhapGUI.java</file>
+            <file>file:/C:/Users/wizardsc/Documents/NetBeansProjects/NoiThatWizard/src/GUI/model/ChangeScreenNVKho.java</file>
+            <file>file:/C:/Users/wizardsc/Documents/NetBeansProjects/NoiThatWizard/src/GUI/KhoGUI.java</file>
+>>>>>>> 2da52343057c52acf327b7037871597d550dbe27
         </group>
     </open-files>
 </project-private>
