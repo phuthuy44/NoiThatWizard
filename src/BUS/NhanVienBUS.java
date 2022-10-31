@@ -16,7 +16,7 @@ import java.util.ArrayList;
  */
 public class NhanVienBUS {
     private ArrayList<NhanVienDTO> listNhanVien = null;
-    private NhanVienDAO nvDAO = new NhanVienDAO();
+    public NhanVienDAO nvDAO = new NhanVienDAO();
     
     public void docDanhSach(){
         this.listNhanVien = nvDAO.getListNhanVien();
@@ -42,7 +42,16 @@ public class NhanVienBUS {
             }
         }
     }
-    
+    public void updates(NhanVienDTO nv){
+        for(int i=0; i<listNhanVien.size();i++){
+            if(listNhanVien.get(i).getMaNV().equals(nv.getMaNV())){
+                listNhanVien.set(i, nv);
+               // NhanVienDAO nvDao = new NhanVienDAO();
+                nvDAO.updatesNhanVien(nv);
+                return;
+            }
+        }
+    }
     public void ExportExcel() {
         nvDAO.ExportExcel();
     }

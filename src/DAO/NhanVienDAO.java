@@ -98,7 +98,28 @@ public class NhanVienDAO {
         }
         
     }
-    
+    public void updatesNhanVien(NhanVienDTO nv){
+        try {
+            String queryUpdatesNhanVien = " UPDATE nhanvien SET Ho = ? , Ten = ? , NgaySinh = ? , GioiTinh = ? , DiaChi = ? ,SoDT = ? , MaCV = ? , IMG= ? WHERE MaNV = ?";
+            PreparedStatement pre = connection.prepareStatement(queryUpdatesNhanVien);
+           // pre.setString(1, MaNV);
+            pre.setString(1, nv.getHo());
+            pre.setString(2, nv.getTen());
+            pre.setString(3, nv.getNgaySinh());
+            pre.setString(4, nv.getGioiTinh());
+            pre.setString(5, nv.getDiaChi());
+            pre.setString(6,nv.getSoDT());
+            pre.setString(7, nv.getMaCV());
+            pre.setString(8, nv.getIMG());
+            pre.setString(9,nv.getMaNV());
+            pre.executeUpdate();
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(NhanVienDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }finally{
+            mySQL.Disconnect();
+        }
+    }
     public void ExportExcel() {
 
         try {
