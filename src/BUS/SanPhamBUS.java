@@ -34,7 +34,15 @@ public class SanPhamBUS {
             }
         }
     }
-    
+    public void delete(String MaSP){
+        for(SanPhamDTO sp: listSanPham){
+          if(sp.getMaSP().equals(MaSP)){
+              listSanPham.remove(sp);
+              spDAO.deleteSanPham(MaSP);
+              return;
+          }
+        }
+    }
     public void capNhatSoLuongHD(String MaSP, int SoLuongMua, int SoLuongTrongKho) {
 
         spDAO.capNhatSoLuongHD(MaSP, SoLuongMua, SoLuongTrongKho);

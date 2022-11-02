@@ -825,19 +825,20 @@ public class NhanVienGUI extends javax.swing.JPanel {
     }//GEN-LAST:event_btnXoaMouseClicked
 
     private void btnChinhSuaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnChinhSuaMouseClicked
-//        String MaNV = txtMaNV.getText();
-//        String Ho = txtHo.getText();
-//        String Ten = txtTen.getText();
-//        String NgaySinh = txtNgaySinh.getText();
-//        String GioiTinh = cbxGioiTinh.getSelectedItem().toString();
-//        String DiaChi = txtDiaChi.getText();
-//        String SoDT = txtSoDT.getText();
-//        String Luong = txtLuong.getText();
-//        String IMG = imgName;
-//        NhanVienDTO nv = new NhanVienDTO(MaNV, Ho, Ten, NgaySinh, GioiTinh, DiaChi, SoDT, Integer.parseInt(Luong), IMG);
-//        nvBUS.update(nv);
-//        saveIMG();
-//        loadData();
+        String MaNV = txtMaNV.getText();
+        String Ho = txtHo.getText();
+        String Ten = txtTen.getText();
+        String NgaySinh = txtNgaySinh.getText();
+        String GioiTinh = cbxGioiTinh.getSelectedItem().toString();
+        String DiaChi = txtDiaChi.getText();
+        String SoDT = txtSoDT.getText();
+        String MaCV= txtMaCV.getText();
+        //String Luong = txtLuong.getText();
+        String IMG = imgName;
+        NhanVienDTO nv = new NhanVienDTO(MaNV, Ho, Ten, NgaySinh, GioiTinh, DiaChi, SoDT, MaCV,IMG);
+        nvBUS.updates(nv);
+       saveIMG();
+        loadData();
     }//GEN-LAST:event_btnChinhSuaMouseClicked
 
     private void btnNhapLaiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNhapLaiMouseClicked

@@ -21,6 +21,7 @@ import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 
@@ -668,9 +669,9 @@ public class SanPhamForQLGUI extends javax.swing.JPanel {
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void btnThemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnThemMouseClicked
-        //        String MaNV = txtMaNV.getText().toUpperCase();
-        //        String Ho = txtHo.getText();
-        //        String Ten = txtTen.getText();
+             String MaSP = txtMaSP.getText().toUpperCase();
+                String TenSP = txtTenSP.getText();
+               // String Ten = txtTen.getText();
         //        String NgaySinh = txtNgaySinh.getText();
         //        String GioiTinh = cbxGioiTinh.getSelectedItem().toString();
         //        String DiaChi = txtDiaChi.getText();
@@ -684,9 +685,16 @@ public class SanPhamForQLGUI extends javax.swing.JPanel {
     }//GEN-LAST:event_btnThemMouseClicked
 
     private void btnXoaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnXoaMouseClicked
-        //        nvBUS.delete(txtMaNV.getText());
-        //        saveIMG();
-        //        loadData();
+                //JOptionPane.showConfirmDialog(this,"Bạn muốn xóa sản phẩm này?");
+//                spBUS.delete(txtMaSP.getText());
+//                saveIMG();
+//                loadData();
+               int k= JOptionPane.showConfirmDialog(this,"Bạn muốn xóa sản phẩm này?");
+               if(k==0){
+                   spBUS.delete(txtMaSP.getText());
+                    saveIMG();
+                    loadData();
+               }
     }//GEN-LAST:event_btnXoaMouseClicked
 
     private void btnChinhSuaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnChinhSuaMouseClicked
