@@ -819,11 +819,25 @@ public class NhanVienGUI extends javax.swing.JPanel {
     }//GEN-LAST:event_btnThemMouseClicked
 
     private void btnXoaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnXoaMouseClicked
-        nvBUS.delete(txtMaNV.getText());
-        saveIMG();
-        loadData();
+       // nvBUS.delete(txtMaNV.getText());
+        //saveIMG();
+        //loadData();      
+        
+              if(tblDSNV.getSelectedRowCount()==1){
+                  int result= JOptionPane.showConfirmDialog(null,"Bạn muốn xóa sản phẩm này?");
+                   if(result==0){
+                nvBUS.delete(txtMaNV.getText());
+                saveIMG();
+                loadData();
+                JOptionPane.showMessageDialog(null, "Xóa thành công!");
+             } 
+              }else{
+                       JOptionPane.showMessageDialog(null, "Bạn chưa chọn sản phẩm muốn xóa!"); 
+               } 
+          
+                   
     }//GEN-LAST:event_btnXoaMouseClicked
-
+    
     private void btnChinhSuaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnChinhSuaMouseClicked
         String MaNV = txtMaNV.getText();
         String Ho = txtHo.getText();

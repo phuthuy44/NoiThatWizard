@@ -689,12 +689,19 @@ public class SanPhamForQLGUI extends javax.swing.JPanel {
 //                spBUS.delete(txtMaSP.getText());
 //                saveIMG();
 //                loadData();
-               int k= JOptionPane.showConfirmDialog(this,"Bạn muốn xóa sản phẩm này?");
-               if(k==0){
-                   spBUS.delete(txtMaSP.getText());
+    
+                    if(tblDSSP.getSelectedRowCount()==1){
+                        int k= JOptionPane.showConfirmDialog(null,"Bạn muốn xóa sản phẩm này?");
+                    if(k==0){
+                    spBUS.delete(txtMaSP.getText());
                     saveIMG();
                     loadData();
-               }
+                    JOptionPane.showMessageDialog(null, "Xóa thành công!");
+                   }   
+                    }else{
+                        JOptionPane.showMessageDialog(null,"Bạn chưa chọn sản phẩm muốn xóa!");
+                    }
+                   
     }//GEN-LAST:event_btnXoaMouseClicked
 
     private void btnChinhSuaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnChinhSuaMouseClicked
