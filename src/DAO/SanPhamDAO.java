@@ -70,6 +70,18 @@ public class SanPhamDAO {
         }
         
     }
+    public void deleteSanPham(String MaSP){
+        String queryDeleteSanPham = "DELETE FROM sanpham WHERE MaSP = ?";
+        try {
+            PreparedStatement pre=connection.prepareStatement(queryDeleteSanPham);
+            
+            pre.setString(1,MaSP);
+            pre.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(SanPhamDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
     
     //Hàm này dùng cho trường hợp sau khi thêm sản phẩm vào giỏ hàng thì sản phẩm tự giảm đúng số lượng đã thêm
     public void capNhatSoLuongHD(String MaSP, int SoLuongMua, int SoLuongTrongKho) {
