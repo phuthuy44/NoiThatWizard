@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 31, 2022 lúc 04:03 AM
+-- Thời gian đã tạo: Th10 04, 2022 lúc 05:28 PM
 -- Phiên bản máy phục vụ: 10.4.25-MariaDB
 -- Phiên bản PHP: 7.4.30
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Cơ sở dữ liệu: `khachsanwizard`
+-- Cơ sở dữ liệu: `noithatwizard`
 --
 
 -- --------------------------------------------------------
@@ -39,7 +39,9 @@ CREATE TABLE `chucvu` (
 
 INSERT INTO `chucvu` (`MaCV`, `TenCV`, `Luong`) VALUES
 ('CV01', 'Quản Lý', 15000000),
-('CV02', 'Nhân Viên', 8500000);
+('CV02', 'Nhân Viên Thu Ngân', 8500000),
+('CV03', 'Kế Toán', 10000000),
+('CV04', 'Nhân Viên Kho', 9000000);
 
 -- --------------------------------------------------------
 
@@ -61,6 +63,28 @@ CREATE TABLE `hoadon` (
 
 INSERT INTO `hoadon` (`MaHD`, `MaKH`, `MaNV`, `NgayLap`, `TongTien`) VALUES
 ('001', 'KH01', 'NV01', '30/10/2022', 10000);
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `khuyenmai`
+--
+
+CREATE TABLE `khuyenmai` (
+  `MaKM` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `TenKM` varchar(40) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `PhanTramKM` int(10) NOT NULL,
+  `DieuKien` int(20) NOT NULL,
+  `NgayBatDau` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `NgayKetThuc` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `khuyenmai`
+--
+
+INSERT INTO `khuyenmai` (`MaKM`, `TenKM`, `PhanTramKM`, `DieuKien`, `NgayBatDau`, `NgayKetThuc`) VALUES
+('KM01', 'Giảm Giá 10%', 10, 200000, '03/11/2022', '03/12/2022');
 
 -- --------------------------------------------------------
 
@@ -126,8 +150,8 @@ CREATE TABLE `sanpham` (
 
 INSERT INTO `sanpham` (`MaSP`, `TenSP`, `SoLuong`, `DonGia`, `DonViTinh`, `MaLoai`, `IMG`) VALUES
 ('SP01', 'Bàn làm việc Finn 260011', 0, 22900000, 'Cái', '', ''),
-('SP02', 'Bàn làm việc Maxine', -8, 51940000, 'Cái', '', 'SP02.jpg'),
-('SP03', 'Bàn làm việc Osaka', 0, 22900000, 'Cái', '', ''),
+('SP02', 'Bàn làm việc Maxine', -16, 51940000, 'Cái', '', 'SP02.jpg'),
+('SP03', 'Bàn làm việc Osaka', -15, 22900000, 'Cái', '', ''),
 ('SP04', 'Bàn làm việc Osaka KA', 0, 48900000, 'Cái', '', ''),
 ('SP05', 'Bàn làm việc Pio', 20, 13650000, 'Cái', '', 'null');
 
@@ -168,6 +192,12 @@ ALTER TABLE `chucvu`
 --
 ALTER TABLE `hoadon`
   ADD PRIMARY KEY (`MaHD`);
+
+--
+-- Chỉ mục cho bảng `khuyenmai`
+--
+ALTER TABLE `khuyenmai`
+  ADD PRIMARY KEY (`MaKM`);
 
 --
 -- Chỉ mục cho bảng `nhanvien`
