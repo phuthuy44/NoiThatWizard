@@ -5,19 +5,86 @@
  */
 package GUI;
 
+import BUS.KhuyenMaiBUS;
+import DTO.KhuyenMaiDTO;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import javax.swing.BorderFactory;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author wizardsc
  */
 public class KhuyenMaiGUI extends javax.swing.JPanel {
-
-    /**
-     * Creates new form KhuyenMaiGUI
-     */
+    private ArrayList<KhuyenMaiDTO> dskm = new ArrayList<>();
+    private KhuyenMaiBUS kmBUS = new KhuyenMaiBUS();
+    DefaultTableModel dtmKhuyenMai;
     public KhuyenMaiGUI() {
         initComponents();
+        init();
+        dtmKhuyenMai = (DefaultTableModel) tblDSKM.getModel();
+        loadData();
     }
-
+    public void init(){
+        //set giao diện cho Table
+        //DSKM
+        tblDSKM.setFocusable(false);
+        tblDSKM.setIntercellSpacing(new Dimension(0, 0));
+        tblDSKM.setRowHeight(25);
+        tblDSKM.setFillsViewportHeight(true);
+        tblDSKM.getTableHeader().setOpaque(false);
+        tblDSKM.getTableHeader().setBackground(new Color(152, 168, 248));
+        tblDSKM.getTableHeader().setForeground(Color.WHITE);
+        tblDSKM.setSelectionBackground(new Color(188, 206, 248));
+        tblDSKM.setSelectionForeground(Color.BLACK);
+        tblDSKM.setFont(new Font("Arial", Font.PLAIN, 13));
+        tblDSKM.getTableHeader().setReorderingAllowed(false);
+        tblDSKM.setBorder(BorderFactory.createLineBorder(new Color(152, 168, 248), 1));
+    }
+    
+    public void showAll(ArrayList<KhuyenMaiDTO> dskm){
+        dtmKhuyenMai.setRowCount(0);
+        DecimalFormat dcf = new DecimalFormat(">#######");
+//        DecimalFormat dcf1 = new DecimalFormat("%");
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        Date now = new Date();
+       
+        for(int i=0;i<dskm.size();i++){
+            if(dskm.get(i).getNgayBatDau().before(now) && dskm.get(i).getNgayKetThuc().after(now)){
+                dtmKhuyenMai.addRow(new String[]{
+                    dskm.get(i).getMaKM(),
+                    dskm.get(i).getTenKM(),
+                    String.valueOf(dskm.get(i).getPhanTramKM()),
+                    String.valueOf(dcf.format(dskm.get(i).getDieuKien())),
+                    sdf.format(dskm.get(i).getNgayBatDau()),
+                    sdf.format(dskm.get(i).getNgayKetThuc()),
+                    "Có hiệu lực"
+                });
+            } else {
+                dtmKhuyenMai.addRow(new String[]{
+                    dskm.get(i).getMaKM(),
+                    dskm.get(i).getTenKM(),
+                    String.valueOf(dskm.get(i).getPhanTramKM()),
+                    String.valueOf(dcf.format(dskm.get(i).getDieuKien())),
+                    sdf.format(dskm.get(i).getNgayBatDau()),
+                    sdf.format(dskm.get(i).getNgayKetThuc()),
+                    "Không hiệu lực"
+                });
+            }
+        }
+    }
+    
+    public void loadData(){
+        kmBUS.docDanhSach();
+        ArrayList<KhuyenMaiDTO> dskm = kmBUS.getListKhuyenMai();
+        showAll(dskm);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -57,17 +124,17 @@ public class KhuyenMaiGUI extends javax.swing.JPanel {
 
         tblDSKM.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Mã NV", "Họ", "Tên", "Ngày Sinh", "Giới Tính", "Địa Chỉ", "Số ĐT", "Mã CV", "IMG"
+                "Mã KM", "Tên KM", "Phần trăm KM", "Điều kiện", "Ngày bắt đầu", "Ngày kết thúc", "Trạng thái"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -80,6 +147,15 @@ public class KhuyenMaiGUI extends javax.swing.JPanel {
             }
         });
         jScrollPane1.setViewportView(tblDSKM);
+        if (tblDSKM.getColumnModel().getColumnCount() > 0) {
+            tblDSKM.getColumnModel().getColumn(0).setResizable(false);
+            tblDSKM.getColumnModel().getColumn(1).setResizable(false);
+            tblDSKM.getColumnModel().getColumn(2).setResizable(false);
+            tblDSKM.getColumnModel().getColumn(3).setResizable(false);
+            tblDSKM.getColumnModel().getColumn(4).setResizable(false);
+            tblDSKM.getColumnModel().getColumn(5).setResizable(false);
+            tblDSKM.getColumnModel().getColumn(6).setResizable(false);
+        }
 
         jPanel1.setBackground(new java.awt.Color(250, 247, 240));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "QUẢN LÝ KHUYẾN MÃI", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Baloo 2 ExtraBold", 1, 18), new java.awt.Color(255, 51, 0))); // NOI18N
