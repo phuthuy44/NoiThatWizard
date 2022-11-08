@@ -199,7 +199,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="txtNgayBD" min="-2" pref="180" max="-2" attributes="0"/>
                           <Component id="txtDieuKien" min="-2" pref="180" max="-2" attributes="0"/>
-                          <Component id="jDateChooser2" min="-2" pref="180" max="-2" attributes="0"/>
+                          <Component id="txtNgayKT" min="-2" pref="180" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="69" max="32767" attributes="0"/>
                   </Group>
@@ -231,7 +231,7 @@
                               <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="jDateChooser2" min="-2" pref="24" max="-2" attributes="0"/>
+                          <Component id="txtNgayKT" min="-2" pref="24" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="31" max="32767" attributes="0"/>
                   </Group>
@@ -290,7 +290,7 @@
                 <Property name="text" type="java.lang.String" value="Ng&#xe0;y k&#x1ebf;t th&#xfa;c"/>
               </Properties>
             </Component>
-            <Component class="com.toedter.calendar.JDateChooser" name="jDateChooser2">
+            <Component class="com.toedter.calendar.JDateChooser" name="txtNgayKT">
             </Component>
             <Component class="javax.swing.JLabel" name="lblMaNV1">
               <Properties>

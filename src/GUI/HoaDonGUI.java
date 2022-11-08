@@ -7,6 +7,8 @@ package GUI;
 
 import BUS.HoaDonBUS;
 import BUS.SanPhamBUS;
+import DTO.CTHoaDonDTO;
+import DTO.HoaDonDTO;
 import DTO.SanPhamDTO;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -30,6 +32,7 @@ import javax.swing.text.NumberFormatter;
  * @author wizardsc
  */
 public class HoaDonGUI extends javax.swing.JPanel {
+
     HoaDonBUS hdBUS = new HoaDonBUS();
     SanPhamBUS spBUS = new SanPhamBUS();
     DefaultTableModel dtmSanPham;
@@ -38,12 +41,16 @@ public class HoaDonGUI extends javax.swing.JPanel {
     String imgName = "null";
     private BufferedImage i = null;
 
+    private ArrayList<CTHoaDonDTO> dscthd = new ArrayList<>();
+
     public HoaDonGUI() {
         initComponents();
         dtmSanPham = (DefaultTableModel) tblDSSP.getModel();
         dtmGioHang = (DefaultTableModel) tblGioHang.getModel();
         init();
         loadDataDSSP();
+        loadDataMaHD(); //load mã HD lên form
+        txtMaHD.setEnabled(false);
     }
 
     public void init() {
@@ -104,12 +111,61 @@ public class HoaDonGUI extends javax.swing.JPanel {
         ArrayList<SanPhamDTO> dssp = spBUS.getListSanPham();
         showAllDSSP(dssp);
     }
-    
-    private void loadDataGioHang(){
+//--    Load mã hóa đơn mới nhất lên form
+
+    private void loadDataMaHD() {
+        hdBUS.docDanhSach();
+        ArrayList<HoaDonDTO> dshd = hdBUS.getListHoaDon();
+        showAllDSHD(dshd);
+    }
+
+    public void showAllDSHD(ArrayList<HoaDonDTO> dshd) {
+        for (int i = 0; i < dshd.size(); i++) {
+            int sum = Integer.parseInt(dshd.get(i).getMaHD().substring(2)) + 1;
+            if (sum < 10) {
+                txtMaHD.setText(String.valueOf("HD0" + sum));
+            } else {
+                txtMaHD.setText(String.valueOf("HD" + sum));
+            }
+            sum = 0;
+
+        }
+    }
+//--    
+
+    private void loadDataGioHang() {
         dtmGioHang.setRowCount(0);
         ArrayList<SanPhamDTO> dssp = null;
-        
+
     }
+//-- Xuất sản phẩm vừa thêm vào giỏ hàng ra table
+
+    public void outModelGioHang(DefaultTableModel dtmGioHang, ArrayList<CTHoaDonDTO> dscthd) {
+        Vector data;
+        dtmGioHang.setRowCount(0);
+        for (int i = 0; i < dscthd.size(); i++) {
+            dtmGioHang.addRow(new String[]{
+                dscthd.get(i).getMaSP(),
+                dscthd.get(i).getTenSP(),
+                String.valueOf(dscthd.get(i).getSoLuong()),
+                String.valueOf(dscthd.get(i).getDonGia()),
+                String.valueOf(dscthd.get(i).getThanhTien())
+            });
+        }
+    }
+//--
+
+//-- Tính tổng tiền hóa đơn
+    public int sumHD() {
+        int sum = 0;
+        for (CTHoaDonDTO cthd : dscthd) {
+            int SoLuong = cthd.getSoLuong();
+            int DonGia = cthd.getDonGia();
+            sum += SoLuong * DonGia;
+        }
+        return sum;
+    }
+//--
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -147,7 +203,7 @@ public class HoaDonGUI extends javax.swing.JPanel {
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
         lblMaSP4 = new javax.swing.JLabel();
         lblMaSP5 = new javax.swing.JLabel();
-        txtMaSP4 = new javax.swing.JTextField();
+        txtTongTien = new javax.swing.JTextField();
         lblMaSP6 = new javax.swing.JLabel();
         txtMaSP5 = new javax.swing.JTextField();
         lblMaSP7 = new javax.swing.JLabel();
@@ -155,6 +211,7 @@ public class HoaDonGUI extends javax.swing.JPanel {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        btnThemSP1 = new javax.swing.JLabel();
 
         pnRoot.setBackground(new java.awt.Color(250, 247, 240));
 
@@ -206,7 +263,7 @@ public class HoaDonGUI extends javax.swing.JPanel {
             tblDSSP.getColumnModel().getColumn(4).setPreferredWidth(1);
         }
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(4, 75, 510, 370));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(4, 75, 500, 370));
 
         txtIMG.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         txtIMG.setText("IMAGE");
@@ -216,8 +273,8 @@ public class HoaDonGUI extends javax.swing.JPanel {
         lblMaSP.setFont(new java.awt.Font("Baloo 2 SemiBold", 1, 14)); // NOI18N
         lblMaSP.setText("Mã SP");
         jPanel1.add(lblMaSP, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 480, -1, -1));
-        jPanel1.add(txtMaSP, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 480, 240, 24));
-        jPanel1.add(txtTenSP, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 520, 240, 24));
+        jPanel1.add(txtMaSP, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 480, 230, 24));
+        jPanel1.add(txtTenSP, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 520, 230, 24));
 
         lblHo.setFont(new java.awt.Font("Baloo 2 SemiBold", 1, 14)); // NOI18N
         lblHo.setText("Tên SP");
@@ -230,7 +287,7 @@ public class HoaDonGUI extends javax.swing.JPanel {
         jLabel4.setFont(new java.awt.Font("Baloo 2 SemiBold", 1, 14)); // NOI18N
         jLabel4.setText("Đơn giá");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 600, -1, -1));
-        jPanel1.add(txtDonGia, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 600, 240, 24));
+        jPanel1.add(txtDonGia, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 600, 230, 24));
 
         btnThemSP.setFont(new java.awt.Font("Baloo 2", 1, 18)); // NOI18N
         btnThemSP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/btnAdd.png"))); // NOI18N
@@ -242,7 +299,7 @@ public class HoaDonGUI extends javax.swing.JPanel {
             }
         });
         jPanel1.add(btnThemSP, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 640, 170, -1));
-        jPanel1.add(txtSoLuong, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 560, 240, 24));
+        jPanel1.add(txtSoLuong, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 560, 230, 24));
 
         lblMaSP8.setFont(new java.awt.Font("Baloo 2 SemiBold", 1, 14)); // NOI18N
         lblMaSP8.setText("Mã HD");
@@ -278,10 +335,22 @@ public class HoaDonGUI extends javax.swing.JPanel {
             }
         });
         jScrollPane5.setViewportView(tblGioHang);
+        if (tblGioHang.getColumnModel().getColumnCount() > 0) {
+            tblGioHang.getColumnModel().getColumn(0).setResizable(false);
+            tblGioHang.getColumnModel().getColumn(0).setPreferredWidth(45);
+            tblGioHang.getColumnModel().getColumn(1).setResizable(false);
+            tblGioHang.getColumnModel().getColumn(1).setPreferredWidth(250);
+            tblGioHang.getColumnModel().getColumn(2).setResizable(false);
+            tblGioHang.getColumnModel().getColumn(2).setPreferredWidth(45);
+            tblGioHang.getColumnModel().getColumn(3).setResizable(false);
+            tblGioHang.getColumnModel().getColumn(3).setPreferredWidth(50);
+            tblGioHang.getColumnModel().getColumn(4).setResizable(false);
+            tblGioHang.getColumnModel().getColumn(4).setPreferredWidth(50);
+        }
 
         btnChinhSua1.setFont(new java.awt.Font("Baloo 2", 1, 18)); // NOI18N
-        btnChinhSua1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/lblInHoaDon.png"))); // NOI18N
-        btnChinhSua1.setText("In hóa đơn");
+        btnChinhSua1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/btnAdd.png"))); // NOI18N
+        btnChinhSua1.setText("Tạo hóa đơn");
         btnChinhSua1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnChinhSua1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -325,6 +394,16 @@ public class HoaDonGUI extends javax.swing.JPanel {
         jButton2.setText("...");
 
         jButton3.setText("...");
+
+        btnThemSP1.setFont(new java.awt.Font("Baloo 2", 1, 18)); // NOI18N
+        btnThemSP1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/btnDelete.png"))); // NOI18N
+        btnThemSP1.setText("Xóa sản phẩm");
+        btnThemSP1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnThemSP1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnThemSP1MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -371,7 +450,7 @@ public class HoaDonGUI extends javax.swing.JPanel {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtMaSP4, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtTongTien, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtMaSP6, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(44, 44, 44))
                             .addGroup(jPanel2Layout.createSequentialGroup()
@@ -385,14 +464,20 @@ public class HoaDonGUI extends javax.swing.JPanel {
                         .addGap(79, 79, 79)
                         .addComponent(btnChinhSua2, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(90, 90, 90))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btnThemSP1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(180, 180, 180))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(lblGioHang)
+                .addComponent(lblGioHang, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 404, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnThemSP1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -424,9 +509,9 @@ public class HoaDonGUI extends javax.swing.JPanel {
                                     .addComponent(txtMaSP6, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txtMaSP4, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtTongTien, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(lblMaSP5)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnChinhSua2)
                     .addComponent(btnChinhSua1))
@@ -438,8 +523,8 @@ public class HoaDonGUI extends javax.swing.JPanel {
         pnRootLayout.setHorizontalGroup(
             pnRootLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnRootLayout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 12, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 517, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0))
         );
@@ -475,32 +560,56 @@ public class HoaDonGUI extends javax.swing.JPanel {
 
         txtMaSP.setEnabled(false);
         txtTenSP.setEnabled(false);
-        
+
         txtDonGia.setEnabled(false);
     }//GEN-LAST:event_tblDSSPMouseClicked
 
     private void btnThemSPMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnThemSPMouseClicked
+        String MaHD = txtMaHD.getText();
         String MaSP = txtMaSP.getText();
         String TenSP = txtTenSP.getText();
         int SoLuong = Integer.parseInt(txtSoLuong.getValue().toString());
         int DonGia = Integer.parseInt(txtDonGia.getText());
         int ThanhTien = SoLuong * DonGia;
-        
+
         int k = tblDSSP.getSelectedRow();
-        int SoLuongConLai = Integer.parseInt(tblDSSP.getModel().getValueAt(k,2).toString());
-//        ArrayList<CTHoaDonDTO> cthd =   
-        
+        int SoLuongConLai = Integer.parseInt(tblDSSP.getModel().getValueAt(k, 2).toString());
+
         spBUS.capNhatSoLuongHD(MaSP, -SoLuong, SoLuongConLai);
         spBUS.docDanhSach();
-        loadDataDSSP();
+        boolean flag = true;
+        for (CTHoaDonDTO cthd : dscthd) {
+            if (cthd.getMaSP().equals(MaSP)) {
+                int old = cthd.getSoLuong();
+                cthd.setSoLuong(old + SoLuong);
+                int new1 = cthd.getSoLuong();
+                cthd.setThanhTien(new1 * DonGia);
+                flag = false;
+                break;
+            }
+        }
+        if (flag) {
+            dscthd.add(new CTHoaDonDTO(MaHD, MaSP, TenSP, SoLuong, DonGia, ThanhTien));
 
-        dtmGioHang.addRow(new String[]{
-            MaSP,
-            TenSP,
-            String.valueOf(SoLuong),
-            String.valueOf(DonGia),
-            String.valueOf(ThanhTien)
-        });
+        }
+        outModelGioHang(dtmGioHang, dscthd);
+        txtTongTien.setText(String.valueOf(sumHD()));
+        loadDataDSSP();
+        txtMaSP.setText("");
+        txtTenSP.setText("");
+        txtSoLuong.setValue(0);
+        txtDonGia.setText("");
+        txtIMG.setIcon(null);
+        txtIMG.setText("IMAGE");
+        imgName = null;
+//
+//        dtmGioHang.addRow(new String[]{
+//            MaSP,
+//            TenSP,
+//            String.valueOf(SoLuong),
+//            String.valueOf(DonGia),
+//            String.valueOf(ThanhTien)
+//        });
     }//GEN-LAST:event_btnThemSPMouseClicked
 
     private void btnChinhSua2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnChinhSua2MouseClicked
@@ -512,14 +621,19 @@ public class HoaDonGUI extends javax.swing.JPanel {
     }//GEN-LAST:event_btnChinhSua1MouseClicked
 
     private void tblGioHangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblGioHangMouseClicked
-
+        int k = tblGioHang.getSelectedRow();
     }//GEN-LAST:event_tblGioHangMouseClicked
+
+    private void btnThemSP1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnThemSP1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnThemSP1MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel btnChinhSua1;
     private javax.swing.JLabel btnChinhSua2;
     private javax.swing.JLabel btnThemSP;
+    private javax.swing.JLabel btnThemSP1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -551,11 +665,11 @@ public class HoaDonGUI extends javax.swing.JPanel {
     private javax.swing.JTextField txtMaSP;
     private javax.swing.JTextField txtMaSP2;
     private javax.swing.JTextField txtMaSP3;
-    private javax.swing.JTextField txtMaSP4;
     private javax.swing.JTextField txtMaSP5;
     private javax.swing.JTextField txtMaSP6;
     private javax.swing.JTextField txtMaSP7;
     private javax.swing.JSpinner txtSoLuong;
     private javax.swing.JTextField txtTenSP;
+    private javax.swing.JTextField txtTongTien;
     // End of variables declaration//GEN-END:variables
 }

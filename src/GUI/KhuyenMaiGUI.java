@@ -107,7 +107,7 @@ public class KhuyenMaiGUI extends javax.swing.JPanel {
         txtPhanTramKM = new javax.swing.JTextField();
         txtNgayBD = new com.toedter.calendar.JDateChooser();
         jLabel6 = new javax.swing.JLabel();
-        jDateChooser2 = new com.toedter.calendar.JDateChooser();
+        txtNgayKT = new com.toedter.calendar.JDateChooser();
         lblMaNV1 = new javax.swing.JLabel();
         txtDieuKien = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
@@ -212,7 +212,7 @@ public class KhuyenMaiGUI extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtNgayBD, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtDieuKien, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtNgayKT, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(69, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -237,7 +237,7 @@ public class KhuyenMaiGUI extends javax.swing.JPanel {
                         .addComponent(txtPhanTramKM, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel3)
                         .addComponent(jLabel6))
-                    .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtNgayKT, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(31, Short.MAX_VALUE))
         );
 
@@ -391,7 +391,8 @@ public class KhuyenMaiGUI extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void tblDSKMMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDSKMMouseClicked
-      
+        int k = tblDSKM.getSelectedRow();
+        txtMaKM.setText(tblDSKM.getValueAt(k, 0).toString());
     }//GEN-LAST:event_tblDSKMMouseClicked
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
@@ -399,25 +400,22 @@ public class KhuyenMaiGUI extends javax.swing.JPanel {
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void btnThemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnThemMouseClicked
-        //        String MaNV = txtMaNV.getText().toUpperCase();
-        //        String Ho = txtHo.getText();
-        //        String Ten = txtTen.getText();
-        //        String NgaySinh = txtNgaySinh.getText();
-        //        String GioiTinh = cbxGioiTinh.getSelectedItem().toString();
-        //        String DiaChi = txtDiaChi.getText();
-        //        String SoDT = txtSoDT.getText();
-        //        String Luong = txtLuong.getText();
-        //        String IMG = imgName;
-        //        NhanVienDTO nv = new NhanVienDTO(MaNV, Ho, Ten, NgaySinh, GioiTinh, DiaChi, SoDT, Integer.parseInt(Luong), IMG);
-        //        nvBUS.add(nv);
-        //        saveIMG();
-        //        loadData();
+        String MaKM = txtMaKM.getText();
+        String TenKM = txtTenKM.getText();
+        int PhanTramKM = Integer.parseInt(txtPhanTramKM.getText());
+        int DieuKien = Integer.parseInt(txtDieuKien.getText());
+        Date NgayBD = txtNgayBD.getDate();
+        Date NgayKT = txtNgayKT.getDate();
+        
+        KhuyenMaiDTO km = new KhuyenMaiDTO(MaKM, TenKM, PhanTramKM, DieuKien, NgayBD, NgayKT);
+        kmBUS.add(km);
+        loadData();
     }//GEN-LAST:event_btnThemMouseClicked
 
     private void btnXoaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnXoaMouseClicked
-        //        nvBUS.delete(txtMaNV.getText());
-        //        saveIMG();
-        //        loadData();
+        String MaKM = txtMaKM.getText();
+        kmBUS.delete(MaKM);
+        loadData();
     }//GEN-LAST:event_btnXoaMouseClicked
 
     private void btnNhapLaiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNhapLaiMouseClicked
@@ -450,7 +448,6 @@ public class KhuyenMaiGUI extends javax.swing.JPanel {
     private javax.swing.JLabel btnThem;
     private javax.swing.JLabel btnXoa;
     private javax.swing.JComboBox<String> jComboBox1;
-    private com.toedter.calendar.JDateChooser jDateChooser2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
@@ -466,6 +463,7 @@ public class KhuyenMaiGUI extends javax.swing.JPanel {
     private javax.swing.JTextField txtDieuKien;
     private javax.swing.JTextField txtMaKM;
     private com.toedter.calendar.JDateChooser txtNgayBD;
+    private com.toedter.calendar.JDateChooser txtNgayKT;
     private javax.swing.JTextField txtPhanTramKM;
     private javax.swing.JTextField txtTenKM;
     private javax.swing.JTextField txtTimKiem;

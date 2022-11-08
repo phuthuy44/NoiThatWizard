@@ -23,4 +23,20 @@ public class KhuyenMaiBUS {
     public ArrayList<KhuyenMaiDTO> getListKhuyenMai(){
         return listKhuyenMai;
     }
+    
+    public void add(KhuyenMaiDTO km){
+        listKhuyenMai.add(km);
+        kmDAO.insertKhuyenMai(km);
+    }
+    
+    public void delete(String MaKM){
+        for(KhuyenMaiDTO km : listKhuyenMai){
+            if(km.getMaKM().equals(MaKM)){
+                listKhuyenMai.remove(km);
+                kmDAO.deleteKhuyenMai(MaKM);
+                return;
+            }
+        }
+    }
+    
 }

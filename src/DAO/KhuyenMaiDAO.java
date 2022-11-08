@@ -7,8 +7,11 @@ package DAO;
 
 import DTO.KhuyenMaiDTO;
 import java.sql.Connection;
+import java.sql.Date;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -47,5 +50,47 @@ public class KhuyenMaiDAO {
         }
         return null;
     }
+
+    public void insertKhuyenMai(KhuyenMaiDTO km) {
+        try {
+            String sql = "INSERT INTO khuyenmai VALUES(?,?,?,?,?,?)";
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setString(1, km.getMaKM());
+            ps.setString(2, km.getTenKM());
+            ps.setInt(3, km.getPhanTramKM());
+            ps.setInt(4, km.getDieuKien());
+            ps.setTimestamp(5, new Timestamp(km.getNgayBatDau().getTime()));
+            ps.setTimestamp(6, new Timestamp(km.getNgayKetThuc().getTime()));
+            ps.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(KhuyenMaiDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     
+    public void deleteKhuyenMai(String MaKM){
+        try {
+            String sql = "DELETE FROM khuyenmai WHERE MaKM = ?";
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setString(1, MaKM);
+            ps.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(KhuyenMaiDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void updateKhuyenMai(KhuyenMaiDTO km){
+        try {
+            String sql = "UPDATE khuyenmai SET TenKM = ?, PhanTramKM = ?, DieuKien = ?, NgayBatDau = ?, NgayKetThuc = ? WHERE MaKM = ?";
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setString(1, km.getTenKM());
+            ps.setInt(2,km.getPhanTramKM());
+            ps.setInt(3,km.getDieuKien());
+            ps.setTimestamp(4, new Timestamp(km.getNgayBatDau().getTime()));
+            ps.setTimestamp(5, new Timestamp(km.getNgayKetThuc().getTime()));
+            ps.setString(2, km.getMaKM());
+            ps.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(KhuyenMaiDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } 
+    }
 }
