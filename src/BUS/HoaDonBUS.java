@@ -25,4 +25,9 @@ public class HoaDonBUS {
         return listHoaDon;
     }
     
+    public void add(HoaDonDTO hd){
+        listHoaDon.add(hd);
+        hdDAO.insertHoaDon(hd);
+    }
+    
 }
