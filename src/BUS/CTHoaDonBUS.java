@@ -14,7 +14,7 @@ import java.util.ArrayList;
  * @author wizardsc
  */
 public class CTHoaDonBUS {
-    private ArrayList<CTHoaDonDTO> listChiTietHoaDon;
+    private ArrayList<CTHoaDonDTO> listChiTietHoaDon = null;
     private CTHoaDonDAO cthdDAO = new CTHoaDonDAO();
     public void listCTHD()
     {
@@ -27,5 +27,10 @@ public class CTHoaDonBUS {
     }
     public ArrayList<CTHoaDonDTO> getListCTHoaDon(){
         return listChiTietHoaDon;
+    }
+    public void add(CTHoaDonDTO cthd){
+        listChiTietHoaDon.add(cthd);
+        CTHoaDonDAO cthdDAO = new CTHoaDonDAO();
+        cthdDAO.insertHoaDon(cthd);
     }
 }

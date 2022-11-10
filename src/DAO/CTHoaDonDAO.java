@@ -7,6 +7,7 @@ package DAO;
 
 import DTO.CTHoaDonDTO;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -44,5 +45,23 @@ public class CTHoaDonDAO {
             mySQL.Disconnect();
         }
         return null;
+    }
+    public void insertHoaDon(CTHoaDonDTO cthd) {
+        try {
+            String sql = "INSERT INTO cthoadon VALUES(?,?,?,?,?,?)";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setString(1, cthd.getMaHD());
+            statement.setString(2, cthd.getMaSP());
+            statement.setString(3, cthd.getTenSP());
+            statement.setInt(4, cthd.getSoLuong());
+            statement.setInt(5, cthd.getDonGia());
+            statement.setInt(6, cthd.getThanhTien());
+            statement.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(CTHoaDonDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            mySQL.Disconnect();
+        }
+
     }
 }

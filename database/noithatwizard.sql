@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 04, 2022 lúc 05:28 PM
+-- Thời gian đã tạo: Th10 10, 2022 lúc 06:35 AM
 -- Phiên bản máy phục vụ: 10.4.25-MariaDB
 -- Phiên bản PHP: 7.4.30
 
@@ -46,15 +46,40 @@ INSERT INTO `chucvu` (`MaCV`, `TenCV`, `Luong`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Cấu trúc bảng cho bảng `cthoadon`
+--
+
+CREATE TABLE `cthoadon` (
+  `MaHD` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `MaSP` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `TenSP` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `SoLuong` int(20) NOT NULL,
+  `DonGia` int(20) NOT NULL,
+  `ThanhTien` int(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `cthoadon`
+--
+
+INSERT INTO `cthoadon` (`MaHD`, `MaSP`, `TenSP`, `SoLuong`, `DonGia`, `ThanhTien`) VALUES
+('HD12', 'SP05', 'Bàn làm việc Pio', 1, 13650000, 13650000),
+('HD13', 'SP03', 'Bàn làm việc Osaka', 4, 22900000, 91600000),
+('HD13', 'SP04', 'Bàn làm việc Osaka KA', 3, 48900000, 146700000),
+('HD13', 'SP05', 'Bàn làm việc Pio', 4, 13650000, 54600000);
+
+-- --------------------------------------------------------
+
+--
 -- Cấu trúc bảng cho bảng `hoadon`
 --
 
 CREATE TABLE `hoadon` (
   `MaHD` varchar(15) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `MaKH` varchar(15) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `MaNV` varchar(15) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `NgayLap` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `TongTien` int(20) NOT NULL
+  `MaKH` varchar(15) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `MaNV` varchar(15) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `NgayLap` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `TongTien` int(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -62,7 +87,19 @@ CREATE TABLE `hoadon` (
 --
 
 INSERT INTO `hoadon` (`MaHD`, `MaKH`, `MaNV`, `NgayLap`, `TongTien`) VALUES
-('001', 'KH01', 'NV01', '30/10/2022', 10000);
+('HD01', 'KH02', 'NV04', '10/11/2022', 250200000),
+('HD02', 'KH01', 'NV01', '10/11/2022', 195600000),
+('HD03', 'KH03', 'NV03', '10/11/2022', 68250000),
+('HD04', 'HD04', 'NV03', '10/11/2022', 195600000),
+('HD05', 'KH05', 'NV05', '10/11/2022', 293400000),
+('HD06', 'KH06', 'NV06', '10/11/2022', 27300000),
+('HD07', 'KH07', 'NV07', '10/11/2022', 97800000),
+('HD08', 'KM08', 'NV08', '10/11/2022', 13650000),
+('HD09', 'KH09', 'NV09', '10/11/2022', 48900000),
+('HD10', 'KH10', 'NV10', '10/11/2022', 13650000),
+('HD11', 'KH11', 'NV11', '10/11/2022', 13650000),
+('HD12', 'KH12', 'NV12', '10/11/2022', 13650000),
+('HD13', 'KH13', 'NV13', '10/11/2022', 292900000);
 
 -- --------------------------------------------------------
 
@@ -75,8 +112,8 @@ CREATE TABLE `khuyenmai` (
   `TenKM` varchar(40) COLLATE utf8mb4_unicode_ci NOT NULL,
   `PhanTramKM` int(10) NOT NULL,
   `DieuKien` int(20) NOT NULL,
-  `NgayBatDau` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `NgayKetThuc` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL
+  `NgayBatDau` date NOT NULL,
+  `NgayKetThuc` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -84,7 +121,8 @@ CREATE TABLE `khuyenmai` (
 --
 
 INSERT INTO `khuyenmai` (`MaKM`, `TenKM`, `PhanTramKM`, `DieuKien`, `NgayBatDau`, `NgayKetThuc`) VALUES
-('KM01', 'Giảm Giá 10%', 10, 200000, '03/11/2022', '03/12/2022');
+('KM01', 'Giảm Giá 10%', 10, 200000, '2022-11-01', '2022-11-02'),
+('KM02', 'E123', 321423, 4234, '2022-11-01', '2022-11-10');
 
 -- --------------------------------------------------------
 
@@ -150,10 +188,10 @@ CREATE TABLE `sanpham` (
 
 INSERT INTO `sanpham` (`MaSP`, `TenSP`, `SoLuong`, `DonGia`, `DonViTinh`, `MaLoai`, `IMG`) VALUES
 ('SP01', 'Bàn làm việc Finn 260011', 0, 22900000, 'Cái', '', ''),
-('SP02', 'Bàn làm việc Maxine', -16, 51940000, 'Cái', '', 'SP02.jpg'),
-('SP03', 'Bàn làm việc Osaka', -15, 22900000, 'Cái', '', ''),
-('SP04', 'Bàn làm việc Osaka KA', 0, 48900000, 'Cái', '', ''),
-('SP05', 'Bàn làm việc Pio', 20, 13650000, 'Cái', '', 'null');
+('SP02', 'Bàn làm việc Maxine', -25, 51940000, 'Cái', '', 'SP02.jpg'),
+('SP03', 'Bàn làm việc Osaka', -24, 22900000, 'Cái', '', ''),
+('SP04', 'Bàn làm việc Osaka KA', -32, 48900000, 'Cái', '', ''),
+('SP05', 'Bàn làm việc Pio', -50, 13650000, 'Cái', '', 'null');
 
 -- --------------------------------------------------------
 
@@ -186,6 +224,12 @@ INSERT INTO `taikhoan` (`MaNV`, `TenDangNhap`, `MatKhau`, `PhanQuyen`) VALUES
 --
 ALTER TABLE `chucvu`
   ADD PRIMARY KEY (`MaCV`);
+
+--
+-- Chỉ mục cho bảng `cthoadon`
+--
+ALTER TABLE `cthoadon`
+  ADD PRIMARY KEY (`MaHD`,`MaSP`);
 
 --
 -- Chỉ mục cho bảng `hoadon`
