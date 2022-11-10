@@ -21,49 +21,49 @@ import javax.swing.JOptionPane;
  */
 public class HoaDonDAO {
 
-//    private MySQLConnect mySQL = new MySQLConnect();
-//    private Connection connection = mySQL.getConnection();
-//    private ArrayList<HoaDonDTO> dshd = new ArrayList<>();
-//
-//    public ArrayList<HoaDonDTO> getListHoaDon() {
-//        try {
-//            ArrayList<HoaDonDTO> dshd = new ArrayList<>();
-//            String sql = "SELECT * FROM hoadon";
-//            ResultSet rs = mySQL.executeQuery(sql);
-//            while (rs.next()) {
-//                HoaDonDTO hd = new HoaDonDTO(
-//                        rs.getString("MaHD"),
-//                        rs.getString("MaKH"),
-//                        rs.getString("MaNV"),
-//                        rs.getString("NgayLap"),
-//                        rs.getInt("TongTien")
-//                );
-//                dshd.add(hd);
-//            }
-//            return dshd;
-//        } catch (SQLException ex) {
-//            Logger.getLogger(HoaDonDAO.class.getName()).log(Level.SEVERE, null, ex);
-//        } finally {
-//            mySQL.Disconnect();
-//        }
-//        return null;
-//    }
-//
-//    public void insertHoaDon(HoaDonDTO hd) {
-//        try {
-//            String sql = "INSERT INTO hoadon VALUES(?,?,?,?,?)";
-//            PreparedStatement statement = connection.prepareStatement(sql);
-//            statement.setString(1, hd.getMaHD());
-//            statement.setString(2, hd.getMaKH());
-//            statement.setString(3, hd.getMaNV());
-//            statement.setString(4, hd.getNgayLap());
-//            statement.setInt(5, hd.getTongTien());
-//            statement.executeUpdate();
-//        } catch (SQLException ex) {
-//            Logger.getLogger(HoaDonDAO.class.getName()).log(Level.SEVERE, null, ex);
-//        } finally {
-//            mySQL.Disconnect();
-//        }
-//
-//    }
+    private MySQLConnect mySQL = new MySQLConnect();
+    private ArrayList<HoaDonDTO> dshd = new ArrayList<>();
+    private Connection connection = mySQL.getConnection();
+
+    public ArrayList<HoaDonDTO> getListHoaDon() {
+        try {
+            ArrayList<HoaDonDTO> dshd = new ArrayList<>();
+            String sql = "SELECT * FROM hoadon";
+            ResultSet rs = mySQL.executeQuery(sql);
+            while (rs.next()) {
+                HoaDonDTO hd = new HoaDonDTO(
+                        rs.getString("MaHD"),
+                        rs.getString("MaKH"),
+                        rs.getString("MaNV"),
+                        rs.getString("NgayLap"),
+                        rs.getInt("TongTien")
+                );
+                dshd.add(hd);
+            }
+            return dshd;
+        } catch (SQLException ex) {
+            Logger.getLogger(SanPhamDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            mySQL.Disconnect();
+        }
+        return null;
+    }
+
+    public void insertHoaDon(HoaDonDTO hd) {
+        try {
+            String sql = "INSERT INTO hoadon VALUES(?,?,?,?,?)";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setString(1, hd.getMaHD());
+            statement.setString(2, hd.getMaKH());
+            statement.setString(3, hd.getMaNV());
+            statement.setString(4, hd.getNgayLap());
+            statement.setInt(5, hd.getTongTien());
+            statement.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(HoaDonDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            mySQL.Disconnect();
+        }
+
+    }
 }

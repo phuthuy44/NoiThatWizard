@@ -5,19 +5,86 @@
  */
 package GUI;
 
+import BUS.KhuyenMaiBUS;
+import DTO.KhuyenMaiDTO;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import javax.swing.BorderFactory;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author wizardsc
  */
 public class KhuyenMaiGUI extends javax.swing.JPanel {
-
-    /**
-     * Creates new form KhuyenMaiGUI
-     */
+    private ArrayList<KhuyenMaiDTO> dskm = new ArrayList<>();
+    private KhuyenMaiBUS kmBUS = new KhuyenMaiBUS();
+    DefaultTableModel dtmKhuyenMai;
     public KhuyenMaiGUI() {
         initComponents();
+        init();
+        dtmKhuyenMai = (DefaultTableModel) tblDSKM.getModel();
+        loadData();
     }
-
+    public void init(){
+        //set giao diện cho Table
+        //DSKM
+        tblDSKM.setFocusable(false);
+        tblDSKM.setIntercellSpacing(new Dimension(0, 0));
+        tblDSKM.setRowHeight(25);
+        tblDSKM.setFillsViewportHeight(true);
+        tblDSKM.getTableHeader().setOpaque(false);
+        tblDSKM.getTableHeader().setBackground(new Color(152, 168, 248));
+        tblDSKM.getTableHeader().setForeground(Color.WHITE);
+        tblDSKM.setSelectionBackground(new Color(188, 206, 248));
+        tblDSKM.setSelectionForeground(Color.BLACK);
+        tblDSKM.setFont(new Font("Arial", Font.PLAIN, 13));
+        tblDSKM.getTableHeader().setReorderingAllowed(false);
+        tblDSKM.setBorder(BorderFactory.createLineBorder(new Color(152, 168, 248), 1));
+    }
+    
+    public void showAll(ArrayList<KhuyenMaiDTO> dskm){
+        dtmKhuyenMai.setRowCount(0);
+        DecimalFormat dcf = new DecimalFormat(">#######");
+//        DecimalFormat dcf1 = new DecimalFormat("%");
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        Date now = new Date();
+       
+        for(int i=0;i<dskm.size();i++){
+            if(dskm.get(i).getNgayBatDau().before(now) && dskm.get(i).getNgayKetThuc().after(now)){
+                dtmKhuyenMai.addRow(new String[]{
+                    dskm.get(i).getMaKM(),
+                    dskm.get(i).getTenKM(),
+                    String.valueOf(dskm.get(i).getPhanTramKM()),
+                    String.valueOf(dcf.format(dskm.get(i).getDieuKien())),
+                    sdf.format(dskm.get(i).getNgayBatDau()),
+                    sdf.format(dskm.get(i).getNgayKetThuc()),
+                    "Có hiệu lực"
+                });
+            } else {
+                dtmKhuyenMai.addRow(new String[]{
+                    dskm.get(i).getMaKM(),
+                    dskm.get(i).getTenKM(),
+                    String.valueOf(dskm.get(i).getPhanTramKM()),
+                    String.valueOf(dcf.format(dskm.get(i).getDieuKien())),
+                    sdf.format(dskm.get(i).getNgayBatDau()),
+                    sdf.format(dskm.get(i).getNgayKetThuc()),
+                    "Không hiệu lực"
+                });
+            }
+        }
+    }
+    
+    public void loadData(){
+        kmBUS.docDanhSach();
+        ArrayList<KhuyenMaiDTO> dskm = kmBUS.getListKhuyenMai();
+        showAll(dskm);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -40,7 +107,7 @@ public class KhuyenMaiGUI extends javax.swing.JPanel {
         txtPhanTramKM = new javax.swing.JTextField();
         txtNgayBD = new com.toedter.calendar.JDateChooser();
         jLabel6 = new javax.swing.JLabel();
-        jDateChooser2 = new com.toedter.calendar.JDateChooser();
+        txtNgayKT = new com.toedter.calendar.JDateChooser();
         lblMaNV1 = new javax.swing.JLabel();
         txtDieuKien = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
@@ -57,17 +124,17 @@ public class KhuyenMaiGUI extends javax.swing.JPanel {
 
         tblDSKM.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Mã NV", "Họ", "Tên", "Ngày Sinh", "Giới Tính", "Địa Chỉ", "Số ĐT", "Mã CV", "IMG"
+                "Mã KM", "Tên KM", "Phần trăm KM", "Điều kiện", "Ngày bắt đầu", "Ngày kết thúc", "Trạng thái"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -80,6 +147,15 @@ public class KhuyenMaiGUI extends javax.swing.JPanel {
             }
         });
         jScrollPane1.setViewportView(tblDSKM);
+        if (tblDSKM.getColumnModel().getColumnCount() > 0) {
+            tblDSKM.getColumnModel().getColumn(0).setResizable(false);
+            tblDSKM.getColumnModel().getColumn(1).setResizable(false);
+            tblDSKM.getColumnModel().getColumn(2).setResizable(false);
+            tblDSKM.getColumnModel().getColumn(3).setResizable(false);
+            tblDSKM.getColumnModel().getColumn(4).setResizable(false);
+            tblDSKM.getColumnModel().getColumn(5).setResizable(false);
+            tblDSKM.getColumnModel().getColumn(6).setResizable(false);
+        }
 
         jPanel1.setBackground(new java.awt.Color(250, 247, 240));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "QUẢN LÝ KHUYẾN MÃI", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Baloo 2 ExtraBold", 1, 18), new java.awt.Color(255, 51, 0))); // NOI18N
@@ -136,7 +212,7 @@ public class KhuyenMaiGUI extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtNgayBD, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtDieuKien, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtNgayKT, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(69, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -161,7 +237,7 @@ public class KhuyenMaiGUI extends javax.swing.JPanel {
                         .addComponent(txtPhanTramKM, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel3)
                         .addComponent(jLabel6))
-                    .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtNgayKT, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(31, Short.MAX_VALUE))
         );
 
@@ -315,7 +391,8 @@ public class KhuyenMaiGUI extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void tblDSKMMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDSKMMouseClicked
-      
+        int k = tblDSKM.getSelectedRow();
+        txtMaKM.setText(tblDSKM.getValueAt(k, 0).toString());
     }//GEN-LAST:event_tblDSKMMouseClicked
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
@@ -323,25 +400,22 @@ public class KhuyenMaiGUI extends javax.swing.JPanel {
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void btnThemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnThemMouseClicked
-        //        String MaNV = txtMaNV.getText().toUpperCase();
-        //        String Ho = txtHo.getText();
-        //        String Ten = txtTen.getText();
-        //        String NgaySinh = txtNgaySinh.getText();
-        //        String GioiTinh = cbxGioiTinh.getSelectedItem().toString();
-        //        String DiaChi = txtDiaChi.getText();
-        //        String SoDT = txtSoDT.getText();
-        //        String Luong = txtLuong.getText();
-        //        String IMG = imgName;
-        //        NhanVienDTO nv = new NhanVienDTO(MaNV, Ho, Ten, NgaySinh, GioiTinh, DiaChi, SoDT, Integer.parseInt(Luong), IMG);
-        //        nvBUS.add(nv);
-        //        saveIMG();
-        //        loadData();
+        String MaKM = txtMaKM.getText();
+        String TenKM = txtTenKM.getText();
+        int PhanTramKM = Integer.parseInt(txtPhanTramKM.getText());
+        int DieuKien = Integer.parseInt(txtDieuKien.getText());
+        Date NgayBD = txtNgayBD.getDate();
+        Date NgayKT = txtNgayKT.getDate();
+        
+        KhuyenMaiDTO km = new KhuyenMaiDTO(MaKM, TenKM, PhanTramKM, DieuKien, NgayBD, NgayKT);
+        kmBUS.add(km);
+        loadData();
     }//GEN-LAST:event_btnThemMouseClicked
 
     private void btnXoaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnXoaMouseClicked
-        //        nvBUS.delete(txtMaNV.getText());
-        //        saveIMG();
-        //        loadData();
+        String MaKM = txtMaKM.getText();
+        kmBUS.delete(MaKM);
+        loadData();
     }//GEN-LAST:event_btnXoaMouseClicked
 
     private void btnNhapLaiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNhapLaiMouseClicked
@@ -374,7 +448,6 @@ public class KhuyenMaiGUI extends javax.swing.JPanel {
     private javax.swing.JLabel btnThem;
     private javax.swing.JLabel btnXoa;
     private javax.swing.JComboBox<String> jComboBox1;
-    private com.toedter.calendar.JDateChooser jDateChooser2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
@@ -390,6 +463,7 @@ public class KhuyenMaiGUI extends javax.swing.JPanel {
     private javax.swing.JTextField txtDieuKien;
     private javax.swing.JTextField txtMaKM;
     private com.toedter.calendar.JDateChooser txtNgayBD;
+    private com.toedter.calendar.JDateChooser txtNgayKT;
     private javax.swing.JTextField txtPhanTramKM;
     private javax.swing.JTextField txtTenKM;
     private javax.swing.JTextField txtTimKiem;
