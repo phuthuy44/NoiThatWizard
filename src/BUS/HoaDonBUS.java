@@ -15,14 +15,19 @@ import java.util.ArrayList;
  */
 public class HoaDonBUS {
     
-    private ArrayList<HoaDonDTO> listHoaDon;
+    private ArrayList<HoaDonDTO> listHoaDon = null;
     private HoaDonDAO hdDAO = new HoaDonDAO();
     
     public void docDanhSach(){
-//        this.listHoaDon = hdDAO.getListHoaDon();
+        this.listHoaDon = hdDAO.getListHoaDon();
     }
     public ArrayList<HoaDonDTO> getListHoaDon(){
         return listHoaDon;
+    }
+    
+    public void add(HoaDonDTO hd){
+        listHoaDon.add(hd);
+        hdDAO.insertHoaDon(hd);
     }
     
 }
