@@ -7,6 +7,7 @@ package GUI.model;
 
 import GUI.CaLamGUI;
 import GUI.ChucVuGUI;
+import GUI.DSHoaDonGUI;
 import GUI.HoaDonGUI;
 import GUI.MainForNhanVienGUI;
 import GUI.NhanVienGUI;
@@ -74,7 +75,8 @@ public class ChangeScreenNhanVien {
                 case "SanPham":
                     node = new SanPhamForNVGUI();
                     break;
-
+                case "DSHoaDon":
+                    node = new DSHoaDonGUI();
                 default:
                     break;
             }

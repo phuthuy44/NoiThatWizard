@@ -5,17 +5,117 @@
  */
 package GUI;
 
+import BUS.CTHoaDonBUS;
+import BUS.HoaDonBUS;
+import DTO.CTHoaDonDTO;
+import DTO.HoaDonDTO;
+
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.BorderFactory;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author wizardsc
  */
-public class PhieuNhapGUI extends javax.swing.JPanel {
+public class DSHoaDonGUI extends javax.swing.JPanel {
 
-    /**
-     * Creates new form PhieuNhapGUI
-     */
-    public PhieuNhapGUI() {
+    private HoaDonBUS hdBUS = new HoaDonBUS();
+    private CTHoaDonBUS cthdBUS = new CTHoaDonBUS();
+    DefaultTableModel dtmDSHoaDon;
+    DefaultTableModel dtmDSCTHoaDon;
+    public DSHoaDonGUI() {
         initComponents();
+        dtmDSHoaDon = (DefaultTableModel) tblDSHD.getModel();
+        dtmDSCTHoaDon = (DefaultTableModel) tblDSCTHD.getModel();
+        init();
+        loadDataDSHD();
+        
+    }
+    
+    public void init(){
+        //set giao diện cho Table
+        //DSHD
+        tblDSHD.setFocusable(false);
+        tblDSHD.setIntercellSpacing(new Dimension(0, 0));
+        tblDSHD.setRowHeight(25);
+        tblDSHD.setFillsViewportHeight(true);
+        tblDSHD.getTableHeader().setOpaque(false);
+        tblDSHD.getTableHeader().setBackground(new Color(152, 168, 248));
+        tblDSHD.getTableHeader().setForeground(Color.WHITE);
+        tblDSHD.setSelectionBackground(new Color(188, 206, 248));
+        tblDSHD.setSelectionForeground(Color.BLACK);
+        tblDSHD.setFont(new Font("Arial", Font.PLAIN, 13));
+        tblDSHD.getTableHeader().setReorderingAllowed(false);
+        tblDSHD.setBorder(BorderFactory.createLineBorder(new Color(152, 168, 248), 1));
+        //DSCTHD
+        tblDSCTHD.setFocusable(false);
+        tblDSCTHD.setIntercellSpacing(new Dimension(0, 0));
+        tblDSCTHD.setRowHeight(25);
+        tblDSCTHD.setFillsViewportHeight(true);
+        tblDSCTHD.getTableHeader().setOpaque(false);
+        tblDSCTHD.getTableHeader().setBackground(new Color(152, 168, 248));
+        tblDSCTHD.getTableHeader().setForeground(Color.WHITE);
+        tblDSCTHD.setSelectionBackground(new Color(188, 206, 248));
+        tblDSCTHD.setSelectionForeground(Color.BLACK);
+        tblDSCTHD.setFont(new Font("Arial", Font.PLAIN, 13));
+        tblDSCTHD.getTableHeader().setReorderingAllowed(false);
+        tblDSCTHD.setBorder(BorderFactory.createLineBorder(new Color(152, 168, 248), 1));
+    }
+    
+    public void showAllDSHD(ArrayList<HoaDonDTO> dshd){
+        dtmDSHoaDon.setRowCount(0);
+        for(int i=0;i<dshd.size();i++){
+            dtmDSHoaDon.addRow(new String[]{
+                dshd.get(i).getMaHD(),
+                dshd.get(i).getMaKH(),
+                dshd.get(i).getMaNV(),
+                dshd.get(i).getNgayLap(),
+                String.valueOf(dshd.get(i).getTongTien())
+            });
+        }
+        
+    }
+    public void loadDataDSHD(){
+        hdBUS.docDanhSach();
+        ArrayList<HoaDonDTO> dshd = hdBUS.getListHoaDon();
+        showAllDSHD(dshd);
+    }
+    
+    public void showAllDSCTHD(ArrayList<CTHoaDonDTO> dscthd){
+        dtmDSCTHoaDon.setRowCount(0);
+        for(int i=0;i<dscthd.size();i++){
+            dtmDSCTHoaDon.addRow(new String[]{
+                dscthd.get(i).getMaHD(),
+                dscthd.get(i).getMaSP(),
+                dscthd.get(i).getTenSP(),
+                String.valueOf(dscthd.get(i).getSoLuong()),
+                String.valueOf(dscthd.get(i).getDonGia()),
+                String.valueOf(dscthd.get(i).getThanhTien())
+            });
+        }
+    }
+    public void loadDataDSCTHD(){
+        cthdBUS.docListCTHoaDon();
+        ArrayList<CTHoaDonDTO> dscthd = cthdBUS.getListCTHoaDon();
+        showAllDSCTHD(dscthd);
+    }
+    
+    public void loadDataDSCTHDTheoMaHD(String MaHD){
+        if (cthdBUS.getListCTHoaDon() == null) {
+            cthdBUS.listCTHD();
+        }
+        ArrayList<CTHoaDonDTO> dscthd = cthdBUS.getListCTHDTheoMaHD(MaHD);
+        dtmDSCTHoaDon.setRowCount(0);
+        showAllDSCTHD(dscthd);
     }
 
     /**
@@ -28,7 +128,6 @@ public class PhieuNhapGUI extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
         pnRoot = new javax.swing.JPanel();
         pnDSSP = new javax.swing.JPanel();
         lblDSSP = new javax.swing.JLabel();
@@ -99,6 +198,18 @@ public class PhieuNhapGUI extends javax.swing.JPanel {
             }
         });
         jScrollPane1.setViewportView(tblDSHD);
+        if (tblDSHD.getColumnModel().getColumnCount() > 0) {
+            tblDSHD.getColumnModel().getColumn(0).setResizable(false);
+            tblDSHD.getColumnModel().getColumn(0).setPreferredWidth(5);
+            tblDSHD.getColumnModel().getColumn(1).setResizable(false);
+            tblDSHD.getColumnModel().getColumn(1).setPreferredWidth(5);
+            tblDSHD.getColumnModel().getColumn(2).setResizable(false);
+            tblDSHD.getColumnModel().getColumn(2).setPreferredWidth(5);
+            tblDSHD.getColumnModel().getColumn(3).setResizable(false);
+            tblDSHD.getColumnModel().getColumn(3).setPreferredWidth(30);
+            tblDSHD.getColumnModel().getColumn(4).setResizable(false);
+            tblDSHD.getColumnModel().getColumn(4).setPreferredWidth(30);
+        }
 
         pnDSSP.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 480, 430));
 
@@ -164,6 +275,20 @@ public class PhieuNhapGUI extends javax.swing.JPanel {
             }
         });
         jScrollPane5.setViewportView(tblDSCTHD);
+        if (tblDSCTHD.getColumnModel().getColumnCount() > 0) {
+            tblDSCTHD.getColumnModel().getColumn(0).setResizable(false);
+            tblDSCTHD.getColumnModel().getColumn(0).setPreferredWidth(10);
+            tblDSCTHD.getColumnModel().getColumn(1).setResizable(false);
+            tblDSCTHD.getColumnModel().getColumn(1).setPreferredWidth(10);
+            tblDSCTHD.getColumnModel().getColumn(2).setResizable(false);
+            tblDSCTHD.getColumnModel().getColumn(2).setPreferredWidth(230);
+            tblDSCTHD.getColumnModel().getColumn(3).setResizable(false);
+            tblDSCTHD.getColumnModel().getColumn(3).setPreferredWidth(25);
+            tblDSCTHD.getColumnModel().getColumn(4).setResizable(false);
+            tblDSCTHD.getColumnModel().getColumn(4).setPreferredWidth(50);
+            tblDSCTHD.getColumnModel().getColumn(5).setResizable(false);
+            tblDSCTHD.getColumnModel().getColumn(5).setPreferredWidth(50);
+        }
 
         btnTaoHoaDon.setFont(new java.awt.Font("Baloo 2", 1, 18)); // NOI18N
         btnTaoHoaDon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/btnAdd.png"))); // NOI18N
@@ -312,36 +437,15 @@ public class PhieuNhapGUI extends javax.swing.JPanel {
             .addComponent(pnDSSP, javax.swing.GroupLayout.DEFAULT_SIZE, 692, Short.MAX_VALUE)
         );
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnRoot, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnRoot, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1097, Short.MAX_VALUE)
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addComponent(pnRoot, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 692, Short.MAX_VALUE)
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addComponent(pnRoot, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -367,28 +471,61 @@ public class PhieuNhapGUI extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void tblDSHDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDSHDMouseClicked
-       
+        int k = tblDSHD.getSelectedRow();
+        //        int SoLuong = Integer.parseInt(tblDSHD.getModel().getValueAt(k, 2).toString());
+        //        if (SoLuong < -100) {
+            //            JOptionPane.showMessageDialog(pnRoot, "Sản phẩm đã hết hàng", "THÔNG BÁO", JOptionPane.ERROR_MESSAGE);
+            //            return;
+            //        }
+        //        //-- setModel cho txtSoLuong, căn trái số,....
+        //        SpinnerNumberModel modeSpinner = new SpinnerNumberModel(1, -10, SoLuong, 1);
+        //        txtSoLuong.setModel(modeSpinner);
+        //        JFormattedTextField txtSpinner = ((JSpinner.NumberEditor) txtSoLuong.getEditor()).getTextField();
+        //        ((NumberFormatter) txtSpinner.getFormatter()).setAllowsInvalid(false);
+        //        txtSpinner.setEditable(false);
+        //        txtSpinner.setHorizontalAlignment(JTextField.LEFT);
+        //--
+        txtMaHD.setText(tblDSHD.getModel().getValueAt(k, 0).toString());
+        txtMaNV.setText(tblDSHD.getModel().getValueAt(k, 2).toString());
+        txtMaKH.setText(tblDSHD.getModel().getValueAt(k, 1).toString());
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        Date NgayLap = new Date();
+        try {
+            NgayLap = sdf.parse(tblDSHD.getModel().getValueAt(k, 3).toString());
+        } catch (ParseException ex) {
+            Logger.getLogger(HoaDonGUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        txtNgayLap.setDate(NgayLap);
+        txtTongTien.setText(tblDSHD.getModel().getValueAt(k,4).toString());
+
+        txtMaHD.setEnabled(false);
+        txtMaNV.setEnabled(false);
+        txtMaKH.setEnabled(false);
+        txtNgayLap.setEnabled(false);
+        txtTongTien.setEnabled(false);
+        String MaHD = txtMaHD.getText();
+        loadDataDSCTHDTheoMaHD(MaHD);
     }//GEN-LAST:event_tblDSHDMouseClicked
 
-    private void txtMaHDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMaHDActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtMaHDActionPerformed
-
     private void tblDSCTHDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDSCTHDMouseClicked
-
+        
     }//GEN-LAST:event_tblDSCTHDMouseClicked
 
     private void btnTaoHoaDonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTaoHoaDonMouseClicked
-
+        
     }//GEN-LAST:event_btnTaoHoaDonMouseClicked
 
     private void btnInHoaDonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInHoaDonMouseClicked
-
+        
     }//GEN-LAST:event_btnInHoaDonMouseClicked
 
     private void btnThemSP1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnThemSP1MouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_btnThemSP1MouseClicked
+
+    private void txtMaHDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMaHDActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtMaHDActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -402,7 +539,6 @@ public class PhieuNhapGUI extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JLabel lblDSSP;

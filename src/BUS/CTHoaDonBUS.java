@@ -28,6 +28,16 @@ public class CTHoaDonBUS {
     public ArrayList<CTHoaDonDTO> getListCTHoaDon(){
         return listChiTietHoaDon;
     }
+    
+    public ArrayList<CTHoaDonDTO> getListCTHDTheoMaHD(String MaHD){
+        ArrayList<CTHoaDonDTO> dscthd = new ArrayList<>();
+        for(CTHoaDonDTO cthd : listChiTietHoaDon){
+            if(MaHD.equals(cthd.getMaHD())){
+                dscthd.add(cthd);
+            }
+        }
+        return dscthd;
+    }
     public void add(CTHoaDonDTO cthd){
         listChiTietHoaDon.add(cthd);
         CTHoaDonDAO cthdDAO = new CTHoaDonDAO();

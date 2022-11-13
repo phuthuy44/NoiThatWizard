@@ -188,7 +188,7 @@ public class HoaDonGUI extends javax.swing.JPanel {
             txtMaHD.setText(String.valueOf("HD01"));
         }
         for (int i = 0; i < dshd.size(); i++) {
-
+            
             int sum = Integer.parseInt(dshd.get(i).getMaHD().substring(2)) + 1;
             if (sum < 10) {
                 txtMaHD.setText(String.valueOf("HD0" + sum));
@@ -486,18 +486,18 @@ public class HoaDonGUI extends javax.swing.JPanel {
         jScrollPane1.setViewportView(tblDSSP);
         if (tblDSSP.getColumnModel().getColumnCount() > 0) {
             tblDSSP.getColumnModel().getColumn(0).setResizable(false);
-            tblDSSP.getColumnModel().getColumn(0).setPreferredWidth(60);
+            tblDSSP.getColumnModel().getColumn(0).setPreferredWidth(15);
             tblDSSP.getColumnModel().getColumn(1).setResizable(false);
-            tblDSSP.getColumnModel().getColumn(1).setPreferredWidth(250);
+            tblDSSP.getColumnModel().getColumn(1).setPreferredWidth(200);
             tblDSSP.getColumnModel().getColumn(2).setResizable(false);
-            tblDSSP.getColumnModel().getColumn(2).setPreferredWidth(50);
+            tblDSSP.getColumnModel().getColumn(2).setPreferredWidth(25);
             tblDSSP.getColumnModel().getColumn(3).setResizable(false);
-            tblDSSP.getColumnModel().getColumn(3).setPreferredWidth(50);
+            tblDSSP.getColumnModel().getColumn(3).setPreferredWidth(25);
             tblDSSP.getColumnModel().getColumn(4).setResizable(false);
-            tblDSSP.getColumnModel().getColumn(4).setPreferredWidth(1);
+            tblDSSP.getColumnModel().getColumn(4).setPreferredWidth(7);
         }
 
-        pnDSSP.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 510, 370));
+        pnDSSP.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 490, 430));
 
         txtIMG.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         txtIMG.setText("IMAGE");
@@ -927,9 +927,16 @@ public class HoaDonGUI extends javax.swing.JPanel {
     }//GEN-LAST:event_tblTTHDMouseClicked
 
     private void btnInHoaDoninTTHDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInHoaDoninTTHDMouseClicked
-           for (CTHoaDonDTO cthd : dscthd) {            
+        for (CTHoaDonDTO cthd : dscthd) {            
             cthdBUS.add(cthd);
         }
+        txtMaHDinTTHD.setText("");
+        txtMaKHinTTHD.setText("");
+        txtMaNVinTTHD.setText("");
+        txtNgayLapinTTHD.setCalendar(null);
+        txtTongTieninTTHD.setText("");
+        
+        JOptionPane.showMessageDialog(pnRoot, "In hóa đơn thành công");
     }//GEN-LAST:event_btnInHoaDoninTTHDMouseClicked
 
     private void btnCloseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCloseMouseClicked

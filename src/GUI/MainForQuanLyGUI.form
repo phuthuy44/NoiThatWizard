@@ -280,6 +280,13 @@
                       <Component id="pnDangXuat" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                  </Group>
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="pnSanPham" alignment="1" max="32767" attributes="0"/>
@@ -287,25 +294,18 @@
                           <Component id="pnTaiKhoan" alignment="1" pref="194" max="32767" attributes="0"/>
                           <Group type="102" alignment="1" attributes="0">
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="lblIconHotel" alignment="1" min="-2" pref="191" max="-2" attributes="0"/>
-                                  <Component id="pnCaLam" alignment="1" min="-2" pref="191" max="-2" attributes="0"/>
-                              </Group>
+                              <Component id="lblIconHotel" min="-2" pref="191" max="-2" attributes="0"/>
                           </Group>
                           <Component id="pnKhuyenMai" alignment="0" max="32767" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="pnNhanVien" min="-2" pref="191" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="pnNhanVien" min="-2" pref="191" max="-2" attributes="0"/>
+                                  <Component id="pnNhaCungCap" pref="0" max="32767" attributes="0"/>
+                              </Group>
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
-                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -322,8 +322,6 @@
                       <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                       <Component id="pnTaiKhoan" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="pnCaLam" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="pnKhuyenMai" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="pnSanPham" min="-2" max="-2" attributes="0"/>
@@ -331,6 +329,8 @@
                       <Component id="pnChucVu" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="pnNhanVien" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="pnNhaCungCap" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                       <Component id="pnDangXuat" min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -389,7 +389,7 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Container class="javax.swing.JPanel" name="pnCaLam">
+            <Container class="javax.swing.JPanel" name="pnNhaCungCap">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="f8" green="ce" red="bc" type="rgb"/>
@@ -407,26 +407,26 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="32767" attributes="0"/>
-                          <Component id="lblCaLam" min="-2" pref="183" max="-2" attributes="0"/>
+                          <Component id="lblNhaCungCap" min="-2" pref="183" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="lblCaLam" alignment="0" pref="43" max="32767" attributes="0"/>
+                      <Component id="lblNhaCungCap" alignment="0" pref="43" max="32767" attributes="0"/>
                   </Group>
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JLabel" name="lblCaLam">
+                <Component class="javax.swing.JLabel" name="lblNhaCungCap">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Baloo 2 ExtraBold" size="20" style="1"/>
                     </Property>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/image/lblCaLam.png"/>
+                      <Image iconType="3" name="/image/lblSanPham.png"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="  Ca l&#xe0;m"/>
+                    <Property name="text" type="java.lang.String" value="  Nh&#xe0; cung c&#x1ea5;p"/>
                   </Properties>
                 </Component>
               </SubComponents>

@@ -5,6 +5,7 @@
  */
 package GUI;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
 /**
@@ -13,11 +14,13 @@ import javax.swing.JFrame;
  */
 public class MainForNVKhoGUI extends javax.swing.JFrame {
 
-    /**
-     * Creates new form MainForNVKhoGUI
-     */
+    
     public MainForNVKhoGUI() {
+        setUndecorated(true);
         initComponents();
+        setLocationRelativeTo(null);
+        ImageIcon logo = new ImageIcon("./src/image/lblIconShop32x32.png");
+        setIconImage(logo.getImage());
     }
 
     /**
@@ -177,7 +180,7 @@ public class MainForNVKhoGUI extends javax.swing.JFrame {
         pnNhapHang.setPreferredSize(new java.awt.Dimension(300, 43));
 
         lblNhapHang.setFont(new java.awt.Font("Baloo 2 ExtraBold", 1, 20)); // NOI18N
-        lblNhapHang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/lblAccount.png"))); // NOI18N
+        lblNhapHang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/lblDichVu.png"))); // NOI18N
         lblNhapHang.setText("  Nhập hàng");
 
         javax.swing.GroupLayout pnNhapHangLayout = new javax.swing.GroupLayout(pnNhapHang);

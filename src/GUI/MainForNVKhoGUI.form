@@ -361,7 +361,7 @@
                       <Font name="Baloo 2 ExtraBold" size="20" style="1"/>
                     </Property>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/image/lblAccount.png"/>
+                      <Image iconType="3" name="/image/lblDichVu.png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="  Nh&#x1ead;p h&#xe0;ng"/>
                   </Properties>
