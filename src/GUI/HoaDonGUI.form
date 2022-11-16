@@ -660,7 +660,7 @@
                                   <Group type="102" alignment="1" attributes="0">
                                       <Group type="103" groupAlignment="1" max="-2" attributes="0">
                                           <Component id="jButton2" pref="0" max="32767" attributes="0"/>
-                                          <Component id="jButton1" min="-2" pref="34" max="-2" attributes="0"/>
+                                          <Component id="btnRKhachHangGUI" min="-2" pref="34" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
@@ -739,7 +739,7 @@
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="lblMaSP6" alignment="3" min="-2" max="-2" attributes="0"/>
                                           <Component id="txtMaKM" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
-                                          <Component id="jButton1" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
+                                          <Component id="btnRKhachHangGUI" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
                                           <Component id="jButton3" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -943,15 +943,21 @@
             </Component>
             <Component class="javax.swing.JTextField" name="txtThanhToan">
             </Component>
-            <Component class="javax.swing.JButton" name="jButton1">
+            <Component class="javax.swing.JButton" name="btnRKhachHangGUI">
               <Properties>
                 <Property name="text" type="java.lang.String" value="..."/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRKhachHangGUIActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="jButton2">
               <Properties>
                 <Property name="text" type="java.lang.String" value="..."/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="jButton3">
               <Properties>

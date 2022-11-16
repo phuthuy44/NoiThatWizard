@@ -294,7 +294,7 @@ public class HoaDonGUI extends javax.swing.JPanel {
         txtMaKM = new javax.swing.JTextField();
         lblMaSP7 = new javax.swing.JLabel();
         txtThanhToan = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        btnRKhachHangGUI = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         btnThemSP1 = new javax.swing.JLabel();
@@ -620,9 +620,19 @@ public class HoaDonGUI extends javax.swing.JPanel {
         lblMaSP7.setFont(new java.awt.Font("Baloo 2 SemiBold", 1, 14)); // NOI18N
         lblMaSP7.setText("Thanh toán");
 
-        jButton1.setText("...");
+        btnRKhachHangGUI.setText("...");
+        btnRKhachHangGUI.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRKhachHangGUIActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("...");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("...");
 
@@ -672,7 +682,7 @@ public class HoaDonGUI extends javax.swing.JPanel {
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnGioHangLayout.createSequentialGroup()
                                 .addGroup(pnGioHangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
-                                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(btnRKhachHangGUI, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(pnGioHangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lblMaSP6, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -732,7 +742,7 @@ public class HoaDonGUI extends javax.swing.JPanel {
                                 .addGroup(pnGioHangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(lblMaSP6)
                                     .addComponent(txtMaKM, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnRKhachHangGUI, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)
                                 .addGroup(pnGioHangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -943,16 +953,26 @@ public class HoaDonGUI extends javax.swing.JPanel {
         InHoaDonGUI.dispose();
     }//GEN-LAST:event_btnCloseMouseClicked
 
+    private void btnRKhachHangGUIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRKhachHangGUIActionPerformed
+        RCKhachHangGUI rkh = new RCKhachHangGUI();
+        rkh.setVisible(true);
+    }//GEN-LAST:event_btnRKhachHangGUIActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        RCNhanVienGUI rnv = new RCNhanVienGUI();
+        rnv.setVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDialog InHoaDonGUI;
     private javax.swing.JLabel btnClose;
     private javax.swing.JLabel btnInHoaDon;
     private javax.swing.JLabel btnInHoaDoninTTHD;
+    private javax.swing.JButton btnRKhachHangGUI;
     private javax.swing.JLabel btnTaoHoaDon;
     private javax.swing.JLabel btnThemSP;
     private javax.swing.JLabel btnThemSP1;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel11;
