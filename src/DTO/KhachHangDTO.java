@@ -11,5 +11,5 @@ package DTO;
  */
 public class KhachHangDTO {
     private String MaKH;
-   
+
 }

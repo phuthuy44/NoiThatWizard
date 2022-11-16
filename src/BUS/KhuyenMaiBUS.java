@@ -29,6 +29,16 @@ public class KhuyenMaiBUS {
         kmDAO.insertKhuyenMai(km);
     }
     
+    public void update(KhuyenMaiDTO km){
+        for(int i=0;i<listKhuyenMai.size();i++){
+            if(listKhuyenMai.get(i).getMaKM().equals(km.getMaKM())){
+                listKhuyenMai.set(i,km);
+                kmDAO.updateKhuyenMai(km);
+                return;
+            }
+        }
+    }
+    
     public void delete(String MaKM){
         for(KhuyenMaiDTO km : listKhuyenMai){
             if(km.getMaKM().equals(MaKM)){

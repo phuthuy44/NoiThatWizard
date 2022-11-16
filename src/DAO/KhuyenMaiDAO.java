@@ -87,7 +87,7 @@ public class KhuyenMaiDAO {
             ps.setInt(3,km.getDieuKien());
             ps.setTimestamp(4, new Timestamp(km.getNgayBatDau().getTime()));
             ps.setTimestamp(5, new Timestamp(km.getNgayKetThuc().getTime()));
-            ps.setString(2, km.getMaKM());
+            ps.setString(6, km.getMaKM());
             ps.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(KhuyenMaiDAO.class.getName()).log(Level.SEVERE, null, ex);

@@ -233,7 +233,10 @@ public class HoaDonGUI extends javax.swing.JPanel {
         }
         return sum;
     }
-//--
+//--Lấy tổng tiền ban đầu của hóa đơn
+    public String getTongTien(){
+        return txtTongTien.getText();
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -294,9 +297,9 @@ public class HoaDonGUI extends javax.swing.JPanel {
         txtMaKM = new javax.swing.JTextField();
         lblMaSP7 = new javax.swing.JLabel();
         txtThanhToan = new javax.swing.JTextField();
-        btnRKhachHangGUI = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        chooseMaKH = new javax.swing.JButton();
+        chooseMaNV = new javax.swing.JButton();
+        chooseMaKM = new javax.swing.JButton();
         btnThemSP1 = new javax.swing.JLabel();
 
         jPanel5.setBackground(new java.awt.Color(250, 247, 240));
@@ -620,21 +623,26 @@ public class HoaDonGUI extends javax.swing.JPanel {
         lblMaSP7.setFont(new java.awt.Font("Baloo 2 SemiBold", 1, 14)); // NOI18N
         lblMaSP7.setText("Thanh toán");
 
-        btnRKhachHangGUI.setText("...");
-        btnRKhachHangGUI.addActionListener(new java.awt.event.ActionListener() {
+        chooseMaKH.setText("...");
+        chooseMaKH.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRKhachHangGUIActionPerformed(evt);
+                chooseMaKHActionPerformed(evt);
             }
         });
 
-        jButton2.setText("...");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        chooseMaNV.setText("...");
+        chooseMaNV.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                chooseMaNVActionPerformed(evt);
             }
         });
 
-        jButton3.setText("...");
+        chooseMaKM.setText("...");
+        chooseMaKM.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chooseMaKMActionPerformed(evt);
+            }
+        });
 
         btnThemSP1.setFont(new java.awt.Font("Baloo 2", 1, 18)); // NOI18N
         btnThemSP1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/btnDelete.png"))); // NOI18N
@@ -681,8 +689,8 @@ public class HoaDonGUI extends javax.swing.JPanel {
                             .addComponent(lblMaSP5, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnGioHangLayout.createSequentialGroup()
                                 .addGroup(pnGioHangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
-                                    .addComponent(btnRKhachHangGUI, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(chooseMaNV, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
+                                    .addComponent(chooseMaKH, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(pnGioHangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lblMaSP6, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -697,7 +705,7 @@ public class HoaDonGUI extends javax.swing.JPanel {
                             .addGroup(pnGioHangLayout.createSequentialGroup()
                                 .addComponent(txtMaKM, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
+                                .addComponent(chooseMaKM, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
                                 .addGap(4, 4, 4))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnGioHangLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -742,13 +750,13 @@ public class HoaDonGUI extends javax.swing.JPanel {
                                 .addGroup(pnGioHangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(lblMaSP6)
                                     .addComponent(txtMaKM, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btnRKhachHangGUI, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(chooseMaKH, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(chooseMaKM, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)
                                 .addGroup(pnGioHangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(lblMaSP7, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtThanhToan, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                    .addComponent(chooseMaNV, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(pnGioHangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(txtTongTien, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(lblMaSP5)))
@@ -886,7 +894,7 @@ public class HoaDonGUI extends javax.swing.JPanel {
         String MaNV = txtMaNV.getText();
 
         String NgayLap = ((JTextField) txtNgayLap.getDateEditor().getUiComponent()).getText();
-        int ThanhToan = Integer.parseInt(txtTongTien.getText());
+        String ThanhToan = txtThanhToan.getText();
 
         HoaDonDTO hd = new HoaDonDTO(MaHD, MaKH, MaNV, NgayLap, ThanhToan);
         hdBUS.add(hd);
@@ -953,15 +961,30 @@ public class HoaDonGUI extends javax.swing.JPanel {
         InHoaDonGUI.dispose();
     }//GEN-LAST:event_btnCloseMouseClicked
 
-    private void btnRKhachHangGUIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRKhachHangGUIActionPerformed
+    private void chooseMaKHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chooseMaKHActionPerformed
         RCKhachHangGUI rkh = new RCKhachHangGUI();
         rkh.setVisible(true);
-    }//GEN-LAST:event_btnRKhachHangGUIActionPerformed
+    }//GEN-LAST:event_chooseMaKHActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void chooseMaNVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chooseMaNVActionPerformed
         RCNhanVienGUI rnv = new RCNhanVienGUI();
         rnv.setVisible(true);
-    }//GEN-LAST:event_jButton2ActionPerformed
+        String MaNV = rnv.getMaNV();
+        txtMaNV.setText(MaNV);
+    }//GEN-LAST:event_chooseMaNVActionPerformed
+
+    private void chooseMaKMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chooseMaKMActionPerformed
+        double TongTien = Double.parseDouble(txtTongTien.getText());
+        
+        RCKhuyenMaiGUI rkm = new RCKhuyenMaiGUI(TongTien); //hàm tạo truyền vào tham số TongTien
+        rkm.setVisible(true);
+        String MaKM = rkm.getMaKM();
+        txtMaKM.setText(MaKM);
+        
+        double KM = Double.parseDouble(rkm.getPhanTramKM());
+        double TongTienSauKM = TongTien - TongTien * (KM / 100);
+        txtThanhToan.setText(String.valueOf(TongTienSauKM));
+    }//GEN-LAST:event_chooseMaKMActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -969,12 +992,12 @@ public class HoaDonGUI extends javax.swing.JPanel {
     private javax.swing.JLabel btnClose;
     private javax.swing.JLabel btnInHoaDon;
     private javax.swing.JLabel btnInHoaDoninTTHD;
-    private javax.swing.JButton btnRKhachHangGUI;
     private javax.swing.JLabel btnTaoHoaDon;
     private javax.swing.JLabel btnThemSP;
     private javax.swing.JLabel btnThemSP1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton chooseMaKH;
+    private javax.swing.JButton chooseMaKM;
+    private javax.swing.JButton chooseMaNV;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

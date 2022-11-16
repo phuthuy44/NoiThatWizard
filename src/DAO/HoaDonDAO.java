@@ -36,7 +36,7 @@ public class HoaDonDAO {
                         rs.getString("MaKH"),
                         rs.getString("MaNV"),
                         rs.getString("NgayLap"),
-                        rs.getInt("TongTien")
+                        rs.getString("TongTien")
                 );
                 dshd.add(hd);
             }
@@ -57,7 +57,7 @@ public class HoaDonDAO {
             statement.setString(2, hd.getMaKH());
             statement.setString(3, hd.getMaNV());
             statement.setString(4, hd.getNgayLap());
-            statement.setInt(5, hd.getTongTien());
+            statement.setString(5, hd.getTongTien());
             statement.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(HoaDonDAO.class.getName()).log(Level.SEVERE, null, ex);

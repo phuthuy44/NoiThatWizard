@@ -11,9 +11,12 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.text.DecimalFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.BorderFactory;
 import javax.swing.table.DefaultTableModel;
 
@@ -178,8 +181,12 @@ public class KhuyenMaiGUI extends javax.swing.JPanel {
             }
         });
 
+        txtNgayBD.setDateFormatString("dd/MM/yyyy");
+
         jLabel6.setFont(new java.awt.Font("Baloo 2 SemiBold", 1, 14)); // NOI18N
         jLabel6.setText("Ngày kết thúc");
+
+        txtNgayKT.setDateFormatString("dd/MM/yyyy");
 
         lblMaNV1.setFont(new java.awt.Font("Baloo 2 SemiBold", 1, 14)); // NOI18N
         lblMaNV1.setText("Điều kiện");
@@ -194,15 +201,11 @@ public class KhuyenMaiGUI extends javax.swing.JPanel {
                     .addComponent(lblMaNV)
                     .addComponent(lblHo)
                     .addComponent(jLabel3))
+                .addGap(13, 13, 13)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(13, 13, 13)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtMaKM, javax.swing.GroupLayout.DEFAULT_SIZE, 163, Short.MAX_VALUE)
-                            .addComponent(txtTenKM)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtPhanTramKM)))
+                    .addComponent(txtMaKM, javax.swing.GroupLayout.DEFAULT_SIZE, 163, Short.MAX_VALUE)
+                    .addComponent(txtTenKM)
+                    .addComponent(txtPhanTramKM))
                 .addGap(58, 58, 58)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblMaNV1)
@@ -333,13 +336,13 @@ public class KhuyenMaiGUI extends javax.swing.JPanel {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addComponent(btnThem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(13, 13, 13)
                 .addComponent(btnXoa)
                 .addGap(18, 18, 18)
                 .addComponent(btnNhapLai)
-                .addGap(23, 23, 23)
+                .addGap(18, 18, 18)
                 .addComponent(btnChinhSua)
-                .addGap(25, 25, 25))
+                .addGap(23, 23, 23))
         );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -392,7 +395,25 @@ public class KhuyenMaiGUI extends javax.swing.JPanel {
 
     private void tblDSKMMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDSKMMouseClicked
         int k = tblDSKM.getSelectedRow();
-        txtMaKM.setText(tblDSKM.getValueAt(k, 0).toString());
+        txtMaKM.setEnabled(false);
+        txtMaKM.setText(tblDSKM.getModel().getValueAt(k, 0).toString());
+        txtTenKM.setText(tblDSKM.getModel().getValueAt(k, 1).toString());
+        txtPhanTramKM.setText(tblDSKM.getModel().getValueAt(k, 2).toString());
+        String dk = tblDSKM.getModel().getValueAt(k, 3).toString();
+        dk = dk.replace(">", "");
+        txtDieuKien.setText(dk);
+        
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        Date NgayBD = new Date();
+        Date NgayKT = new Date();
+        try {
+            NgayBD = sdf.parse(tblDSKM.getModel().getValueAt(k, 4).toString());
+            NgayKT = sdf.parse(tblDSKM.getModel().getValueAt(k, 5).toString());
+        } catch (ParseException ex) {
+            Logger.getLogger(KhuyenMaiGUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        txtNgayBD.setDate(NgayBD);
+        txtNgayKT.setDate(NgayKT);
     }//GEN-LAST:event_tblDSKMMouseClicked
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
@@ -434,7 +455,16 @@ public class KhuyenMaiGUI extends javax.swing.JPanel {
     }//GEN-LAST:event_btnNhapLaiMouseClicked
 
     private void btnChinhSuaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnChinhSuaMouseClicked
-    
+        String MaKM = txtMaKM.getText();
+        String TenKM = txtTenKM.getText();
+        int PhanTramKM = Integer.parseInt(txtPhanTramKM.getText());
+        int DieuKien = Integer.parseInt(txtDieuKien.getText());
+        Date NgayBD = txtNgayBD.getDate();
+        Date NgayKT = txtNgayKT.getDate();
+        
+        KhuyenMaiDTO km = new KhuyenMaiDTO(MaKM, TenKM, PhanTramKM, DieuKien, NgayBD, NgayKT);
+        kmBUS.update(km);
+        loadData();
     }//GEN-LAST:event_btnChinhSuaMouseClicked
 
     private void txtMaKMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMaKMActionPerformed
