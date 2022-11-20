@@ -5,6 +5,10 @@
  */
 package GUI;
 
+import GUI.model.ChangeScreenNVKho;
+
+import GUI.model.DanhMuc;
+import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
@@ -21,7 +25,16 @@ public class MainForNVKhoGUI extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         ImageIcon logo = new ImageIcon("./src/image/lblIconShop32x32.png");
         setIconImage(logo.getImage());
+        
+        ChangeScreenNVKho controller = new ChangeScreenNVKho(pnView);
+        ArrayList<DanhMuc> list = new ArrayList<>();
+        list.add(new DanhMuc("NhapHang", pnNhapHang, lblNhapHang));
+        list.add(new DanhMuc("CTPhieuNhap",pnPhieuNhap,lblPhieuNhap));
+        list.add(new DanhMuc("Kho", pnKho, lblKho));
+        controller.setEvent(list);
     }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.

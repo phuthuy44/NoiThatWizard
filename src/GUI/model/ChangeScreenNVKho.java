@@ -5,7 +5,7 @@
  */
 package GUI.model;
 
-import GUI.CTPhieuNhapGUI;
+import GUI.DSPhieuNhapGUI;
 import GUI.HoaDonGUI;
 import GUI.KhoGUI;
 import GUI.MainForNhanVienGUI;
@@ -70,8 +70,8 @@ public class ChangeScreenNVKho {
                 case "NhapHang":
                     node = new PhieuNhapGUI();
                     break;
-                case "PhieuNhap":
-                    node = new CTPhieuNhapGUI();
+                case "CTPhieuNhap":
+                    node = new DSPhieuNhapGUI();
                     break;
                 case "Kho":
                     node = new KhoGUI();
