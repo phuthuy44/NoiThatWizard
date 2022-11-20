@@ -22,9 +22,8 @@
         <group>
             <file>file:/C:/Users/wizardsc/Documents/NetBeansProjects/NoiThatWizard/src/GUI/Main.java</file>
             <file>file:/C:/Users/wizardsc/Documents/NetBeansProjects/NoiThatWizard/src/GUI/HoaDonGUI.java</file>
-            <file>file:/C:/Users/wizardsc/Documents/NetBeansProjects/NoiThatWizard/src/GUI/PhieuNhapGUI.java</file>
-            <file>file:/C:/Users/wizardsc/Documents/NetBeansProjects/NoiThatWizard/src/GUI/KhoGUI.java</file>
-            <file>file:/C:/Users/wizardsc/Documents/NetBeansProjects/NoiThatWizard/src/BUS/KhoBUS.java</file>
+            <file>file:/C:/Users/wizardsc/Documents/NetBeansProjects/NoiThatWizard/src/DTO/PhieuNhapDTO.java</file>
+            <file>file:/C:/Users/wizardsc/Documents/NetBeansProjects/NoiThatWizard/src/DTO/CTPhieuNhapDTO.java</file>
         </group>
     </open-files>
 </project-private>

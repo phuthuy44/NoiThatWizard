@@ -169,13 +169,7 @@ public class HoaDonGUI extends javax.swing.JPanel {
         showAllDSSP(dssp);
     }
 //--
-//--    Load mã hóa đơn mới nhất lên form
 
-    private void loadDataMaHD() {
-        hdBUS.docDanhSach();
-        ArrayList<HoaDonDTO> dshd = hdBUS.getListHoaDon();
-        showMaHD(dshd);
-    }
     
     private void loadDataCTHD(){
         
@@ -200,7 +194,14 @@ public class HoaDonGUI extends javax.swing.JPanel {
         }
     }
 //--    
+//--    Load mã hóa đơn mới nhất lên form
 
+    private void loadDataMaHD() {
+        hdBUS.docDanhSach();
+        ArrayList<HoaDonDTO> dshd = hdBUS.getListHoaDon();
+        showMaHD(dshd);
+    }
+//-- 
     private void loadDataGioHang() {
         dtmGioHang.setRowCount(0);
         ArrayList<SanPhamDTO> dssp = null;
@@ -959,6 +960,7 @@ public class HoaDonGUI extends javax.swing.JPanel {
 
     private void btnCloseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCloseMouseClicked
         InHoaDonGUI.dispose();
+        
     }//GEN-LAST:event_btnCloseMouseClicked
 
     private void chooseMaKHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chooseMaKHActionPerformed

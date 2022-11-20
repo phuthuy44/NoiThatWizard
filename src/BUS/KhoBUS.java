@@ -6,6 +6,7 @@
 package BUS;
 
 import DAO.KhoDAO;
+import DAO.SanPhamDAO;
 import DTO.KhoDTO;
 import java.util.ArrayList;
 
@@ -15,6 +16,7 @@ import java.util.ArrayList;
  */
 public class KhoBUS {
     private KhoDAO khoDAO = new KhoDAO();
+    
     private ArrayList<KhoDTO> listKho = null;
     
     public void docDanhSach(){
@@ -22,5 +24,9 @@ public class KhoBUS {
     }
     public ArrayList<KhoDTO> getListKho(){
         return listKho;
+    }
+    
+    public void capNhatSoLuongSP(String MaPN, int SoLuongNhap, int SoLuongTrongKho){
+        khoDAO.capNhatSoLuongSP(MaPN, SoLuongNhap, SoLuongTrongKho);
     }
 }
