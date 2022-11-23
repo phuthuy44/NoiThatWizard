@@ -10,6 +10,7 @@ import GUI.HoaDonGUI;
 import GUI.KhoGUI;
 import GUI.MainForNhanVienGUI;
 import GUI.PhieuNhapGUI;
+import GUI.PhieuXuatGUI;
 import GUI.SanPhamForNVGUI;
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -75,6 +76,9 @@ public class ChangeScreenNVKho {
                     break;
                 case "Kho":
                     node = new KhoGUI();
+                    break;
+                case "XuatHang":
+                    node = new PhieuXuatGUI();
                     break;
                 default:
                     break;

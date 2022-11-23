@@ -31,6 +31,7 @@ public class MainForNVKhoGUI extends javax.swing.JFrame {
         list.add(new DanhMuc("NhapHang", pnNhapHang, lblNhapHang));
         list.add(new DanhMuc("CTPhieuNhap",pnPhieuNhap,lblPhieuNhap));
         list.add(new DanhMuc("Kho", pnKho, lblKho));
+        list.add(new DanhMuc("XuatHang", pnXuatHang, lblXuatHang));
         controller.setEvent(list);
     }
     
@@ -71,6 +72,10 @@ public class MainForNVKhoGUI extends javax.swing.JFrame {
         lblDangXuat = new javax.swing.JLabel();
         pnKho = new javax.swing.JPanel();
         lblKho = new javax.swing.JLabel();
+        pnXuatHang = new javax.swing.JPanel();
+        lblXuatHang = new javax.swing.JLabel();
+        pnPhieuNhap1 = new javax.swing.JPanel();
+        lblPhieuNhap1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -166,7 +171,7 @@ public class MainForNVKhoGUI extends javax.swing.JFrame {
         pnViewLayout.setHorizontalGroup(
             pnViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnViewLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addGap(0, 1061, Short.MAX_VALUE)
                 .addComponent(jLabel4))
             .addGroup(pnViewLayout.createSequentialGroup()
                 .addComponent(jLabel3)
@@ -177,7 +182,7 @@ public class MainForNVKhoGUI extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnViewLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 647, Short.MAX_VALUE)
                 .addComponent(jLabel3))
         );
 
@@ -314,6 +319,49 @@ public class MainForNVKhoGUI extends javax.swing.JFrame {
                 .addComponent(lblKho, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
+        pnXuatHang.setBackground(new java.awt.Color(188, 206, 248));
+        pnXuatHang.setForeground(new java.awt.Color(255, 255, 255));
+        pnXuatHang.setPreferredSize(new java.awt.Dimension(300, 43));
+
+        lblXuatHang.setFont(new java.awt.Font("Baloo 2 ExtraBold", 1, 20)); // NOI18N
+        lblXuatHang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/lblDichVu.png"))); // NOI18N
+        lblXuatHang.setText("  Xuất hàng");
+
+        javax.swing.GroupLayout pnXuatHangLayout = new javax.swing.GroupLayout(pnXuatHang);
+        pnXuatHang.setLayout(pnXuatHangLayout);
+        pnXuatHangLayout.setHorizontalGroup(
+            pnXuatHangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnXuatHangLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblXuatHang)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        pnXuatHangLayout.setVerticalGroup(
+            pnXuatHangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lblXuatHang, javax.swing.GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE)
+        );
+
+        pnPhieuNhap1.setBackground(new java.awt.Color(188, 206, 248));
+        pnPhieuNhap1.setForeground(new java.awt.Color(255, 255, 255));
+        pnPhieuNhap1.setPreferredSize(new java.awt.Dimension(300, 43));
+
+        lblPhieuNhap1.setFont(new java.awt.Font("Baloo 2 ExtraBold", 1, 20)); // NOI18N
+        lblPhieuNhap1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/lblCaLam.png"))); // NOI18N
+        lblPhieuNhap1.setText("  Phiếu xuất");
+
+        javax.swing.GroupLayout pnPhieuNhap1Layout = new javax.swing.GroupLayout(pnPhieuNhap1);
+        pnPhieuNhap1.setLayout(pnPhieuNhap1Layout);
+        pnPhieuNhap1Layout.setHorizontalGroup(
+            pnPhieuNhap1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnPhieuNhap1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblPhieuNhap1, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        pnPhieuNhap1Layout.setVerticalGroup(
+            pnPhieuNhap1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lblPhieuNhap1, javax.swing.GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout pnMenuLayout = new javax.swing.GroupLayout(pnMenu);
         pnMenu.setLayout(pnMenuLayout);
         pnMenuLayout.setHorizontalGroup(
@@ -322,15 +370,17 @@ public class MainForNVKhoGUI extends javax.swing.JFrame {
                 .addComponent(pnDangXuat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(pnMenuLayout.createSequentialGroup()
-                .addGroup(pnMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(pnNhapHang, javax.swing.GroupLayout.DEFAULT_SIZE, 191, Short.MAX_VALUE)
-                    .addGroup(pnMenuLayout.createSequentialGroup()
+                .addGroup(pnMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(pnNhapHang, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 191, Short.MAX_VALUE)
+                    .addComponent(pnKho, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(pnXuatHang, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 191, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnMenuLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(pnMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblIconHotel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(pnNhanVien, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(pnPhieuNhap, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(pnKho, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                            .addComponent(pnPhieuNhap, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(pnPhieuNhap1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap())
         );
         pnMenuLayout.setVerticalGroup(
@@ -342,11 +392,15 @@ public class MainForNVKhoGUI extends javax.swing.JFrame {
                 .addComponent(pnNhanVien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pnNhapHang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(pnPhieuNhap, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(pnKho, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 276, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(pnXuatHang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(pnPhieuNhap1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(pnDangXuat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -415,8 +469,10 @@ public class MainForNVKhoGUI extends javax.swing.JFrame {
     private javax.swing.JLabel lblNhanVien;
     private javax.swing.JLabel lblNhapHang;
     private javax.swing.JLabel lblPhieuNhap;
+    private javax.swing.JLabel lblPhieuNhap1;
     private javax.swing.JLabel lblThongTin;
     private javax.swing.JLabel lblTime;
+    private javax.swing.JLabel lblXuatHang;
     private javax.swing.JPanel pnDangXuat;
     private javax.swing.JPanel pnHeader;
     private javax.swing.JPanel pnKho;
@@ -424,7 +480,9 @@ public class MainForNVKhoGUI extends javax.swing.JFrame {
     private javax.swing.JPanel pnNhanVien;
     private javax.swing.JPanel pnNhapHang;
     private javax.swing.JPanel pnPhieuNhap;
+    private javax.swing.JPanel pnPhieuNhap1;
     private javax.swing.JPanel pnRoot;
     private javax.swing.JPanel pnView;
+    private javax.swing.JPanel pnXuatHang;
     // End of variables declaration//GEN-END:variables
 }
