@@ -50,7 +50,10 @@ public class SanPhamDAO {
         }
         return null;
     }
-    
+    public void insertSanPham(SanPhamDTO sp){
+        
+        
+    }
     public void updateSanPham (SanPhamDTO sp){
         try {
             String sql = "UPDATE sanpham SET TenSP = ?, SoLuong = ?, DonGia = ?, DonViTinh = ?, MaLoai = ?, IMG = ? WHERE MaSP = ?";
