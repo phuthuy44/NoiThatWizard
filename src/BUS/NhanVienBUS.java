@@ -52,6 +52,42 @@ public class NhanVienBUS {
             }
         }
     }
+   
+    public ArrayList<NhanVienDTO> searchMaNV(String tk){  // tk có nghĩa là từ khóa
+        tk = tk.toLowerCase();
+        ArrayList<NhanVienDTO> dsnv = new ArrayList<>();
+        for(NhanVienDTO nv : listNhanVien){
+            String MaNV = nv.getMaNV().toLowerCase();
+            if(MaNV.contains(tk)){
+                dsnv.add(nv);
+            }
+        }
+        return dsnv;
+    }
+    
+    public ArrayList<NhanVienDTO> searchHo(String tk){
+        tk = tk.toLowerCase();
+        ArrayList<NhanVienDTO> dsnv = new ArrayList<>();
+        for(NhanVienDTO nv : listNhanVien){
+            String Ho = nv.getHo().toLowerCase();
+            if(Ho.contains(tk)){
+                dsnv.add(nv);
+            }
+        }
+        return dsnv;   
+    }
+    
+    public ArrayList<NhanVienDTO> searchTen(String tk){
+        tk = tk.toLowerCase();
+        ArrayList<NhanVienDTO> dsnv = new ArrayList<>();
+        for(NhanVienDTO nv : listNhanVien){
+            String Ten = nv.getTen().toLowerCase();
+            if(Ten.contains(tk)){
+                dsnv.add(nv);
+            }
+        }
+        return dsnv;
+    }
     public void ExportExcel() {
         nvDAO.ExportExcel();
     }

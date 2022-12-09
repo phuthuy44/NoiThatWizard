@@ -300,9 +300,9 @@
                       <Font name="Baloo 2 ExtraBold" size="20" style="1"/>
                     </Property>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/image/lblCaLam.png"/>
+                      <Image iconType="3" name="/image/lblBanHang.png"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="  H&#xf3;a &#x111;&#x1a1;n"/>
+                    <Property name="text" type="java.lang.String" value="  B&#xe1;n h&#xe0;ng"/>
                   </Properties>
                 </Component>
               </SubComponents>
@@ -410,9 +410,9 @@
                       <Font name="Baloo 2 ExtraBold" size="19" style="1"/>
                     </Property>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/image/lblLoai.png"/>
+                      <Image iconType="3" name="/image/lblHoaDon.png"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="  Danh s&#xe1;ch HD"/>
+                    <Property name="text" type="java.lang.String" value="  H&#xf3;a &#x111;&#x1a1;n"/>
                   </Properties>
                 </Component>
               </SubComponents>
