@@ -15,7 +15,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class RCKhachHangGUI extends javax.swing.JDialog {
     DefaultTableModel dtmKhachHang;
-    KhachHangBUS khBUS = new KhachHangBUS();
+    
 //    private ArrayList<KhachHangDTO> dskh = new ArrayList<>();
     public RCKhachHangGUI(){
         setUndecorated(true);

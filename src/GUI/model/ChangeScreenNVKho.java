@@ -6,6 +6,7 @@
 package GUI.model;
 
 import GUI.DSPhieuNhapGUI;
+import GUI.DSPhieuXuatGUI;
 import GUI.HoaDonGUI;
 import GUI.KhoGUI;
 import GUI.MainForNhanVienGUI;
@@ -79,6 +80,9 @@ public class ChangeScreenNVKho {
                     break;
                 case "XuatHang":
                     node = new PhieuXuatGUI();
+                    break;
+                case "CTPhieuXuat":
+                    node = new DSPhieuXuatGUI();
                     break;
                 default:
                     break;

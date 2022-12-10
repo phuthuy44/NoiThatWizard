@@ -45,7 +45,7 @@ public class HoaDonGUI extends javax.swing.JPanel {
     DefaultTableModel dtmSanPham;
     DefaultTableModel dtmGioHang;
     DefaultTableModel dtmThongTinHD;
-
+    int SoLuongSPTrongCuaHang; //khai báo SL sản phẩm hiện có trong cửa hàng
     String imgName = "null";
     private BufferedImage i = null;
 
@@ -301,7 +301,7 @@ public class HoaDonGUI extends javax.swing.JPanel {
         chooseMaKH = new javax.swing.JButton();
         chooseMaNV = new javax.swing.JButton();
         chooseMaKM = new javax.swing.JButton();
-        btnThemSP1 = new javax.swing.JLabel();
+        btnXoaSP = new javax.swing.JLabel();
 
         jPanel5.setBackground(new java.awt.Color(250, 247, 240));
         jPanel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 5));
@@ -645,13 +645,13 @@ public class HoaDonGUI extends javax.swing.JPanel {
             }
         });
 
-        btnThemSP1.setFont(new java.awt.Font("Baloo 2", 1, 18)); // NOI18N
-        btnThemSP1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/btnDelete.png"))); // NOI18N
-        btnThemSP1.setText("Xóa sản phẩm");
-        btnThemSP1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnThemSP1.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnXoaSP.setFont(new java.awt.Font("Baloo 2", 1, 18)); // NOI18N
+        btnXoaSP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/btnDelete.png"))); // NOI18N
+        btnXoaSP.setText("Xóa sản phẩm");
+        btnXoaSP.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnXoaSP.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnThemSP1MouseClicked(evt);
+                btnXoaSPMouseClicked(evt);
             }
         });
 
@@ -716,7 +716,7 @@ public class HoaDonGUI extends javax.swing.JPanel {
                         .addGap(90, 90, 90))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnGioHangLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btnThemSP1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnXoaSP, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(180, 180, 180))
         );
         pnGioHangLayout.setVerticalGroup(
@@ -726,7 +726,7 @@ public class HoaDonGUI extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnThemSP1)
+                .addComponent(btnXoaSP)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pnGioHangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnGioHangLayout.createSequentialGroup()
@@ -798,27 +798,35 @@ public class HoaDonGUI extends javax.swing.JPanel {
 
     private void tblDSSPMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDSSPMouseClicked
         int k = tblDSSP.getSelectedRow();
-//        int SoLuong = Integer.parseInt(tblDSSP.getModel().getValueAt(k, 2).toString());
-//        if (SoLuong < -100) {
-//            JOptionPane.showMessageDialog(pnRoot, "Sản phẩm đã hết hàng", "THÔNG BÁO", JOptionPane.ERROR_MESSAGE);
-//            return;
-//        }
-//        //-- setModel cho txtSoLuong, căn trái số,....
-//        SpinnerNumberModel modeSpinner = new SpinnerNumberModel(1, -10, SoLuong, 1);
-//        txtSoLuong.setModel(modeSpinner);
-//        JFormattedTextField txtSpinner = ((JSpinner.NumberEditor) txtSoLuong.getEditor()).getTextField();
-//        ((NumberFormatter) txtSpinner.getFormatter()).setAllowsInvalid(false);
-//        txtSpinner.setEditable(false);
-//        txtSpinner.setHorizontalAlignment(JTextField.LEFT);
+        //đầu tiên set rỗng cho các textfield
+        txtMaSP.setText("");
+        txtTenSP.setText("");
+        txtDonGia.setText("");
+        //set hết hàng cho SP có số lượng < 1
+        int SoLuongConLai = Integer.parseInt(tblDSSP.getModel().getValueAt(k, 2).toString());
+        if (SoLuongConLai < 1) {
+            JOptionPane.showMessageDialog(pnRoot, "Sản phẩm đã hết hàng", "THÔNG BÁO", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
         //--
         txtMaSP.setText(tblDSSP.getModel().getValueAt(k, 0).toString());
         txtTenSP.setText(tblDSSP.getModel().getValueAt(k, 1).toString());
         txtDonGia.setText(tblDSSP.getModel().getValueAt(k, 3).toString());
+        
+        //set txtSoLuong sao cho chỉ có thể chọn tối đa số lượng sản phẩm hiện có trong table
+        SpinnerNumberModel modeSpinner = new SpinnerNumberModel(1, -10, SoLuongConLai, 1);
+        txtSoLuong.setModel(modeSpinner);
+        JFormattedTextField txtSpinner = ((JSpinner.NumberEditor) txtSoLuong.getEditor()).getTextField();
+        ((NumberFormatter) txtSpinner.getFormatter()).setAllowsInvalid(false);
+        txtSpinner.setEditable(false);
+        txtSpinner.setHorizontalAlignment(JTextField.LEFT);
+        //--
+        
         imgName = tblDSSP.getModel().getValueAt(k, 4).toString();
         Image newImage;
         newImage = new ImageIcon("./src/image/SanPham/" + imgName).getImage().getScaledInstance(155, 185, Image.SCALE_DEFAULT);
         txtIMG.setIcon(new ImageIcon(newImage));
-
+        
         txtMaSP.setEnabled(false);
         txtTenSP.setEnabled(false);
         txtDonGia.setEnabled(false);
@@ -919,9 +927,27 @@ public class HoaDonGUI extends javax.swing.JPanel {
         int k = tblGioHang.getSelectedRow();
     }//GEN-LAST:event_tblGioHangMouseClicked
 
-    private void btnThemSP1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnThemSP1MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnThemSP1MouseClicked
+    private void btnXoaSPMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnXoaSPMouseClicked
+        int k = tblGioHang.getSelectedRow();
+        String MaSP = tblGioHang.getModel().getValueAt(k,0).toString();
+        int SoLuong = Integer.parseInt(tblGioHang.getModel().getValueAt(k,2).toString());
+        
+        //lấy số lượng sản phẩm hiện có trong cửa hàng
+        spBUS.docDanhSach();
+        ArrayList<SanPhamDTO> dssp = spBUS.getListSanPham();
+        for(SanPhamDTO sp : dssp){
+            if(MaSP.equals(sp.getMaSP())){
+                SoLuongSPTrongCuaHang = sp.getSoLuong(); 
+        }
+        }
+        //--
+        spBUS.capNhatSoLuongHD(MaSP, SoLuong, SoLuongSPTrongCuaHang);
+        spBUS.docDanhSach();
+        dscthd.remove(k);
+        dtmGioHang.removeRow(k);
+        txtTongTien.setText(String.valueOf(sumHD()));
+        loadDataDSSP();
+    }//GEN-LAST:event_btnXoaSPMouseClicked
 
     private void tblTTHDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblTTHDMouseClicked
         int k = tblTTHD.getSelectedRow();
@@ -996,7 +1022,7 @@ public class HoaDonGUI extends javax.swing.JPanel {
     private javax.swing.JLabel btnInHoaDoninTTHD;
     private javax.swing.JLabel btnTaoHoaDon;
     private javax.swing.JLabel btnThemSP;
-    private javax.swing.JLabel btnThemSP1;
+    private javax.swing.JLabel btnXoaSP;
     private javax.swing.JButton chooseMaKH;
     private javax.swing.JButton chooseMaKM;
     private javax.swing.JButton chooseMaNV;

@@ -16,10 +16,10 @@ public class Main {
 
     public static void main(String[] args) {
 //        new MainForQuanLyGUI().setVisible(true);
-        // new DangNhapGUI().setVisible(true);
-//        new MainForNhanVienGUI().setVisible(true);
+//         new DangNhapGUI().setVisible(true);
+        new MainForNhanVienGUI().setVisible(true);
 //        new MainForKeToanGUI().setVisible(true);
-        new MainForNVKhoGUI().setVisible(true);
+//        new MainForNVKhoGUI().setVisible(true);
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         } catch (Exception e) {

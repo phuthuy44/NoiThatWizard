@@ -47,7 +47,7 @@ public class PhieuXuatGUI extends javax.swing.JPanel {
     ArrayList<CTPhieuXuatDTO> dsctpx = new ArrayList<>();
     String imgName = "null";
     private BufferedImage i = null;
-
+    int SoLuongTrongKho;
     public PhieuXuatGUI() {
         initComponents();
         init();
@@ -250,7 +250,7 @@ public class PhieuXuatGUI extends javax.swing.JPanel {
         lblGioHang = new javax.swing.JLabel();
         jScrollPane5 = new javax.swing.JScrollPane();
         tblHangChoXuat = new javax.swing.JTable();
-        btnTaoPhieuNhap = new javax.swing.JLabel();
+        btnTaoPhieuXuat = new javax.swing.JLabel();
         btnInHoaDon = new javax.swing.JLabel();
         lblMaSP1 = new javax.swing.JLabel();
         txtMaPX = new javax.swing.JTextField();
@@ -261,7 +261,7 @@ public class PhieuXuatGUI extends javax.swing.JPanel {
         lblMaSP5 = new javax.swing.JLabel();
         txtTongTien = new javax.swing.JTextField();
         chooseMaNV = new javax.swing.JButton();
-        btnThemSP1 = new javax.swing.JLabel();
+        btnXoaSP = new javax.swing.JLabel();
 
         jPanel5.setBackground(new java.awt.Color(250, 247, 240));
         jPanel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 5));
@@ -482,7 +482,7 @@ public class PhieuXuatGUI extends javax.swing.JPanel {
 
         btnThemSP.setFont(new java.awt.Font("Baloo 2", 1, 18)); // NOI18N
         btnThemSP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/btnAdd.png"))); // NOI18N
-        btnThemSP.setText("Thêm sản phẩm");
+        btnThemSP.setText("Xuất sản phẩm");
         btnThemSP.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnThemSP.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -529,13 +529,13 @@ public class PhieuXuatGUI extends javax.swing.JPanel {
         });
         jScrollPane5.setViewportView(tblHangChoXuat);
 
-        btnTaoPhieuNhap.setFont(new java.awt.Font("Baloo 2", 1, 18)); // NOI18N
-        btnTaoPhieuNhap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/btnAdd.png"))); // NOI18N
-        btnTaoPhieuNhap.setText("Tạo phiếu nhập");
-        btnTaoPhieuNhap.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnTaoPhieuNhap.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnTaoPhieuXuat.setFont(new java.awt.Font("Baloo 2", 1, 18)); // NOI18N
+        btnTaoPhieuXuat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/btnAdd.png"))); // NOI18N
+        btnTaoPhieuXuat.setText("Tạo phiếu xuất");
+        btnTaoPhieuXuat.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnTaoPhieuXuat.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnTaoPhieuNhapMouseClicked(evt);
+                btnTaoPhieuXuatMouseClicked(evt);
             }
         });
 
@@ -570,13 +570,13 @@ public class PhieuXuatGUI extends javax.swing.JPanel {
             }
         });
 
-        btnThemSP1.setFont(new java.awt.Font("Baloo 2", 1, 18)); // NOI18N
-        btnThemSP1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/btnDelete.png"))); // NOI18N
-        btnThemSP1.setText("Xóa sản phẩm");
-        btnThemSP1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnThemSP1.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnXoaSP.setFont(new java.awt.Font("Baloo 2", 1, 18)); // NOI18N
+        btnXoaSP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/btnDelete.png"))); // NOI18N
+        btnXoaSP.setText("Xóa sản phẩm");
+        btnXoaSP.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnXoaSP.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnThemSP1MouseClicked(evt);
+                btnXoaSPMouseClicked(evt);
             }
         });
 
@@ -591,12 +591,12 @@ public class PhieuXuatGUI extends javax.swing.JPanel {
                         .addGroup(pnHangChoXuatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pnHangChoXuatLayout.createSequentialGroup()
                                 .addGap(113, 113, 113)
-                                .addComponent(btnTaoPhieuNhap)
+                                .addComponent(btnTaoPhieuXuat)
                                 .addGap(79, 79, 79)
                                 .addComponent(btnInHoaDon, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(pnHangChoXuatLayout.createSequentialGroup()
                                 .addGap(230, 230, 230)
-                                .addComponent(btnThemSP1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(btnXoaSP, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 570, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -630,7 +630,7 @@ public class PhieuXuatGUI extends javax.swing.JPanel {
                 .addGap(6, 6, 6)
                 .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(6, 6, 6)
-                .addComponent(btnThemSP1)
+                .addComponent(btnXoaSP)
                 .addGap(41, 41, 41)
                 .addGroup(pnHangChoXuatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(pnHangChoXuatLayout.createSequentialGroup()
@@ -653,7 +653,7 @@ public class PhieuXuatGUI extends javax.swing.JPanel {
                             .addComponent(lblMaSP5))))
                 .addGap(60, 60, 60)
                 .addGroup(pnHangChoXuatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnTaoPhieuNhap)
+                    .addComponent(btnTaoPhieuXuat)
                     .addComponent(btnInHoaDon))
                 .addContainerGap())
         );
@@ -665,8 +665,7 @@ public class PhieuXuatGUI extends javax.swing.JPanel {
             .addGroup(pnRootLayout.createSequentialGroup()
                 .addComponent(pnDSSP, javax.swing.GroupLayout.DEFAULT_SIZE, 510, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pnHangChoXuat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0))
+                .addComponent(pnHangChoXuat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         pnRootLayout.setVerticalGroup(
             pnRootLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -689,7 +688,7 @@ public class PhieuXuatGUI extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1105, Short.MAX_VALUE)
+            .addGap(0, 1096, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -709,11 +708,20 @@ public class PhieuXuatGUI extends javax.swing.JPanel {
 
     private void tblDSSPMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDSSPMouseClicked
         int k = tblDSSP.getSelectedRow();
+        //đầu tiên set rỗng cho các textfield
+        txtMaSP.setText("");
+        txtTenSP.setText("");
+
+        //set hết hàng cho SP có số lượng < 1
+        int SoLuongConLai = Integer.parseInt(tblDSSP.getModel().getValueAt(k, 2).toString());
+        if (SoLuongConLai < 1) {
+            JOptionPane.showMessageDialog(pnRoot, "Sản phẩm đã hết hàng", "THÔNG BÁO", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        //--
         txtMaSP.setText(tblDSSP.getModel().getValueAt(k, 0).toString());
         txtTenSP.setText(tblDSSP.getModel().getValueAt(k, 1).toString());
-
         imgName = tblDSSP.getModel().getValueAt(k, 3).toString();
-
         //--Lấy giá bán đề xuất
         spBUS.docDanhSach();
         ArrayList<SanPhamDTO> dssp = spBUS.getListSanPham();
@@ -722,8 +730,14 @@ public class PhieuXuatGUI extends javax.swing.JPanel {
                 lblGiaNhap.setText(String.valueOf(sp.getDonGia()));
             }
         }
+        //set txtSoLuong sao cho chỉ có thể chọn tối đa số lượng sản phẩm hiện có trong table
+        SpinnerNumberModel modeSpinner = new SpinnerNumberModel(1, -10, SoLuongConLai, 1);
+        txtSoLuong.setModel(modeSpinner);
+        JFormattedTextField txtSpinner = ((JSpinner.NumberEditor) txtSoLuong.getEditor()).getTextField();
+        ((NumberFormatter) txtSpinner.getFormatter()).setAllowsInvalid(false);
+        txtSpinner.setEditable(false);
+        txtSpinner.setHorizontalAlignment(JTextField.LEFT);
         //--
-
         Image newImage;
         newImage = new ImageIcon("./src/image/SanPham/" + imgName).getImage().getScaledInstance(155, 185, Image.SCALE_DEFAULT);
         txtIMG.setIcon(new ImageIcon(newImage));
@@ -745,6 +759,8 @@ public class PhieuXuatGUI extends javax.swing.JPanel {
 
         khoBUS.capNhatSoLuongSP(MaSP, -SoLuong, SoLuongConLai);
         khoBUS.docDanhSach();
+        spBUS.capNhatSoLuongHD(MaSP, SoLuong, SoLuongConLai);
+        spBUS.docDanhSach();
         boolean flag = true;
         for (CTPhieuXuatDTO ctpx : dsctpx) {
             if (ctpx.getMaSP().equals(MaSP)) {
@@ -778,7 +794,7 @@ public class PhieuXuatGUI extends javax.swing.JPanel {
 
     }//GEN-LAST:event_tblHangChoXuatMouseClicked
 
-    private void btnTaoPhieuNhapMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTaoPhieuNhapMouseClicked
+    private void btnTaoPhieuXuatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTaoPhieuXuatMouseClicked
         String MaPX = txtMaPX.getText();
         String MaNV = txtMaNV.getText();
         String NgayLap = ((JTextField) txtNgayLap.getDateEditor().getUiComponent()).getText();
@@ -793,7 +809,7 @@ public class PhieuXuatGUI extends javax.swing.JPanel {
         dtmHangChoXuat.setRowCount(0);
         JOptionPane.showMessageDialog(pnHangChoXuat, "Tạo phiếu xuất thành công");
 
-    }//GEN-LAST:event_btnTaoPhieuNhapMouseClicked
+    }//GEN-LAST:event_btnTaoPhieuXuatMouseClicked
 
     private void btnInHoaDonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInHoaDonMouseClicked
         XuatHoaDonGUI.setUndecorated(true);
@@ -809,9 +825,27 @@ public class PhieuXuatGUI extends javax.swing.JPanel {
 
     }//GEN-LAST:event_chooseMaNVActionPerformed
 
-    private void btnThemSP1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnThemSP1MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnThemSP1MouseClicked
+    private void btnXoaSPMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnXoaSPMouseClicked
+       int k = tblHangChoXuat.getSelectedRow();
+        String MaSP = tblHangChoXuat.getModel().getValueAt(k,0).toString();
+        int SoLuong = Integer.parseInt(tblHangChoXuat.getModel().getValueAt(k,2).toString());
+        
+        //lấy số lượng sản phẩm hiện có trong kho
+        khoBUS.docDanhSach();
+        ArrayList<KhoDTO> dskho = khoBUS.getListKho();
+        for(KhoDTO kho : dskho){
+            if(MaSP.equals(kho.getMaSP())){
+                SoLuongTrongKho = kho.getSoLuong(); 
+        }
+        }
+        //--
+        khoBUS.capNhatSoLuongSP(MaSP, SoLuong, SoLuongTrongKho);
+        khoBUS.docDanhSach();
+        dsctpx.remove(k);
+        dtmHangChoXuat.removeRow(k);
+        txtTongTien.setText(String.valueOf(sumPX()));
+        loadDataDSSP();
+    }//GEN-LAST:event_btnXoaSPMouseClicked
 
     private void tblTTPXMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblTTPXMouseClicked
 //        int k = tblTTPX.getSelectedRow();
@@ -859,9 +893,9 @@ public class PhieuXuatGUI extends javax.swing.JPanel {
     private javax.swing.JLabel btnClose;
     private javax.swing.JLabel btnInHoaDon;
     private javax.swing.JLabel btnInHoaDoninTTHD;
-    private javax.swing.JLabel btnTaoPhieuNhap;
+    private javax.swing.JLabel btnTaoPhieuXuat;
     private javax.swing.JLabel btnThemSP;
-    private javax.swing.JLabel btnThemSP1;
+    private javax.swing.JLabel btnXoaSP;
     private javax.swing.JButton chooseMaNV;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;

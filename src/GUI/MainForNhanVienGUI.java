@@ -156,8 +156,8 @@ public class MainForNhanVienGUI extends javax.swing.JFrame {
         pnHoaDon.setPreferredSize(new java.awt.Dimension(300, 43));
 
         lblHoaDon.setFont(new java.awt.Font("Baloo 2 ExtraBold", 1, 20)); // NOI18N
-        lblHoaDon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/lblCaLam.png"))); // NOI18N
-        lblHoaDon.setText("  Hóa đơn");
+        lblHoaDon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/lblBanHang.png"))); // NOI18N
+        lblHoaDon.setText("  Bán hàng");
 
         javax.swing.GroupLayout pnHoaDonLayout = new javax.swing.GroupLayout(pnHoaDon);
         pnHoaDon.setLayout(pnHoaDonLayout);
@@ -213,8 +213,8 @@ public class MainForNhanVienGUI extends javax.swing.JFrame {
         pnDSHoaDon.setPreferredSize(new java.awt.Dimension(300, 43));
 
         lblDSHoaDon.setFont(new java.awt.Font("Baloo 2 ExtraBold", 1, 19)); // NOI18N
-        lblDSHoaDon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/lblLoai.png"))); // NOI18N
-        lblDSHoaDon.setText("  Danh sách HD");
+        lblDSHoaDon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/lblHoaDon.png"))); // NOI18N
+        lblDSHoaDon.setText("  Hóa đơn");
 
         javax.swing.GroupLayout pnDSHoaDonLayout = new javax.swing.GroupLayout(pnDSHoaDon);
         pnDSHoaDon.setLayout(pnDSHoaDonLayout);

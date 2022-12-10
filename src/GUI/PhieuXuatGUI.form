@@ -332,7 +332,7 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <EmptySpace min="0" pref="1105" max="32767" attributes="0"/>
+          <EmptySpace min="0" pref="1096" max="32767" attributes="0"/>
           <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -385,7 +385,6 @@
                       <Component id="pnDSSP" pref="510" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="pnHangChoXuat" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -583,7 +582,7 @@
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/image/btnAdd.png"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Th&#xea;m s&#x1ea3;n ph&#x1ea9;m"/>
+                    <Property name="text" type="java.lang.String" value="Xu&#x1ea5;t s&#x1ea3;n ph&#x1ea9;m"/>
                     <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
                       <Color id="Hand Cursor"/>
                     </Property>
@@ -646,13 +645,13 @@
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" attributes="0">
                                           <EmptySpace min="-2" pref="113" max="-2" attributes="0"/>
-                                          <Component id="btnTaoPhieuNhap" min="-2" max="-2" attributes="0"/>
+                                          <Component id="btnTaoPhieuXuat" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace min="-2" pref="79" max="-2" attributes="0"/>
                                           <Component id="btnInHoaDon" min="-2" pref="141" max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
                                           <EmptySpace min="-2" pref="230" max="-2" attributes="0"/>
-                                          <Component id="btnThemSP1" min="-2" pref="170" max="-2" attributes="0"/>
+                                          <Component id="btnXoaSP" min="-2" pref="170" max="-2" attributes="0"/>
                                       </Group>
                                       <Component id="jScrollPane5" alignment="0" min="-2" pref="570" max="-2" attributes="0"/>
                                   </Group>
@@ -698,7 +697,7 @@
                           <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
                           <Component id="jScrollPane5" min="-2" pref="385" max="-2" attributes="0"/>
                           <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
-                          <Component id="btnThemSP1" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnXoaSP" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
                               <Group type="102" alignment="1" attributes="0">
@@ -728,7 +727,7 @@
                           </Group>
                           <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="btnTaoPhieuNhap" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnTaoPhieuXuat" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="btnInHoaDon" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
@@ -777,7 +776,7 @@
                     </Component>
                   </SubComponents>
                 </Container>
-                <Component class="javax.swing.JLabel" name="btnTaoPhieuNhap">
+                <Component class="javax.swing.JLabel" name="btnTaoPhieuXuat">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Baloo 2" size="18" style="1"/>
@@ -785,13 +784,13 @@
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/image/btnAdd.png"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="T&#x1ea1;o phi&#x1ebf;u nh&#x1ead;p"/>
+                    <Property name="text" type="java.lang.String" value="T&#x1ea1;o phi&#x1ebf;u xu&#x1ea5;t"/>
                     <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
                       <Color id="Hand Cursor"/>
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnTaoPhieuNhapMouseClicked"/>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnTaoPhieuXuatMouseClicked"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="btnInHoaDon">
@@ -862,7 +861,7 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="chooseMaNVActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JLabel" name="btnThemSP1">
+                <Component class="javax.swing.JLabel" name="btnXoaSP">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Baloo 2" size="18" style="1"/>
@@ -876,7 +875,7 @@
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnThemSP1MouseClicked"/>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnXoaSPMouseClicked"/>
                   </Events>
                 </Component>
               </SubComponents>

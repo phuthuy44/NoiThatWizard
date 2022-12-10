@@ -262,7 +262,7 @@ public class MainForQuanLyGUI extends javax.swing.JFrame {
         pnNhaCungCap.setPreferredSize(new java.awt.Dimension(300, 43));
 
         lblNhaCungCap.setFont(new java.awt.Font("Baloo 2 ExtraBold", 1, 20)); // NOI18N
-        lblNhaCungCap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/lblSanPham.png"))); // NOI18N
+        lblNhaCungCap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/lblNhaCungCap.png"))); // NOI18N
         lblNhaCungCap.setText("  Nhà cung cấp");
 
         javax.swing.GroupLayout pnNhaCungCapLayout = new javax.swing.GroupLayout(pnNhaCungCap);

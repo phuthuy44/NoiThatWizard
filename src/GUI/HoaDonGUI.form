@@ -697,7 +697,7 @@
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                      <Component id="btnThemSP1" min="-2" pref="170" max="-2" attributes="0"/>
+                      <Component id="btnXoaSP" min="-2" pref="170" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="180" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -709,7 +709,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jScrollPane5" min="-2" pref="385" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="btnThemSP1" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnXoaSP" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
@@ -967,7 +967,7 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="chooseMaKMActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JLabel" name="btnThemSP1">
+            <Component class="javax.swing.JLabel" name="btnXoaSP">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Baloo 2" size="18" style="1"/>
@@ -981,7 +981,7 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnThemSP1MouseClicked"/>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnXoaSPMouseClicked"/>
               </Events>
             </Component>
           </SubComponents>

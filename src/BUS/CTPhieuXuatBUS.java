@@ -32,4 +32,20 @@ public class CTPhieuXuatBUS {
         CTPhieuXuatDAO ctpxDAO = new CTPhieuXuatDAO();
         ctpxDAO.insertCTPX(ctpx);
     }
+    
+    public void listCTPX(){
+        CTPhieuXuatDAO ctpxDAO = new CTPhieuXuatDAO();
+        listCTPX = new ArrayList<>();
+        listCTPX = ctpxDAO.getListCTPX();
+    }
+    
+    public ArrayList<CTPhieuXuatDTO> getListCTPXtheoMaPX(String MaPX){
+        ArrayList<CTPhieuXuatDTO> dsctpx = new ArrayList<>();
+        for(CTPhieuXuatDTO ctpx : listCTPX){
+            if(ctpx.getMaPX().equals(MaPX)){
+                dsctpx.add(ctpx);
+            }
+        }
+        return dsctpx;
+    }
 }

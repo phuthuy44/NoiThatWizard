@@ -54,6 +54,7 @@ public class PhieuNhapGUI extends javax.swing.JPanel {
     private ArrayList<CTPhieuNhapDTO> dsctpn = new ArrayList<>();
     String imgName = "null";
     private BufferedImage i = null;
+    int SoLuongTrongKho;
     public PhieuNhapGUI() {
         initComponents();
 
@@ -276,7 +277,7 @@ public class PhieuNhapGUI extends javax.swing.JPanel {
         txtTongTien = new javax.swing.JTextField();
         chooseMaKH = new javax.swing.JButton();
         chooseMaNV = new javax.swing.JButton();
-        btnThemSP1 = new javax.swing.JLabel();
+        btnXoaSanPham = new javax.swing.JLabel();
 
         pnRootInPhieuNhapGUI.setBackground(new java.awt.Color(250, 247, 240));
         pnRootInPhieuNhapGUI.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 5));
@@ -554,6 +555,17 @@ public class PhieuNhapGUI extends javax.swing.JPanel {
             }
         });
         jScrollPane5.setViewportView(tblHangChoNhap);
+        if (tblHangChoNhap.getColumnModel().getColumnCount() > 0) {
+            tblHangChoNhap.getColumnModel().getColumn(0).setResizable(false);
+            tblHangChoNhap.getColumnModel().getColumn(0).setPreferredWidth(20);
+            tblHangChoNhap.getColumnModel().getColumn(1).setResizable(false);
+            tblHangChoNhap.getColumnModel().getColumn(1).setPreferredWidth(200);
+            tblHangChoNhap.getColumnModel().getColumn(2).setResizable(false);
+            tblHangChoNhap.getColumnModel().getColumn(2).setPreferredWidth(20);
+            tblHangChoNhap.getColumnModel().getColumn(3).setResizable(false);
+            tblHangChoNhap.getColumnModel().getColumn(4).setResizable(false);
+            tblHangChoNhap.getColumnModel().getColumn(4).setPreferredWidth(40);
+        }
 
         btnTaoPhieuNhap.setFont(new java.awt.Font("Baloo 2", 1, 18)); // NOI18N
         btnTaoPhieuNhap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/btnAdd.png"))); // NOI18N
@@ -606,13 +618,13 @@ public class PhieuNhapGUI extends javax.swing.JPanel {
             }
         });
 
-        btnThemSP1.setFont(new java.awt.Font("Baloo 2", 1, 18)); // NOI18N
-        btnThemSP1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/btnDelete.png"))); // NOI18N
-        btnThemSP1.setText("Xóa sản phẩm");
-        btnThemSP1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnThemSP1.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnXoaSanPham.setFont(new java.awt.Font("Baloo 2", 1, 18)); // NOI18N
+        btnXoaSanPham.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/btnDelete.png"))); // NOI18N
+        btnXoaSanPham.setText("Xóa sản phẩm");
+        btnXoaSanPham.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnXoaSanPham.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnThemSP1MouseClicked(evt);
+                btnXoaSanPhamMouseClicked(evt);
             }
         });
 
@@ -626,7 +638,7 @@ public class PhieuNhapGUI extends javax.swing.JPanel {
                     .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 567, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(pnHangChoNhapLayout.createSequentialGroup()
                         .addGap(232, 232, 232)
-                        .addComponent(btnThemSP1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnXoaSanPham, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(pnHangChoNhapLayout.createSequentialGroup()
                         .addGap(10, 10, 10)
                         .addComponent(lblMaSP1)
@@ -668,7 +680,7 @@ public class PhieuNhapGUI extends javax.swing.JPanel {
                 .addGap(6, 6, 6)
                 .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(6, 6, 6)
-                .addComponent(btnThemSP1)
+                .addComponent(btnXoaSanPham)
                 .addGap(10, 10, 10)
                 .addGroup(pnHangChoNhapLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblMaSP4)
@@ -728,11 +740,10 @@ public class PhieuNhapGUI extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void tblDSSPMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDSSPMouseClicked
-        int k = tblDSSP.getSelectedRow();
+        int k = tblDSSP.getSelectedRow();      
         txtMaSP.setText(tblDSSP.getModel().getValueAt(k,0).toString());
         txtTenSP.setText(tblDSSP.getModel().getValueAt(k,1).toString());
-        imgName = tblDSSP.getModel().getValueAt(k, 2).toString();
-        
+        imgName = tblDSSP.getModel().getValueAt(k, 3).toString();    
         //--Lấy giá nhập đề xuất
         khoBUS.docDanhSach();
         ArrayList<KhoDTO> dskho = khoBUS.getListKho();
@@ -741,7 +752,6 @@ public class PhieuNhapGUI extends javax.swing.JPanel {
                 lblGiaNhap.setText(String.valueOf(kho.getGiaNhap()));
         }
         //--
-        
         
         Image newImage;
         newImage = new ImageIcon("./src/image/SanPham/" + imgName).getImage().getScaledInstance(155, 185, Image.SCALE_DEFAULT);
@@ -840,9 +850,28 @@ public class PhieuNhapGUI extends javax.swing.JPanel {
 
     }//GEN-LAST:event_chooseMaNVActionPerformed
 
-    private void btnThemSP1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnThemSP1MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnThemSP1MouseClicked
+    private void btnXoaSanPhamMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnXoaSanPhamMouseClicked
+        int k = tblHangChoNhap.getSelectedRow();
+        String MaSP = tblHangChoNhap.getModel().getValueAt(k,0).toString();
+        int SoLuong = Integer.parseInt(tblHangChoNhap.getModel().getValueAt(k,2).toString());
+        
+        //lấy số lượng sản phẩm hiện có trong kho
+        khoBUS.docDanhSach();
+        ArrayList<KhoDTO> dskho = khoBUS.getListKho();
+        for(KhoDTO kho : dskho){
+            if(MaSP.equals(kho.getMaSP())){
+                SoLuongTrongKho = kho.getSoLuong(); 
+        }
+        }
+        //--
+        khoBUS.capNhatSoLuongSP(MaSP, -SoLuong, SoLuongTrongKho);
+        khoBUS.docDanhSach();
+        dsctpn.remove(k);
+        dtmHangChoNhap.removeRow(k);
+        txtTongTien.setText(String.valueOf(sumPN()));
+        loadDataDSSP();
+        
+    }//GEN-LAST:event_btnXoaSanPhamMouseClicked
 
     private void tblTTPNMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblTTPNMouseClicked
         int k = tblTTPN.getSelectedRow();
@@ -898,7 +927,7 @@ public class PhieuNhapGUI extends javax.swing.JPanel {
     private javax.swing.JLabel btnInPhieuNhapinTTPN;
     private javax.swing.JLabel btnTaoPhieuNhap;
     private javax.swing.JLabel btnThemSP;
-    private javax.swing.JLabel btnThemSP1;
+    private javax.swing.JLabel btnXoaSanPham;
     private javax.swing.JButton chooseMaKH;
     private javax.swing.JButton chooseMaNV;
     private javax.swing.JLabel jLabel1;
