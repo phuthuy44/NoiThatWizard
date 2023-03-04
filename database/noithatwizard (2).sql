@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th12 09, 2022 lúc 01:38 PM
+-- Thời gian đã tạo: Th3 04, 2023 lúc 02:40 PM
 -- Phiên bản máy phục vụ: 10.4.25-MariaDB
 -- Phiên bản PHP: 7.4.30
 
@@ -84,7 +84,15 @@ INSERT INTO `cthoadon` (`MaHD`, `MaSP`, `TenSP`, `SoLuong`, `DonGia`, `ThanhTien
 ('HD20', 'SP03', 'Bàn làm việc Osaka', 3, 22900000, 68700000),
 ('HD21', 'SP05', 'Bàn làm việc Pio', 4, 13650000, 54600000),
 ('HD22', 'SP05', 'Bàn làm việc Pio', 1, 13650000, 13650000),
-('HD23', 'SP04', 'Bàn làm việc Osaka KA', 1, 48900000, 48900000);
+('HD23', 'SP04', 'Bàn làm việc Osaka KA', 1, 48900000, 48900000),
+('HD26', 'SP01', 'Bàn làm việc Finn 260011', 4, 250000, 1000000),
+('HD27', 'SP04', 'Bàn làm việc Osaka KA', 3, 365000, 1095000),
+('HD28', 'SP02', 'Bàn làm việc Maxine', 5, 300000, 1500000),
+('HD29', 'SP01', 'Bàn làm việc Finn 260011', 5, 250000, 1250000),
+('HD29', 'SP02', 'Bàn làm việc Maxine', 6, 300000, 1800000),
+('HD30', 'SP01', 'Bàn làm việc Finn 260011', 4, 250000, 1000000),
+('HD30', 'SP04', 'Bàn làm việc Osaka KA', 5, 365000, 1825000),
+('HD31', 'SP02', 'Bàn làm việc Maxine', 2, 300000, 600000);
 
 -- --------------------------------------------------------
 
@@ -118,7 +126,12 @@ INSERT INTO `ctphieunhap` (`MaPN`, `MaSP`, `TenSP`, `SoLuong`, `DonGia`, `ThanhT
 ('PN13', 'SP02', 'Bàn làm việc Maxine', 4, 150000, 600000),
 ('PN13', 'SP03', 'Bàn làm việc Osaka', 4, 230000, 920000),
 ('PN14', 'SP05', 'Bàn làm việc Pio', 5, 186000, 930000),
-('PN15', 'SP04', 'Bàn làm việc Osaka KA', 1, 250000, 250000);
+('PN15', 'SP04', 'Bàn làm việc Osaka KA', 1, 250000, 250000),
+('PN16', 'SP04', 'Bàn làm việc Osaka KA', 5, 250000, 1250000),
+('PN17', 'SP02', 'Bàn làm việc Maxine', 2, 150000, 300000),
+('PN18', 'SP04', 'Bàn làm việc Osaka KA', 6, 250000, 1500000),
+('PN18', 'SP05', 'Bàn làm việc Pio', 3, 186000, 558000),
+('PN19', 'SP04', 'Bàn làm việc Osaka KA', 5, 250000, 1250000);
 
 -- --------------------------------------------------------
 
@@ -142,7 +155,9 @@ CREATE TABLE `ctphieuxuat` (
 INSERT INTO `ctphieuxuat` (`MaPX`, `MaSP`, `TenSP`, `SoLuong`, `DonGia`, `ThanhTien`) VALUES
 ('PX02', 'SP04', 'Bàn làm việc Osaka KA', 3, 365000, 1095000),
 ('PX03', 'SP05', 'Bàn làm việc Pio', 3, 300000, 900000),
-('PX04', 'SP01', 'Bàn làm việc Finn 260011', 2, 250000, 500000);
+('PX04', 'SP01', 'Bàn làm việc Finn 260011', 2, 250000, 500000),
+('PX05', 'SP04', 'Bàn làm việc Osaka KA', 5, 365000, 1825000),
+('PX06', 'SP02', 'Bàn làm việc Maxine', 3, 300000, 900000);
 
 -- --------------------------------------------------------
 
@@ -186,7 +201,14 @@ INSERT INTO `hoadon` (`MaHD`, `MaKH`, `MaNV`, `NgayLap`, `TongTien`) VALUES
 ('HD21', 'KH01', 'NV09', '17/11/2022', 54600000),
 ('HD22', 'KH22', 'NV17', '17/11/2022', 108800),
 ('HD23', 'KH23', 'NV04', '17/11/2022', 342300),
-('HD24', 'KH01', 'NV01', '08/11/2022', 2002000);
+('HD24', 'KH01', 'NV01', '08/11/2022', 2002000),
+('HD25', 'KH25', 'NV25', '10/12/2022', 840000),
+('HD26', 'KH26', 'NV26', '10/12/2022', 800000),
+('HD27', 'KH03', 'NV03', '11/12/2022', 876000),
+('HD28', 'KH13', 'NV13', '12/12/2022', 1050000),
+('HD29', 'KH10', 'NV10', '12/12/2022', 2135000),
+('HD30', 'KH10', 'NV05', '03/03/2023', 2260000),
+('HD31', '111', '111', '03/03/2023', 420000);
 
 -- --------------------------------------------------------
 
@@ -227,9 +249,9 @@ CREATE TABLE `kho` (
 
 INSERT INTO `kho` (`MaSP`, `TenSP`, `SoLuong`, `GiaNhap`, `DonViTinh`, `MaLoai`, `IMG`) VALUES
 ('SP01', 'Bàn làm việc Finn 260011', 9, 100000, 'Cái', 'L01', ''),
-('SP02', 'Bàn làm việc Maxine', 8, 150000, 'Cái', '', 'SP02.jpg'),
+('SP02', 'Bàn làm việc Maxine', 7, 150000, 'Cái', '', 'SP02.jpg'),
 ('SP03', 'Bàn làm việc Osaka', -1, 230000, 'Cái', '', ''),
-('SP04', 'Bàn làm việc Osaka KA', 0, 250000, 'Cái', '', ''),
+('SP04', 'Bàn làm việc Osaka KA', 5, 250000, 'Cái', '', ''),
 ('SP05', 'Bàn làm việc Pio', 0, 186000, 'Cái', '', 'null');
 
 -- --------------------------------------------------------
@@ -254,7 +276,7 @@ CREATE TABLE `khuyenmai` (
 INSERT INTO `khuyenmai` (`MaKM`, `TenKM`, `PhanTramKM`, `DieuKien`, `NgayBatDau`, `NgayKetThuc`) VALUES
 ('KM01', 'Giảm Giá 10%', 10, 200000, '2022-11-01', '2022-11-02'),
 ('KM02', 'Giảm Giá 20%', 20, 50000, '2022-11-08', '2022-11-29'),
-('KM03', 'Giảm Giá 30%', 30, 100000, '2022-11-09', '2022-11-30');
+('KM03', 'Giảm Giá 30%', 30, 200000, '2022-11-07', '2022-12-28');
 
 -- --------------------------------------------------------
 
@@ -274,7 +296,7 @@ CREATE TABLE `nhacungcap` (
 --
 
 INSERT INTO `nhacungcap` (`MaNCC`, `TenNCC`, `DiaChi`, `SoDT`) VALUES
-('NCC01', 'q233', '3213', '321');
+('NCC01', 'Phố Xinh', '273 ADV, Vietnam', '0814099714');
 
 -- --------------------------------------------------------
 
@@ -317,7 +339,8 @@ INSERT INTO `nhanvien` (`MaNV`, `Ho`, `Ten`, `NgaySinh`, `GioiTinh`, `DiaChi`, `
 ('NV16', 'Yontararak', 'Minnie', '23/10/1997', 'Nữ', 'Thailand', '23101997', 'CV01', 'Minnie.jpg'),
 ('NV17', 'Song', 'Yuqi', '23/09/1999', 'Nữ', 'China', '23091999', 'CV01', 'Yuqi.jpg'),
 ('NV18', 'Yeh', 'Shuhua', '06/01/2000', 'Nữ', 'Taiwan', '06012000', 'CV01', 'Shuhua.jpg'),
-('NV19', 'Đ', 'Đ', '02/05/1991', 'Nam', 'D', '072', 'CV04', 'null');
+('NV19', 'Đ', 'Đ', '02/05/1991', 'Nam', 'D', '072', 'CV04', 'null'),
+('NV20', 'Yook', 'Sungjae', '12/10/1995', 'Nam', 'North Korea', '12101995', 'CV04', 'null');
 
 -- --------------------------------------------------------
 
@@ -352,7 +375,11 @@ INSERT INTO `phieunhap` (`MaPN`, `MaNCC`, `MaNV`, `NgayLap`, `TongTien`) VALUES
 ('PN12', 'NCC12', 'NV12', '21/11/2022', 1150000),
 ('PN13', 'NCC13', 'NV13', '22/11/2022', 1520000),
 ('PN14', 'NCC14', 'NV14', '22/11/2022', 930000),
-('PN15', 'NCC15', 'NV15', '27/11/2022', 250000);
+('PN15', 'NCC15', 'NV15', '27/11/2022', 250000),
+('PN16', 'NCC', '16', '10/12/2022', 1250000),
+('PN17', 'NCC01', 'NV15', '11/12/2022', 300000),
+('PN18', 'NCC12', 'NV01', '12/12/2022', 2058000),
+('PN19', 'NCC11', 'NV01', '03/03/2023', 1250000);
 
 -- --------------------------------------------------------
 
@@ -375,7 +402,9 @@ INSERT INTO `phieuxuat` (`MaPX`, `MaNV`, `NgayLap`, `TongTien`) VALUES
 ('PX01', 'NV01', '22/11/2022', 365000),
 ('PX02', 'NV02', '23/11/2022', 1095000),
 ('PX03', 'NV03', '27/11/2022', 900000),
-('PX04', 'NV04', '27/11/2022', 500000);
+('PX04', 'NV04', '27/11/2022', 500000),
+('PX05', 'NV05', '10/12/2022', 1825000),
+('PX06', 'NV07', '11/12/2022', 900000);
 
 -- --------------------------------------------------------
 
@@ -398,11 +427,11 @@ CREATE TABLE `sanpham` (
 --
 
 INSERT INTO `sanpham` (`MaSP`, `TenSP`, `SoLuong`, `DonGia`, `DonViTinh`, `MaLoai`, `IMG`) VALUES
-('SP01', 'Bàn làm việc Finn 260011', 13, 250000, 'Cái', '', ''),
-('SP02', 'Bàn làm việc Maxine', 4, 300000, 'Cái', '', 'SP02.jpg'),
+('SP01', 'Bàn làm việc Finn 260011', 0, 250000, 'Cái', '', ''),
+('SP02', 'Bàn làm việc Maxine', 0, 300000, 'Cái', '', 'SP02.jpg'),
 ('SP03', 'Bàn làm việc Osaka', 0, 350000, 'Cái', '', ''),
-('SP04', 'Bàn làm việc Osaka KA', 0, 365000, 'Cái', '', ''),
-('SP05', 'Bàn làm việc Pio', 2, 300000, 'Cái', '', 'null');
+('SP04', 'Bàn làm việc Osaka KA', 6, 365000, 'Cái', '', ''),
+('SP05', 'Bàn làm việc Pio', 6, 300000, 'Cái', '', 'null');
 
 -- --------------------------------------------------------
 
@@ -424,7 +453,8 @@ CREATE TABLE `taikhoan` (
 INSERT INTO `taikhoan` (`MaNV`, `TenDangNhap`, `MatKhau`, `PhanQuyen`) VALUES
 ('NV01', 'admin', '123', 'CV01'),
 ('NV02', 'admin1', '123456', 'CV02'),
-('NV03', 'admin12345', '123456', 'CV03');
+('NV03', 'admin12345', '123456', 'CV03'),
+('NV04', 'nv04', '123', 'CV04');
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -512,7 +542,7 @@ ALTER TABLE `sanpham`
 -- Chỉ mục cho bảng `taikhoan`
 --
 ALTER TABLE `taikhoan`
-  ADD PRIMARY KEY (`MaNV`);
+  ADD PRIMARY KEY (`TenDangNhap`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
